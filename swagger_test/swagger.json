@@ -1,0 +1,248 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Wrapper API",
+        "version": "1.0.0",
+        "description": "API Wrapper for Firebase Authentication and Routing"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000",
+            "description": "Local Server"
+        }
+    ],
+    "paths": {
+        "/v1/auth/register": {
+            "parameters": [
+                {
+                    "name": "type",
+                    "in": "query",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "enum": ["facebook", "google", "emailPass"],
+                        "example": "emailPass"
+                    },
+                    "description": "Defines the authentication method used for user registration.<br> ---"
+                },
+                {
+                    "name": "code",
+                    "in": "query",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "description": "**Admin code: ** If provided and valid, the user is created as an admin.<br> --- "
+                }
+            ],
+            "post": {
+                "summary": "Register a new user",
+                "description": "Creates a new user. If an admin code is provided, the user is created as an admin.",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "description": "User email address."
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "description": "User password."
+                                    },
+                                    "adminCode": {
+                                        "type": "string",
+                                        "description": "Optional admin code. If provided and valid, the user is created as an admin."
+                                    }
+                                },
+                                "required": ["email", "password"]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User successfully created",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "type": "object",
+                                        "properties": {
+                                            "userId": { "type": "string" },
+                                            "email": { "type": "string" },
+                                            "role": { "type": "string", "enum": ["user", "admin"] }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                    "400": {
+                        "description": "Invalid input data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                    "error": { "type": "string" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/auth": {
+            "post": {
+                "summary": "Login with authentication provider",
+                "description": "Authenticates the user via Google, Facebook, or Email/Password.",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": ["facebook", "google", "emailPass"],
+                            "example": "google"
+                        },
+                        "description": "Defines the authentication method used for login.<br> ---"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "idToken": {
+                                        "type": "string",
+                                        "description": "Authentication token for Google or Facebook. Not required for email/password login."
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "description": "User email (only required for email/password login)."
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "description": "User password (only required for email/password login)."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful login",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "token": { "type": "string" },
+                                        "user": {
+                                            "type": "object",
+                                            "properties": {
+                                                "uid": { "type": "string" },
+                                                "email": { "type": "string" }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": { "type": "string" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/route": {
+            "get": {
+                "summary": "Get route in different formats",
+                "description": "Receives a set of coordinates and calculates the route between them in `JSON` or `GPX` format depending on the provided parameters.",
+                "parameters": [
+                    {
+                        "name": "coordinates",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "40.641,-8.653;40.730,-8.550"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": ["walking", "driving"],
+                            "example": "driving"
+                        },
+                        "description": "Type of Routing wanted for the route. <br> ---"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": ["file"],
+                            "example": "file"
+                        },
+                        "description": "Type of file wanted for the route. <br> ---"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Route successfully calculated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "route": {
+                                            "type": "object",
+                                            "properties": {
+                                                "geometry": { "type": "string" },
+                                                "distance": { "type": "number" },
+                                                "duration": { "type": "number" }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "application/gpx+xml": {
+                                "schema": {
+                                    "type": "string",
+                                    "format": "binary"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
