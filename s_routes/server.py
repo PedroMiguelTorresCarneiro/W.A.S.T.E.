@@ -45,12 +45,13 @@ def calculate_route():
     if status != 200:
         return jsonify(route_result), status
 
-    route_id = f"r{int(datetime.now().timestamp())}"  # Generate unique route ID
-    sc.create_route(route_id, route_result["route_coordinates"], truck_id=data.get("truck_id"))
-
-    route_result["route_id"] = route_id
+    route_result["route_id"] = f"r{int(datetime.now().timestamp())}"  # Generate unique route ID
     route_result["mode"] = data["mode"]
     route_result["created_at"] = str(datetime.today().date())
+
+    # Apenas armazena no banco de dados se o modo for "car"
+    if data["mode"] == "car":
+        sc.create_route(route_result["route_id"], route_result["route_coordinates"], truck_id=data.get("truck_id"))
 
     return jsonify(route_result), 201
 

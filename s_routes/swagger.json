@@ -1,183 +1,114 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-      "title": "Routes Service API",
-      "version": "1.0.0",
-      "description": "API para cálculo e gestão de rotas, incluindo filtragem por data e remoção."
-    },
-    "servers": [
-      {
-        "url": "http://localhost:5002",
-        "description": "Servidor Local"
-      }
-    ],
-    "paths": {
-      "/v1/routes/calculate": {
-        "post": {
-          "summary": "Calcula uma nova rota",
-          "description": "Recebe coordenadas e modo de transporte para calcular uma rota.",
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "coordinates": {
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Routes Service API",
+    "version": "1.0.0",
+    "description": "API for calculating and managing routes, including filtering by date and deletion."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5002",
+      "description": "Local Server"
+    }
+  ],
+  "paths": {
+    "/v1/routes/calculate": {
+      "post": {
+        "summary": "Calculate a new route",
+        "description": "Receives coordinates and mode of transport to calculate a route. Only routes with mode 'car' are stored in the database.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "coordinates": {
+                    "type": "array",
+                    "items": {
                       "type": "array",
-                      "items": {
-                        "type": "array",
-                        "items": { "type": "number" }
-                      },
-                      "example": [[40.7128, -74.0060], [34.0522, -118.2437]]
+                      "items": { "type": "number" }
                     },
-                    "mode": {
-                      "type": "string",
-                      "enum": ["car", "walking"],
-                      "example": "car"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "responses": {
-            "201": {
-              "description": "Rota criada com sucesso",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "route_id": { "type": "string", "example": "r123" },
-                      "distance_km": { "type": "number", "example": 15.2 },
-                      "fuel_liters": { "type": "number", "example": 2.5 },
-                      "created_at": { "type": "string", "example": "2025-03-05" }
-                    }
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "Erro no pedido",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "error": { "type": "string", "example": "Missing required fields: coordinates and mode" }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/v1/routes": {
-        "get": {
-          "summary": "Obtém detalhes de uma rota específica",
-          "description": "Retorna informações detalhadas de uma rota com base no ID.",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "query",
-              "required": true,
-              "schema": { "type": "string" }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Detalhes da rota",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "route_id": { "type": "string", "example": "r123" },
-                      "distance_km": { "type": "number", "example": 15.2 },
-                      "fuel_liters": { "type": "number", "example": 2.5 },
-                      "created_at": { "type": "string", "example": "2025-03-05" }
-                    }
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "Erro no pedido",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "error": { "type": "string", "example": "Missing route ID" }
-                    }
-                  }
-                }
-              }
-            },
-            "404": {
-              "description": "Rota não encontrada",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "error": { "type": "string", "example": "Route not found" }
-                    }
+                    "example": [[40.6221, -8.6280], [40.6331, -8.6587], [40.6221, -8.6280]]
+                  },
+                  "mode": {
+                    "type": "string",
+                    "enum": ["car", "walking"],
+                    "example": "car"
                   }
                 }
               }
             }
           }
         },
-        "delete": {
-          "summary": "Remove uma rota guardada",
-          "description": "Remove uma rota com base no ID fornecido.",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "query",
-              "required": true,
-              "schema": { "type": "string" }
+        "responses": {
+          "201": {
+            "description": "Route successfully created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "route_id": { "type": "string", "example": "r1712345678" },
+                    "distance_km": { "type": "number", "example": 8.2 },
+                    "created_at": { "type": "string", "example": "2025-03-08" }
+                  }
+                }
+              }
             }
-          ],
-          "responses": {
-            "200": {
-              "description": "Rota removida com sucesso",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "message": { "type": "string", "example": "Route deleted successfully" }
-                    }
+          },
+          "400": {
+            "description": "Request error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": { "type": "string", "example": "Missing required fields: coordinates and mode" }
                   }
                 }
               }
-            },
-            "400": {
-              "description": "Erro no pedido",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "error": { "type": "string", "example": "Missing route ID" }
-                    }
+            }
+          }
+        }
+      }
+    },
+    "/v1/routes": {
+      "get": {
+        "summary": "Get route details",
+        "description": "Returns detailed information of a route based on ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Route details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "route_id": { "type": "string", "example": "r1712345678" },
+                    "distance_km": { "type": "number", "example": 8.2 },
+                    "created_at": { "type": "string", "example": "2025-03-08" }
                   }
                 }
               }
-            },
-            "404": {
-              "description": "Rota não encontrada",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "error": { "type": "string", "example": "Route not found" }
-                    }
+            }
+          },
+          "404": {
+            "description": "Route not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": { "type": "string", "example": "Route not found" }
                   }
                 }
               }
@@ -185,48 +116,94 @@
           }
         }
       },
-      "/v1/routes/history": {
-        "get": {
-          "summary": "Lista todas as rotas guardadas com filtros opcionais",
-          "description": "Permite filtrar rotas por dia, mês ou ID do camião.",
-          "parameters": [
-            {
-              "name": "day",
-              "in": "query",
-              "schema": { "type": "string" }
-            },
-            {
-              "name": "month",
-              "in": "query",
-              "schema": { "type": "string" }
-            },
-            {
-              "name": "truck_id",
-              "in": "query",
-              "schema": { "type": "string" }
+      "delete": {
+        "summary": "Delete a saved route",
+        "description": "Removes a route based on the given ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Route successfully deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string", "example": "Route deleted successfully" }
+                  }
+                }
+              }
             }
-          ],
-          "responses": {
-            "200": {
-              "description": "Lista de rotas",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "route_id": { "type": "string", "example": "r123" },
-                        "distance_km": { "type": "number", "example": 15.2 },
-                        "fuel_liters": { "type": "number", "example": 2.5 }
-                      }
+          },
+          "404": {
+            "description": "Route not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": { "type": "string", "example": "Route not found" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/routes/history": {
+      "get": {
+        "summary": "List all stored routes with optional filters",
+        "description": "Allows filtering routes by day, month, year, or truck ID.",
+        "parameters": [
+          {
+            "name": "day",
+            "in": "query",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "month",
+            "in": "query",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "truck_id",
+            "in": "query",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of routes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "route_id": { "type": "string", "example": "r1712345678" },
+                      "distance_km": { "type": "number", "example": 8.2 },
+                      "created_at": { "type": "string", "example": "2025-03-08" }
                     }
                   }
                 }
               }
-            },
-            "404": {
-            "description": "Nenhuma rota encontrada para os filtros fornecidos",
+            }
+          },
+          "404": {
+            "description": "No routes found for the given filters",
             "content": {
               "application/json": {
                 "schema": {
@@ -237,10 +214,9 @@
                 }
               }
             }
-           }
           }
         }
       }
     }
   }
-  
+}
