@@ -2,20 +2,10 @@ from flask import Flask, jsonify, request
 from flask_swagger_ui import get_swaggerui_blueprint
 import json
 from datetime import datetime
+import service_core as sc
+import osrm_api as osrm
 
 app = Flask(__name__)
-
-# Simulação de base de dados de rotas
-routes_db = {
-    "r123": {
-        "route_id": "r123",
-        "distance_km": 15.2,
-        "fuel_liters": 2.5,
-        "created_at": "2025-03-05",
-        "mode": "car",
-        "coordinates": [[40.7128, -74.0060], [34.0522, -118.2437]]
-    }
-}
 
 # Configurar Swagger UI
 SWAGGER_URL = "/routes-service"
@@ -45,32 +35,37 @@ def calculate_route():
     if data["mode"] not in ["car", "walking"]:
         return jsonify({"error": "Invalid mode. Accepted values: 'car', 'walking'"}), 400
 
-    route_id = f"r{len(routes_db) + 1}"
-    new_route = {
-        "route_id": route_id,
-        "distance_km": 10.5,  # Simulação
-        "fuel_liters": 3.2 if data["mode"] == "car" else 0,
-        "created_at": str(datetime.today().date()),
-        "mode": data["mode"],
-        "coordinates": data["coordinates"]
-    }
+    start, *waypoints, end = data["coordinates"]
+    
+    if data["mode"] == "car":
+        route_result, status = osrm.calculate_routing_driving(start, waypoints, end)
+    else:
+        route_result, status = osrm.calculate_routing_walking(start, end)
 
-    routes_db[route_id] = new_route
+    if status != 200:
+        return jsonify(route_result), status
 
-    return jsonify(new_route), 201
+    route_id = f"r{int(datetime.now().timestamp())}"  # Generate unique route ID
+    sc.create_route(route_id, route_result["route_coordinates"], truck_id=data.get("truck_id"))
+
+    route_result["route_id"] = route_id
+    route_result["mode"] = data["mode"]
+    route_result["created_at"] = str(datetime.today().date())
+
+    return jsonify(route_result), 201
 
 # Obtém detalhes de uma rota específica
 @app.route("/v1/routes", methods=["GET"])
-def get_route():
+def get_route_details():
     route_id = request.args.get("id")
 
     if not route_id:
         return jsonify({"error": "Missing route ID"}), 400
     
-    route = routes_db.get(route_id)
+    route = sc.get_route(route_id)
     
-    if not route:
-        return jsonify({"error": "Route not found"}), 404
+    if "error" in route:
+        return jsonify(route), 404
 
     return jsonify(route), 200
 
@@ -79,38 +74,30 @@ def get_route():
 def get_route_history():
     day = request.args.get("day")
     month = request.args.get("month")
+    year = request.args.get("year")
     truck_id = request.args.get("truck_id")
 
-    filtered_routes = list(routes_db.values())
+    routes = sc.get_routes_history(day, month, year, truck_id)
 
-    if day:
-        filtered_routes = [r for r in filtered_routes if r["created_at"].split("-")[2] == day]
+    if "error" in routes:
+        return jsonify(routes), 404
 
-    if month:
-        filtered_routes = [r for r in filtered_routes if r["created_at"].split("-")[1] == month]
-
-    if truck_id:
-        # Simulação: Nenhuma lógica de truck_id implementada
-        filtered_routes = [r for r in filtered_routes if r.get("truck_id") == truck_id]
-
-    if not filtered_routes:
-        return jsonify({"error": "No routes found for the given filters"}), 404
-
-    return jsonify(filtered_routes), 200
+    return jsonify(routes), 200
 
 # Remove uma rota guardada
 @app.route("/v1/routes", methods=["DELETE"])
-def delete_route():
+def delete_route_endpoint():
     route_id = request.args.get("id")
 
     if not route_id:
         return jsonify({"error": "Missing route ID"}), 400
 
-    if route_id in routes_db:
-        del routes_db[route_id]
-        return jsonify({"message": "Route deleted successfully"}), 200
+    result = sc.delete_route(route_id)
+    
+    if "error" in result:
+        return jsonify(result), 404
 
-    return jsonify({"error": "Route not found"}), 404
+    return jsonify(result), 200
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5002)
