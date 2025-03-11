@@ -3,3 +3,4 @@ venv/
 .DS_Store
 *.gpx
 __pycache__/
+pwa/
