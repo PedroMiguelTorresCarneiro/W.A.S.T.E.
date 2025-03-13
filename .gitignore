@@ -4,4 +4,4 @@ venv/
 *.gpx
 __pycache__/
 pwa/
-wast_app/
+waste_app/
