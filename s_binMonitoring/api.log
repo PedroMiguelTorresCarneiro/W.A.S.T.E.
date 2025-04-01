@@ -1,0 +1,1006 @@
+2025-03-31 20:24:38,229 [INFO] Successfully connected to Redis
+2025-03-31 20:24:38,231 [INFO] 🔄 Restoring previous configurations...
+2025-03-31 20:24:39,984 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-03-31 20:24:40,044 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.1.99:5004
+2025-03-31 20:24:40,044 [INFO] [33mPress CTRL+C to quit[0m
+2025-03-31 20:24:40,045 [INFO]  * Restarting with stat
+2025-03-31 20:24:40,327 [INFO] Successfully connected to Redis
+2025-03-31 20:24:40,330 [INFO] 🔄 Restoring previous configurations...
+2025-03-31 20:24:41,935 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-03-31 20:24:41,978 [WARNING]  * Debugger is active!
+2025-03-31 20:24:41,988 [INFO]  * Debugger PIN: 691-115-437
+2025-03-31 20:24:43,441 [INFO] 127.0.0.1 - - [31/Mar/2025 20:24:43] "GET /apidocs/ HTTP/1.1" 200 -
+2025-03-31 20:24:43,463 [INFO] 127.0.0.1 - - [31/Mar/2025 20:24:43] "[36mGET /flasgger_static/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+2025-03-31 20:24:43,464 [INFO] 127.0.0.1 - - [31/Mar/2025 20:24:43] "[36mGET /flasgger_static/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+2025-03-31 20:24:43,465 [INFO] 127.0.0.1 - - [31/Mar/2025 20:24:43] "[36mGET /flasgger_static/swagger-ui.css HTTP/1.1[0m" 304 -
+2025-03-31 20:24:43,468 [INFO] 127.0.0.1 - - [31/Mar/2025 20:24:43] "[36mGET /flasgger_static/lib/jquery.min.js HTTP/1.1[0m" 304 -
+2025-03-31 20:24:43,542 [INFO] 127.0.0.1 - - [31/Mar/2025 20:24:43] "[36mGET /flasgger_static/favicon-32x32.png HTTP/1.1[0m" 304 -
+2025-03-31 20:24:43,559 [INFO] 127.0.0.1 - - [31/Mar/2025 20:24:43] "GET /apispec.json HTTP/1.1" 200 -
+2025-03-31 20:24:48,006 [ERROR] Unhandled exception: too many values to unpack (expected 2)
+2025-03-31 20:24:48,006 [INFO] 127.0.0.1 - - [31/Mar/2025 20:24:48] "[35m[1mGET /v2/sensors HTTP/1.1[0m" 500 -
+2025-03-31 20:27:15,172 [INFO]  * Detected change in '/Users/pedrocarneiro/Desktop/Universidade/2024_2025/SECOND_SEMESTER/EGS/waste_project/W.A.S.T.E./s_binMonitoring/binAPI.py', reloading
+2025-03-31 20:27:15,228 [INFO]  * Restarting with stat
+2025-03-31 20:27:15,710 [INFO] Successfully connected to Redis
+2025-03-31 20:27:15,713 [INFO] 🔄 Restoring previous configurations...
+2025-03-31 20:27:17,602 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-03-31 20:27:17,652 [WARNING]  * Debugger is active!
+2025-03-31 20:27:17,696 [INFO]  * Debugger PIN: 691-115-437
+2025-03-31 20:27:36,868 [INFO]  * Detected change in '/Users/pedrocarneiro/Desktop/Universidade/2024_2025/SECOND_SEMESTER/EGS/waste_project/W.A.S.T.E./s_binMonitoring/binAPI.py', reloading
+2025-03-31 20:27:36,920 [INFO]  * Restarting with stat
+2025-03-31 20:27:37,244 [INFO] Successfully connected to Redis
+2025-03-31 20:27:37,246 [INFO] 🔄 Restoring previous configurations...
+2025-03-31 20:27:39,110 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-03-31 20:27:39,158 [WARNING]  * Debugger is active!
+2025-03-31 20:27:39,167 [INFO]  * Debugger PIN: 691-115-437
+2025-03-31 20:27:42,753 [INFO] 127.0.0.1 - - [31/Mar/2025 20:27:42] "GET /apidocs/ HTTP/1.1" 200 -
+2025-03-31 20:27:42,769 [INFO] 127.0.0.1 - - [31/Mar/2025 20:27:42] "[36mGET /flasgger_static/swagger-ui.css HTTP/1.1[0m" 304 -
+2025-03-31 20:27:42,770 [INFO] 127.0.0.1 - - [31/Mar/2025 20:27:42] "[36mGET /flasgger_static/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+2025-03-31 20:27:42,772 [INFO] 127.0.0.1 - - [31/Mar/2025 20:27:42] "[36mGET /flasgger_static/lib/jquery.min.js HTTP/1.1[0m" 304 -
+2025-03-31 20:27:42,774 [INFO] 127.0.0.1 - - [31/Mar/2025 20:27:42] "[36mGET /flasgger_static/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+2025-03-31 20:27:42,854 [INFO] 127.0.0.1 - - [31/Mar/2025 20:27:42] "GET /apispec.json HTTP/1.1" 200 -
+2025-03-31 20:27:42,854 [INFO] 127.0.0.1 - - [31/Mar/2025 20:27:42] "[36mGET /flasgger_static/favicon-32x32.png HTTP/1.1[0m" 304 -
+2025-03-31 20:27:47,960 [INFO] 127.0.0.1 - - [31/Mar/2025 20:27:47] "GET /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:47:40,849 [INFO] 127.0.0.1 - - [31/Mar/2025 20:47:40] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:47:44,767 [INFO] 127.0.0.1 - - [31/Mar/2025 20:47:44] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:48:00,005 [INFO] 127.0.0.1 - - [31/Mar/2025 20:48:00] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 20:48:11,164 [INFO] 127.0.0.1 - - [31/Mar/2025 20:48:11] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 20:48:28,611 [INFO] 127.0.0.1 - - [31/Mar/2025 20:48:28] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:48:39,366 [INFO] 127.0.0.1 - - [31/Mar/2025 20:48:39] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:48:41,047 [INFO] 127.0.0.1 - - [31/Mar/2025 20:48:41] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:49:35,300 [INFO] 127.0.0.1 - - [31/Mar/2025 20:49:35] "GET /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:49:51,317 [INFO] All sensors removed (total: 1)
+2025-03-31 20:49:51,318 [INFO] 127.0.0.1 - - [31/Mar/2025 20:49:51] "DELETE /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:49:57,569 [INFO] 127.0.0.1 - - [31/Mar/2025 20:49:57] "GET /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:50:14,653 [INFO] 127.0.0.1 - - [31/Mar/2025 20:50:14] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 20:50:18,069 [INFO] 127.0.0.1 - - [31/Mar/2025 20:50:18] "GET /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:50:20,556 [INFO] 127.0.0.1 - - [31/Mar/2025 20:50:20] "GET /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:50:24,960 [INFO] 127.0.0.1 - - [31/Mar/2025 20:50:24] "GET /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:50:41,176 [INFO] 127.0.0.1 - - [31/Mar/2025 20:50:41] "GET /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:50:43,231 [INFO] 127.0.0.1 - - [31/Mar/2025 20:50:43] "GET /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:50:50,991 [INFO] 127.0.0.1 - - [31/Mar/2025 20:50:50] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:51:04,381 [INFO] 127.0.0.1 - - [31/Mar/2025 20:51:04] "GET /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:54:27,848 [INFO]  * Detected change in '/Users/pedrocarneiro/Desktop/Universidade/2024_2025/SECOND_SEMESTER/EGS/waste_project/W.A.S.T.E./s_binMonitoring/binAPI.py', reloading
+2025-03-31 20:54:27,907 [INFO]  * Restarting with stat
+2025-03-31 20:55:16,091 [INFO] Successfully connected to Redis
+2025-03-31 20:55:16,094 [INFO] 🔄 Restoring previous configurations...
+2025-03-31 20:55:17,978 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-03-31 20:55:18,038 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.1.99:5004
+2025-03-31 20:55:18,039 [INFO] [33mPress CTRL+C to quit[0m
+2025-03-31 20:55:18,040 [INFO]  * Restarting with stat
+2025-03-31 20:55:18,325 [INFO] Successfully connected to Redis
+2025-03-31 20:55:18,327 [INFO] 🔄 Restoring previous configurations...
+2025-03-31 20:55:20,144 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-03-31 20:55:20,191 [WARNING]  * Debugger is active!
+2025-03-31 20:55:20,201 [INFO]  * Debugger PIN: 691-115-437
+2025-03-31 20:55:27,911 [INFO] 127.0.0.1 - - [31/Mar/2025 20:55:27] "GET /apidocs/ HTTP/1.1" 200 -
+2025-03-31 20:55:27,936 [INFO] 127.0.0.1 - - [31/Mar/2025 20:55:27] "[36mGET /flasgger_static/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+2025-03-31 20:55:27,939 [INFO] 127.0.0.1 - - [31/Mar/2025 20:55:27] "[36mGET /flasgger_static/swagger-ui.css HTTP/1.1[0m" 304 -
+2025-03-31 20:55:27,939 [INFO] 127.0.0.1 - - [31/Mar/2025 20:55:27] "[36mGET /flasgger_static/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+2025-03-31 20:55:27,942 [INFO] 127.0.0.1 - - [31/Mar/2025 20:55:27] "[36mGET /flasgger_static/lib/jquery.min.js HTTP/1.1[0m" 304 -
+2025-03-31 20:55:28,130 [INFO] 127.0.0.1 - - [31/Mar/2025 20:55:28] "GET /apispec.json HTTP/1.1" 200 -
+2025-03-31 20:55:28,131 [INFO] 127.0.0.1 - - [31/Mar/2025 20:55:28] "[36mGET /flasgger_static/favicon-32x32.png HTTP/1.1[0m" 304 -
+2025-03-31 20:55:36,238 [INFO] 127.0.0.1 - - [31/Mar/2025 20:55:36] "GET /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:56:28,209 [INFO] 127.0.0.1 - - [31/Mar/2025 20:56:28] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 20:56:32,263 [INFO] Topic test1 created
+2025-03-31 20:56:32,264 [INFO] 127.0.0.1 - - [31/Mar/2025 20:56:32] "[35m[1mPOST /v2/topic HTTP/1.1[0m" 201 -
+2025-03-31 20:56:32,269 [INFO] 127.0.0.1 - - [31/Mar/2025 20:56:32] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:56:32,273 [INFO] Sensor 123 added to topic test1
+2025-03-31 20:56:32,274 [INFO] 127.0.0.1 - - [31/Mar/2025 20:56:32] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 20:56:40,622 [INFO] 127.0.0.1 - - [31/Mar/2025 20:56:40] "GET /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:56:57,777 [INFO] 127.0.0.1 - - [31/Mar/2025 20:56:57] "GET /v2/topic HTTP/1.1" 200 -
+2025-03-31 20:57:09,734 [INFO] 127.0.0.1 - - [31/Mar/2025 20:57:09] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:57:09,736 [INFO] Removed sensors: ['123']
+2025-03-31 20:57:09,736 [INFO] 127.0.0.1 - - [31/Mar/2025 20:57:09] "DELETE /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:57:18,441 [INFO] 127.0.0.1 - - [31/Mar/2025 20:57:18] "GET /v2/topic HTTP/1.1" 200 -
+2025-03-31 20:57:22,694 [INFO] 127.0.0.1 - - [31/Mar/2025 20:57:22] "GET /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:57:25,379 [INFO] 127.0.0.1 - - [31/Mar/2025 20:57:25] "GET /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:57:28,425 [INFO] 127.0.0.1 - - [31/Mar/2025 20:57:28] "GET /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:57:33,342 [INFO] 127.0.0.1 - - [31/Mar/2025 20:57:33] "GET /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:57:58,779 [INFO] 127.0.0.1 - - [31/Mar/2025 20:57:58] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 20:58:00,696 [INFO] 127.0.0.1 - - [31/Mar/2025 20:58:00] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 20:58:00,700 [INFO] 127.0.0.1 - - [31/Mar/2025 20:58:00] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:58:00,704 [INFO] Sensor 1 added to topic test1
+2025-03-31 20:58:00,704 [INFO] 127.0.0.1 - - [31/Mar/2025 20:58:00] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 20:58:04,622 [INFO] 127.0.0.1 - - [31/Mar/2025 20:58:04] "GET /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:58:16,835 [INFO] 127.0.0.1 - - [31/Mar/2025 20:58:16] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:58:16,837 [INFO] Removed sensors: ['1']
+2025-03-31 20:58:16,837 [INFO] 127.0.0.1 - - [31/Mar/2025 20:58:16] "DELETE /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:58:19,063 [INFO] 127.0.0.1 - - [31/Mar/2025 20:58:19] "GET /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:58:26,992 [INFO] All sensors removed (total: 1)
+2025-03-31 20:58:26,993 [INFO] 127.0.0.1 - - [31/Mar/2025 20:58:26] "DELETE /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:58:32,940 [INFO] 127.0.0.1 - - [31/Mar/2025 20:58:32] "GET /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:58:47,369 [INFO] 127.0.0.1 - - [31/Mar/2025 20:58:47] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 20:58:49,304 [INFO] 127.0.0.1 - - [31/Mar/2025 20:58:49] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 20:58:49,307 [INFO] 127.0.0.1 - - [31/Mar/2025 20:58:49] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:58:49,310 [INFO] Sensor 1 added to topic test1
+2025-03-31 20:58:49,310 [INFO] 127.0.0.1 - - [31/Mar/2025 20:58:49] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 20:58:56,220 [INFO] 127.0.0.1 - - [31/Mar/2025 20:58:56] "GET /v2/sensors HTTP/1.1" 200 -
+2025-03-31 20:59:03,355 [INFO] 127.0.0.1 - - [31/Mar/2025 20:59:03] "GET /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:02:20,294 [INFO] 127.0.0.1 - - [31/Mar/2025 21:02:20] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:02:20,297 [INFO] Removed sensors: ['1']
+2025-03-31 21:02:20,297 [INFO] 127.0.0.1 - - [31/Mar/2025 21:02:20] "DELETE /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:04:16,381 [INFO] 127.0.0.1 - - [31/Mar/2025 21:04:16] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:04:20,410 [INFO] Topic bin_monitoring created
+2025-03-31 21:04:20,411 [INFO] 127.0.0.1 - - [31/Mar/2025 21:04:20] "[35m[1mPOST /v2/topic HTTP/1.1[0m" 201 -
+2025-03-31 21:04:20,414 [INFO] 127.0.0.1 - - [31/Mar/2025 21:04:20] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:04:20,417 [INFO] Sensor BIN-AVE-001 added to topic bin_monitoring
+2025-03-31 21:04:20,417 [INFO] 127.0.0.1 - - [31/Mar/2025 21:04:20] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:06:09,430 [INFO] 127.0.0.1 - - [31/Mar/2025 21:06:09] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:06:11,462 [INFO] 127.0.0.1 - - [31/Mar/2025 21:06:11] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:06:11,467 [INFO] 127.0.0.1 - - [31/Mar/2025 21:06:11] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:06:11,470 [INFO] Sensor BIN-AVE-002 added to topic bin_monitoring
+2025-03-31 21:06:11,471 [INFO] 127.0.0.1 - - [31/Mar/2025 21:06:11] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:06:17,539 [INFO] 127.0.0.1 - - [31/Mar/2025 21:06:17] "GET /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:06:26,095 [INFO] 127.0.0.1 - - [31/Mar/2025 21:06:26] "GET /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:06:51,005 [INFO] 127.0.0.1 - - [31/Mar/2025 21:06:51] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:06:52,939 [INFO] 127.0.0.1 - - [31/Mar/2025 21:06:52] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:06:52,944 [INFO] 127.0.0.1 - - [31/Mar/2025 21:06:52] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:06:52,945 [INFO] Sensor BIN-AVE-003 added to topic bin_monitoring
+2025-03-31 21:06:52,946 [INFO] 127.0.0.1 - - [31/Mar/2025 21:06:52] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:07:12,441 [INFO] 127.0.0.1 - - [31/Mar/2025 21:07:12] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:07:14,400 [INFO] 127.0.0.1 - - [31/Mar/2025 21:07:14] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:07:14,405 [INFO] 127.0.0.1 - - [31/Mar/2025 21:07:14] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:07:14,408 [INFO] Sensor BIN-AVE-004 added to topic bin_monitoring
+2025-03-31 21:07:14,408 [INFO] 127.0.0.1 - - [31/Mar/2025 21:07:14] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:07:34,385 [INFO] 127.0.0.1 - - [31/Mar/2025 21:07:34] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:07:36,272 [INFO] 127.0.0.1 - - [31/Mar/2025 21:07:36] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:07:36,276 [INFO] 127.0.0.1 - - [31/Mar/2025 21:07:36] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:07:36,278 [INFO] Sensor BIN-AVE-005 added to topic bin_monitoring
+2025-03-31 21:07:36,278 [INFO] 127.0.0.1 - - [31/Mar/2025 21:07:36] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:07:58,620 [INFO] 127.0.0.1 - - [31/Mar/2025 21:07:58] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:08:00,605 [INFO] 127.0.0.1 - - [31/Mar/2025 21:08:00] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:08:00,609 [INFO] 127.0.0.1 - - [31/Mar/2025 21:08:00] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:08:00,612 [INFO] Sensor BIN-AVE-006 added to topic bin_monitoring
+2025-03-31 21:08:00,612 [INFO] 127.0.0.1 - - [31/Mar/2025 21:08:00] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:08:18,282 [INFO] 127.0.0.1 - - [31/Mar/2025 21:08:18] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:08:20,198 [INFO] 127.0.0.1 - - [31/Mar/2025 21:08:20] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:08:20,202 [INFO] 127.0.0.1 - - [31/Mar/2025 21:08:20] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:08:20,205 [INFO] Sensor BIN-AVE-007 added to topic bin_monitoring
+2025-03-31 21:08:20,206 [INFO] 127.0.0.1 - - [31/Mar/2025 21:08:20] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:08:47,440 [INFO] 127.0.0.1 - - [31/Mar/2025 21:08:47] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:08:49,408 [INFO] 127.0.0.1 - - [31/Mar/2025 21:08:49] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:08:49,411 [INFO] 127.0.0.1 - - [31/Mar/2025 21:08:49] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:08:49,413 [INFO] Sensor BIN-AVE-008 added to topic bin_monitoring
+2025-03-31 21:08:49,414 [INFO] 127.0.0.1 - - [31/Mar/2025 21:08:49] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:09:35,141 [INFO] 127.0.0.1 - - [31/Mar/2025 21:09:35] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:09:37,206 [INFO] 127.0.0.1 - - [31/Mar/2025 21:09:37] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:09:37,211 [INFO] 127.0.0.1 - - [31/Mar/2025 21:09:37] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:09:37,216 [INFO] Sensor BIN-AVE-009 added to topic bin_monitoring
+2025-03-31 21:09:37,217 [INFO] 127.0.0.1 - - [31/Mar/2025 21:09:37] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:09:57,835 [INFO] 127.0.0.1 - - [31/Mar/2025 21:09:57] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:09:59,804 [INFO] 127.0.0.1 - - [31/Mar/2025 21:09:59] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:09:59,808 [INFO] 127.0.0.1 - - [31/Mar/2025 21:09:59] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:09:59,810 [INFO] Sensor BIN-AVE-010 added to topic bin_monitoring
+2025-03-31 21:09:59,811 [INFO] 127.0.0.1 - - [31/Mar/2025 21:09:59] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:10:23,241 [INFO] 127.0.0.1 - - [31/Mar/2025 21:10:23] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:10:25,237 [INFO] 127.0.0.1 - - [31/Mar/2025 21:10:25] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:10:25,241 [INFO] 127.0.0.1 - - [31/Mar/2025 21:10:25] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:10:25,245 [INFO] Sensor BIN-AVE-011 added to topic bin_monitoring
+2025-03-31 21:10:25,245 [INFO] 127.0.0.1 - - [31/Mar/2025 21:10:25] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:10:45,559 [INFO] 127.0.0.1 - - [31/Mar/2025 21:10:45] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:10:47,439 [INFO] 127.0.0.1 - - [31/Mar/2025 21:10:47] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:10:47,449 [INFO] 127.0.0.1 - - [31/Mar/2025 21:10:47] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:10:47,451 [INFO] Sensor BIN-AVE-012 added to topic bin_monitoring
+2025-03-31 21:10:47,452 [INFO] 127.0.0.1 - - [31/Mar/2025 21:10:47] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:11:07,033 [INFO] 127.0.0.1 - - [31/Mar/2025 21:11:07] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:11:08,988 [INFO] 127.0.0.1 - - [31/Mar/2025 21:11:08] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:11:08,991 [INFO] 127.0.0.1 - - [31/Mar/2025 21:11:08] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:11:08,993 [INFO] Sensor BIN-AVE-013 added to topic bin_monitoring
+2025-03-31 21:11:08,993 [INFO] 127.0.0.1 - - [31/Mar/2025 21:11:08] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:11:28,817 [INFO] 127.0.0.1 - - [31/Mar/2025 21:11:28] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:11:30,738 [INFO] 127.0.0.1 - - [31/Mar/2025 21:11:30] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:11:30,743 [INFO] 127.0.0.1 - - [31/Mar/2025 21:11:30] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:11:30,745 [INFO] Sensor BIN-AVE-014 added to topic bin_monitoring
+2025-03-31 21:11:30,745 [INFO] 127.0.0.1 - - [31/Mar/2025 21:11:30] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:11:49,919 [INFO] 127.0.0.1 - - [31/Mar/2025 21:11:49] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:11:51,806 [INFO] 127.0.0.1 - - [31/Mar/2025 21:11:51] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:11:51,810 [INFO] 127.0.0.1 - - [31/Mar/2025 21:11:51] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:11:51,812 [INFO] Sensor BIN-AVE-015 added to topic bin_monitoring
+2025-03-31 21:11:51,813 [INFO] 127.0.0.1 - - [31/Mar/2025 21:11:51] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:12:12,113 [INFO] 127.0.0.1 - - [31/Mar/2025 21:12:12] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:12:14,112 [INFO] 127.0.0.1 - - [31/Mar/2025 21:12:14] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:12:14,116 [INFO] 127.0.0.1 - - [31/Mar/2025 21:12:14] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:12:14,119 [INFO] Sensor BIN-AVE-016 added to topic bin_monitoring
+2025-03-31 21:12:14,120 [INFO] 127.0.0.1 - - [31/Mar/2025 21:12:14] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:12:36,564 [INFO] 127.0.0.1 - - [31/Mar/2025 21:12:36] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:12:38,455 [INFO] 127.0.0.1 - - [31/Mar/2025 21:12:38] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:12:38,458 [INFO] 127.0.0.1 - - [31/Mar/2025 21:12:38] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:12:38,462 [INFO] Sensor BIN-AVE-017 added to topic bin_monitoring
+2025-03-31 21:12:38,462 [INFO] 127.0.0.1 - - [31/Mar/2025 21:12:38] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:12:55,839 [INFO] 127.0.0.1 - - [31/Mar/2025 21:12:55] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:12:57,837 [INFO] 127.0.0.1 - - [31/Mar/2025 21:12:57] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:12:57,843 [INFO] 127.0.0.1 - - [31/Mar/2025 21:12:57] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:12:57,847 [INFO] Sensor BIN-AVE-018 added to topic bin_monitoring
+2025-03-31 21:12:57,847 [INFO] 127.0.0.1 - - [31/Mar/2025 21:12:57] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:13:17,233 [INFO] 127.0.0.1 - - [31/Mar/2025 21:13:17] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:13:19,150 [INFO] 127.0.0.1 - - [31/Mar/2025 21:13:19] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:13:19,153 [INFO] 127.0.0.1 - - [31/Mar/2025 21:13:19] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:13:19,155 [INFO] Sensor BIN-AVE-019 added to topic bin_monitoring
+2025-03-31 21:13:19,155 [INFO] 127.0.0.1 - - [31/Mar/2025 21:13:19] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:13:39,750 [INFO] 127.0.0.1 - - [31/Mar/2025 21:13:39] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:13:41,598 [INFO] 127.0.0.1 - - [31/Mar/2025 21:13:41] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:13:41,602 [INFO] 127.0.0.1 - - [31/Mar/2025 21:13:41] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:13:41,604 [INFO] Sensor BIN-AVE-020 added to topic bin_monitoring
+2025-03-31 21:13:41,605 [INFO] 127.0.0.1 - - [31/Mar/2025 21:13:41] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:14:01,412 [INFO] 127.0.0.1 - - [31/Mar/2025 21:14:01] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:14:03,446 [INFO] 127.0.0.1 - - [31/Mar/2025 21:14:03] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:14:03,449 [INFO] 127.0.0.1 - - [31/Mar/2025 21:14:03] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:14:03,454 [INFO] Sensor BIN-AVE-021 added to topic bin_monitoring
+2025-03-31 21:14:03,454 [INFO] 127.0.0.1 - - [31/Mar/2025 21:14:03] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:14:20,832 [INFO] 127.0.0.1 - - [31/Mar/2025 21:14:20] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:14:22,683 [INFO] 127.0.0.1 - - [31/Mar/2025 21:14:22] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:14:22,686 [INFO] 127.0.0.1 - - [31/Mar/2025 21:14:22] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:14:22,688 [INFO] Sensor BIN-AVE-022 added to topic bin_monitoring
+2025-03-31 21:14:22,689 [INFO] 127.0.0.1 - - [31/Mar/2025 21:14:22] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:14:43,658 [INFO] 127.0.0.1 - - [31/Mar/2025 21:14:43] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:14:45,596 [INFO] 127.0.0.1 - - [31/Mar/2025 21:14:45] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:14:45,600 [INFO] 127.0.0.1 - - [31/Mar/2025 21:14:45] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:14:45,603 [INFO] Sensor BIN-AVE-023 added to topic bin_monitoring
+2025-03-31 21:14:45,603 [INFO] 127.0.0.1 - - [31/Mar/2025 21:14:45] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:15:04,264 [INFO] 127.0.0.1 - - [31/Mar/2025 21:15:04] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:15:06,261 [INFO] 127.0.0.1 - - [31/Mar/2025 21:15:06] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:15:06,265 [INFO] 127.0.0.1 - - [31/Mar/2025 21:15:06] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:15:06,268 [INFO] Sensor BIN-AVE-024 added to topic bin_monitoring
+2025-03-31 21:15:06,269 [INFO] 127.0.0.1 - - [31/Mar/2025 21:15:06] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:15:25,926 [INFO] 127.0.0.1 - - [31/Mar/2025 21:15:25] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:15:27,896 [INFO] 127.0.0.1 - - [31/Mar/2025 21:15:27] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:15:27,900 [INFO] 127.0.0.1 - - [31/Mar/2025 21:15:27] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:15:27,902 [INFO] Sensor BIN-AVE-025 added to topic bin_monitoring
+2025-03-31 21:15:27,903 [INFO] 127.0.0.1 - - [31/Mar/2025 21:15:27] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:15:49,137 [INFO] 127.0.0.1 - - [31/Mar/2025 21:15:49] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:15:50,988 [INFO] 127.0.0.1 - - [31/Mar/2025 21:15:50] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:15:50,991 [INFO] 127.0.0.1 - - [31/Mar/2025 21:15:50] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:15:50,993 [INFO] Sensor BIN-AVE-026 added to topic bin_monitoring
+2025-03-31 21:15:50,993 [INFO] 127.0.0.1 - - [31/Mar/2025 21:15:50] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:16:10,185 [INFO] 127.0.0.1 - - [31/Mar/2025 21:16:10] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:16:12,031 [INFO] 127.0.0.1 - - [31/Mar/2025 21:16:12] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:16:12,035 [INFO] 127.0.0.1 - - [31/Mar/2025 21:16:12] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:16:12,037 [INFO] Sensor BIN-AVE-027 added to topic bin_monitoring
+2025-03-31 21:16:12,037 [INFO] 127.0.0.1 - - [31/Mar/2025 21:16:12] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:16:32,089 [INFO] 127.0.0.1 - - [31/Mar/2025 21:16:32] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:16:34,086 [INFO] 127.0.0.1 - - [31/Mar/2025 21:16:34] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:16:34,090 [INFO] 127.0.0.1 - - [31/Mar/2025 21:16:34] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:16:34,093 [INFO] Sensor BIN-AVE-028 added to topic bin_monitoring
+2025-03-31 21:16:34,094 [INFO] 127.0.0.1 - - [31/Mar/2025 21:16:34] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:16:51,589 [INFO] 127.0.0.1 - - [31/Mar/2025 21:16:51] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:16:53,584 [INFO] 127.0.0.1 - - [31/Mar/2025 21:16:53] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:16:53,589 [INFO] 127.0.0.1 - - [31/Mar/2025 21:16:53] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:16:53,592 [INFO] Sensor BIN-AVE-029 added to topic bin_monitoring
+2025-03-31 21:16:53,593 [INFO] 127.0.0.1 - - [31/Mar/2025 21:16:53] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:17:13,077 [INFO] 127.0.0.1 - - [31/Mar/2025 21:17:13] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-03-31 21:17:15,001 [INFO] 127.0.0.1 - - [31/Mar/2025 21:17:15] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-03-31 21:17:15,005 [INFO] 127.0.0.1 - - [31/Mar/2025 21:17:15] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:17:15,007 [INFO] Sensor BIN-AVE-030 added to topic bin_monitoring
+2025-03-31 21:17:15,008 [INFO] 127.0.0.1 - - [31/Mar/2025 21:17:15] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-03-31 21:17:27,630 [INFO] 127.0.0.1 - - [31/Mar/2025 21:17:27] "GET /v2/sensors HTTP/1.1" 200 -
+2025-03-31 21:31:52,727 [INFO] Shutdown signal received, closing connections...
+2025-03-31 21:31:52,729 [INFO] Redis connection closed
+2025-03-31 21:31:52,729 [INFO] All connections closed. Shutting down.
+2025-03-31 21:31:52,729 [INFO] Shutdown signal received, closing connections...
+2025-03-31 21:31:52,732 [INFO] Redis connection closed
+2025-03-31 21:31:52,732 [INFO] All connections closed. Shutting down.
+2025-03-31 21:38:49,743 [INFO] Successfully connected to Redis
+2025-03-31 21:38:49,745 [INFO] 🔄 Restoring previous configurations...
+2025-03-31 21:39:52,720 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-03-31 21:39:52,784 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.1.99:5004
+2025-03-31 21:39:52,784 [INFO] [33mPress CTRL+C to quit[0m
+2025-03-31 21:39:52,786 [INFO]  * Restarting with stat
+2025-03-31 21:39:53,263 [INFO] Successfully connected to Redis
+2025-03-31 21:39:53,267 [INFO] 🔄 Restoring previous configurations...
+2025-03-31 21:40:53,852 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-03-31 21:40:53,915 [WARNING]  * Debugger is active!
+2025-03-31 21:40:53,926 [INFO]  * Debugger PIN: 691-115-437
+2025-03-31 21:41:06,876 [INFO] Shutdown signal received, closing connections...
+2025-03-31 21:41:06,876 [INFO] Shutdown signal received, closing connections...
+2025-03-31 21:41:06,876 [INFO] Redis connection closed
+2025-03-31 21:41:06,876 [INFO] Redis connection closed
+2025-03-31 21:41:06,876 [INFO] All connections closed. Shutting down.
+2025-03-31 21:41:06,876 [INFO] All connections closed. Shutting down.
+2025-03-31 23:40:36,882 [INFO] Successfully connected to Redis
+2025-03-31 23:40:36,884 [INFO] 🔄 Restoring previous configurations...
+2025-03-31 23:41:25,473 [INFO] Shutdown signal received, closing connections...
+2025-03-31 23:41:25,474 [INFO] Redis connection closed
+2025-03-31 23:41:25,475 [INFO] All connections closed. Shutting down.
+2025-03-31 23:41:27,227 [INFO] Successfully connected to Redis
+2025-03-31 23:41:27,229 [INFO] 🔄 Restoring previous configurations...
+2025-03-31 23:42:20,599 [INFO] Shutdown signal received, closing connections...
+2025-03-31 23:42:20,600 [INFO] Redis connection closed
+2025-03-31 23:42:20,600 [INFO] All connections closed. Shutting down.
+2025-03-31 23:42:52,325 [INFO] Successfully connected to Redis
+2025-03-31 23:42:52,328 [INFO] 🔄 Restoring previous configurations...
+2025-03-31 23:43:45,874 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-03-31 23:43:45,941 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.1.99:5004
+2025-03-31 23:43:45,941 [INFO] [33mPress CTRL+C to quit[0m
+2025-03-31 23:43:45,942 [INFO]  * Restarting with stat
+2025-03-31 23:43:46,418 [INFO] Successfully connected to Redis
+2025-03-31 23:43:46,421 [INFO] 🔄 Restoring previous configurations...
+2025-03-31 23:44:39,708 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-03-31 23:44:39,753 [WARNING]  * Debugger is active!
+2025-03-31 23:44:39,762 [INFO]  * Debugger PIN: 691-115-437
+2025-03-31 23:44:39,804 [INFO] 127.0.0.1 - - [31/Mar/2025 23:44:39] "GET /apidocs/ HTTP/1.1" 200 -
+2025-03-31 23:44:39,805 [INFO] 127.0.0.1 - - [31/Mar/2025 23:44:39] "GET /apidocs/ HTTP/1.1" 200 -
+2025-03-31 23:44:39,830 [INFO] 127.0.0.1 - - [31/Mar/2025 23:44:39] "[36mGET /flasgger_static/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+2025-03-31 23:44:39,831 [INFO] 127.0.0.1 - - [31/Mar/2025 23:44:39] "[36mGET /flasgger_static/swagger-ui.css HTTP/1.1[0m" 304 -
+2025-03-31 23:44:39,831 [INFO] 127.0.0.1 - - [31/Mar/2025 23:44:39] "[36mGET /flasgger_static/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+2025-03-31 23:44:39,835 [INFO] 127.0.0.1 - - [31/Mar/2025 23:44:39] "[36mGET /flasgger_static/lib/jquery.min.js HTTP/1.1[0m" 304 -
+2025-03-31 23:44:40,035 [INFO] 127.0.0.1 - - [31/Mar/2025 23:44:40] "GET /apispec.json HTTP/1.1" 200 -
+2025-03-31 23:44:40,036 [INFO] 127.0.0.1 - - [31/Mar/2025 23:44:40] "[36mGET /flasgger_static/favicon-32x32.png HTTP/1.1[0m" 304 -
+2025-03-31 23:52:23,690 [INFO] 127.0.0.1 - - [31/Mar/2025 23:52:23] "GET /apidocs/ HTTP/1.1" 200 -
+2025-03-31 23:52:23,706 [INFO] 127.0.0.1 - - [31/Mar/2025 23:52:23] "[36mGET /flasgger_static/swagger-ui.css HTTP/1.1[0m" 304 -
+2025-03-31 23:52:23,706 [INFO] 127.0.0.1 - - [31/Mar/2025 23:52:23] "[36mGET /flasgger_static/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+2025-03-31 23:52:23,707 [INFO] 127.0.0.1 - - [31/Mar/2025 23:52:23] "[36mGET /flasgger_static/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+2025-03-31 23:52:23,709 [INFO] 127.0.0.1 - - [31/Mar/2025 23:52:23] "[36mGET /flasgger_static/lib/jquery.min.js HTTP/1.1[0m" 304 -
+2025-03-31 23:52:23,804 [INFO] 127.0.0.1 - - [31/Mar/2025 23:52:23] "GET /apispec.json HTTP/1.1" 200 -
+2025-03-31 23:52:23,805 [INFO] 127.0.0.1 - - [31/Mar/2025 23:52:23] "[36mGET /flasgger_static/favicon-32x32.png HTTP/1.1[0m" 304 -
+2025-03-31 23:52:28,630 [INFO] 127.0.0.1 - - [31/Mar/2025 23:52:28] "GET /v2/sensors HTTP/1.1" 200 -
+2025-03-31 23:52:53,762 [INFO] Removed sensors: ['1']
+2025-03-31 23:52:53,763 [INFO] 127.0.0.1 - - [31/Mar/2025 23:52:53] "DELETE /v2/sensors HTTP/1.1" 200 -
+2025-03-31 23:52:57,962 [INFO] 127.0.0.1 - - [31/Mar/2025 23:52:57] "GET /v2/sensors HTTP/1.1" 200 -
+2025-03-31 23:53:10,865 [INFO] Removed sensors: ['test1']
+2025-03-31 23:53:10,866 [INFO] 127.0.0.1 - - [31/Mar/2025 23:53:10] "DELETE /v2/sensors HTTP/1.1" 200 -
+2025-03-31 23:53:12,689 [INFO] 127.0.0.1 - - [31/Mar/2025 23:53:12] "GET /v2/sensors HTTP/1.1" 200 -
+2025-03-31 23:53:21,453 [INFO] Removed sensors: ['123']
+2025-03-31 23:53:21,453 [INFO] 127.0.0.1 - - [31/Mar/2025 23:53:21] "DELETE /v2/sensors HTTP/1.1" 200 -
+2025-03-31 23:53:26,175 [INFO] 127.0.0.1 - - [31/Mar/2025 23:53:26] "GET /v2/sensors HTTP/1.1" 200 -
+2025-04-01 00:08:10,876 [INFO]  * Detected change in '/Users/pedrocarneiro/Desktop/Universidade/2024_2025/SECOND_SEMESTER/EGS/waste_project/W.A.S.T.E./s_binMonitoring/binAPI.py', reloading
+2025-04-01 00:08:10,962 [INFO]  * Restarting with stat
+2025-04-01 00:08:11,499 [INFO] Successfully connected to Redis
+2025-04-01 00:08:11,501 [INFO] 🔄 Restoring previous configurations...
+2025-04-01 00:08:49,169 [INFO] Shutdown signal received, closing connections...
+2025-04-01 00:08:49,169 [INFO] Shutdown signal received, closing connections...
+2025-04-01 00:08:49,170 [INFO] All connections closed. Shutting down.
+2025-04-01 00:08:49,171 [INFO] Redis connection closed
+2025-04-01 00:08:49,171 [INFO] All connections closed. Shutting down.
+2025-04-01 00:09:29,175 [INFO] Successfully connected to Redis
+2025-04-01 00:09:29,177 [INFO] <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-04-01 00:09:29,180 [INFO] <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-04-01 00:09:29,180 [INFO] <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-04-01 00:09:29,181 [INFO] 📡 Kafka router listening on topic: iot_logs
+2025-04-01 00:09:29,184 [INFO] 🔄 Restoring previous configurations...
+2025-04-01 00:09:29,185 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-04-01 00:09:29,187 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-04-01 00:09:29,188 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-04-01 00:09:29,188 [INFO] Updating subscribed topics to: ('iot_logs',)
+2025-04-01 00:09:29,193 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-04-01 00:09:29,270 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.1.99:5004
+2025-04-01 00:09:29,270 [INFO] [33mPress CTRL+C to quit[0m
+2025-04-01 00:09:29,271 [INFO]  * Restarting with stat
+2025-04-01 00:09:29,574 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:09:29,653 [INFO] Successfully connected to Redis
+2025-04-01 00:09:29,654 [INFO] <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-04-01 00:09:29,655 [INFO] <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-04-01 00:09:29,655 [INFO] <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-04-01 00:09:29,657 [INFO] 📡 Kafka router listening on topic: iot_logs
+2025-04-01 00:09:29,659 [INFO] 🔄 Restoring previous configurations...
+2025-04-01 00:09:29,661 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-04-01 00:09:29,663 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-04-01 00:09:29,663 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-04-01 00:09:29,664 [INFO] Updating subscribed topics to: ('iot_logs',)
+2025-04-01 00:09:29,667 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:09:29,668 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-04-01 00:09:29,683 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:09:29,702 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-04-01 00:09:29,708 [WARNING]  * Debugger is active!
+2025-04-01 00:09:29,719 [INFO]  * Debugger PIN: 691-115-437
+2025-04-01 00:09:29,776 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:09:29,777 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-04-01 00:09:29,807 [INFO] Group coordinator for iot-router-group is BrokerMetadata(nodeId='coordinator-0', host='unknown5227764dc3f1.lan', port=9092, rack=None)
+2025-04-01 00:09:29,807 [INFO] Discovered coordinator coordinator-0 for group iot-router-group
+2025-04-01 00:09:29,807 [INFO] Starting new heartbeat thread
+2025-04-01 00:09:29,808 [INFO] Revoking previously assigned partitions set() for group iot-router-group
+2025-04-01 00:09:29,809 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:09:29,888 [INFO] Group coordinator for iot-router-group is BrokerMetadata(nodeId='coordinator-0', host='unknown5227764dc3f1.lan', port=9092, rack=None)
+2025-04-01 00:09:29,888 [INFO] Discovered coordinator coordinator-0 for group iot-router-group
+2025-04-01 00:09:29,888 [INFO] Starting new heartbeat thread
+2025-04-01 00:09:29,889 [INFO] Revoking previously assigned partitions set() for group iot-router-group
+2025-04-01 00:09:29,891 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:09:29,918 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:09:29,995 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:09:30,028 [INFO] (Re-)joining group iot-router-group
+2025-04-01 00:09:30,056 [INFO] Elected group leader -- performing partition assignments using range
+2025-04-01 00:09:30,095 [INFO] (Re-)joining group iot-router-group
+2025-04-01 00:09:30,099 [INFO] Successfully joined group iot-router-group with generation 1
+2025-04-01 00:09:30,099 [INFO] Updated partition assignment: [TopicPartition(topic='iot_logs', partition=0)]
+2025-04-01 00:09:30,099 [INFO] Setting newly assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-router-group
+2025-04-01 00:09:33,105 [WARNING] Heartbeat failed for group iot-router-group because it is rebalancing
+2025-04-01 00:09:33,124 [INFO] Revoking previously assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-router-group
+2025-04-01 00:09:33,125 [INFO] (Re-)joining group iot-router-group
+2025-04-01 00:09:33,129 [INFO] Elected group leader -- performing partition assignments using range
+2025-04-01 00:09:33,132 [INFO] Successfully joined group iot-router-group with generation 2
+2025-04-01 00:09:33,132 [INFO] Successfully joined group iot-router-group with generation 2
+2025-04-01 00:09:33,132 [INFO] Updated partition assignment: []
+2025-04-01 00:09:33,132 [INFO] Updated partition assignment: [TopicPartition(topic='iot_logs', partition=0)]
+2025-04-01 00:09:33,132 [INFO] Setting newly assigned partitions set() for group iot-router-group
+2025-04-01 00:09:33,132 [INFO] Setting newly assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-router-group
+2025-04-01 00:10:10,235 [INFO] Shutdown signal received, closing connections...
+2025-04-01 00:10:10,235 [INFO] Shutdown signal received, closing connections...
+2025-04-01 00:10:10,236 [INFO] All connections closed. Shutting down.
+2025-04-01 00:10:10,236 [INFO] All connections closed. Shutting down.
+2025-04-01 00:10:34,710 [INFO] Successfully connected to Redis
+2025-04-01 00:10:34,712 [INFO] <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-04-01 00:10:34,713 [INFO] <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-04-01 00:10:34,713 [INFO] <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-04-01 00:10:34,715 [INFO] 📡 Kafka router listening on topic: iot_logs
+2025-04-01 00:10:34,718 [INFO] 🔄 Restoring previous configurations...
+2025-04-01 00:10:34,718 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-04-01 00:10:34,720 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-04-01 00:10:34,720 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-04-01 00:10:34,721 [INFO] Updating subscribed topics to: ('iot_logs',)
+2025-04-01 00:10:34,726 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-04-01 00:10:34,731 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:10:34,732 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:10:34,732 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-04-01 00:10:34,780 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.1.99:5004
+2025-04-01 00:10:34,780 [INFO] [33mPress CTRL+C to quit[0m
+2025-04-01 00:10:34,782 [INFO]  * Restarting with stat
+2025-04-01 00:10:34,841 [INFO] Group coordinator for iot-router-group is BrokerMetadata(nodeId='coordinator-0', host='unknown5227764dc3f1.lan', port=9092, rack=None)
+2025-04-01 00:10:34,842 [INFO] Discovered coordinator coordinator-0 for group iot-router-group
+2025-04-01 00:10:34,842 [INFO] Starting new heartbeat thread
+2025-04-01 00:10:34,842 [INFO] Revoking previously assigned partitions set() for group iot-router-group
+2025-04-01 00:10:34,843 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:10:34,951 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:10:35,059 [INFO] (Re-)joining group iot-router-group
+2025-04-01 00:10:35,061 [INFO] Elected group leader -- performing partition assignments using range
+2025-04-01 00:10:35,063 [INFO] Successfully joined group iot-router-group with generation 4
+2025-04-01 00:10:35,064 [INFO] Updated partition assignment: [TopicPartition(topic='iot_logs', partition=0)]
+2025-04-01 00:10:35,064 [INFO] Setting newly assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-router-group
+2025-04-01 00:10:35,129 [INFO] Successfully connected to Redis
+2025-04-01 00:10:35,130 [INFO] <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-04-01 00:10:35,131 [INFO] <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-04-01 00:10:35,132 [INFO] <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-04-01 00:10:35,133 [INFO] 📡 Kafka router listening on topic: iot_logs
+2025-04-01 00:10:35,136 [INFO] 🔄 Restoring previous configurations...
+2025-04-01 00:10:35,136 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-04-01 00:10:35,139 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-04-01 00:10:35,139 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-04-01 00:10:35,139 [INFO] Updating subscribed topics to: ('iot_logs',)
+2025-04-01 00:10:35,143 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:10:35,144 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-04-01 00:10:35,184 [WARNING]  * Debugger is active!
+2025-04-01 00:10:35,194 [INFO]  * Debugger PIN: 691-115-437
+2025-04-01 00:10:35,250 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:10:35,250 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-04-01 00:10:35,355 [INFO] Group coordinator for iot-router-group is BrokerMetadata(nodeId='coordinator-0', host='unknown5227764dc3f1.lan', port=9092, rack=None)
+2025-04-01 00:10:35,356 [INFO] Discovered coordinator coordinator-0 for group iot-router-group
+2025-04-01 00:10:35,356 [INFO] Starting new heartbeat thread
+2025-04-01 00:10:35,356 [INFO] Revoking previously assigned partitions set() for group iot-router-group
+2025-04-01 00:10:35,359 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:10:35,465 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:10:35,575 [INFO] (Re-)joining group iot-router-group
+2025-04-01 00:10:38,065 [WARNING] Heartbeat failed for group iot-router-group because it is rebalancing
+2025-04-01 00:10:38,068 [INFO] Revoking previously assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-router-group
+2025-04-01 00:10:38,069 [INFO] (Re-)joining group iot-router-group
+2025-04-01 00:10:38,072 [INFO] Elected group leader -- performing partition assignments using range
+2025-04-01 00:10:38,075 [INFO] Successfully joined group iot-router-group with generation 5
+2025-04-01 00:10:38,075 [INFO] Successfully joined group iot-router-group with generation 5
+2025-04-01 00:10:38,075 [INFO] Updated partition assignment: [TopicPartition(topic='iot_logs', partition=0)]
+2025-04-01 00:10:38,075 [INFO] Updated partition assignment: []
+2025-04-01 00:10:38,075 [INFO] Setting newly assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-router-group
+2025-04-01 00:10:38,075 [INFO] Setting newly assigned partitions set() for group iot-router-group
+2025-04-01 00:12:38,954 [INFO] <BrokerConnection client_id=kafka-python-producer-1, node_id=0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:12:38,955 [INFO] <BrokerConnection client_id=kafka-python-producer-1, node_id=0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:12:38,955 [INFO] <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-04-01 00:12:38,957 [INFO] 📤 Forwarded message from BIN-AVE-004 to topic bin_monitoring
+2025-04-01 00:13:01,534 [INFO] 📤 Forwarded message from BIN-AVE-005 to topic bin_monitoring
+2025-04-01 00:15:34,724 [INFO] <BrokerConnection client_id=kafka-python-producer-1, node_id=0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:15:34,726 [INFO] <BrokerConnection client_id=kafka-python-producer-1, node_id=0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:15:34,726 [INFO] <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-04-01 00:22:02,119 [INFO]  * Detected change in '/Users/pedrocarneiro/Desktop/Universidade/2024_2025/SECOND_SEMESTER/EGS/waste_project/W.A.S.T.E./s_binMonitoring/binAPI.py', reloading
+2025-04-01 00:22:02,194 [INFO]  * Restarting with stat
+2025-04-01 00:22:37,784 [INFO] Successfully connected to Redis
+2025-04-01 00:22:37,784 [INFO] 📡 Kafka-MQTT router listening on topic: iot_logs
+2025-04-01 00:22:37,787 [INFO] 🔄 Restoring previous configurations...
+2025-04-01 00:22:37,787 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-04-01 00:22:37,789 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-04-01 00:22:37,789 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-04-01 00:22:37,790 [INFO] Updating subscribed topics to: ('iot_logs',)
+2025-04-01 00:22:37,795 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-04-01 00:22:37,851 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.1.99:5004
+2025-04-01 00:22:37,865 [INFO] [33mPress CTRL+C to quit[0m
+2025-04-01 00:22:37,866 [INFO]  * Restarting with stat
+2025-04-01 00:22:38,193 [INFO] Successfully connected to Redis
+2025-04-01 00:22:38,194 [INFO] 📡 Kafka-MQTT router listening on topic: iot_logs
+2025-04-01 00:22:38,195 [INFO] 🔄 Restoring previous configurations...
+2025-04-01 00:22:38,197 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-04-01 00:22:38,198 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-04-01 00:22:38,198 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-04-01 00:22:38,199 [INFO] Updating subscribed topics to: ('iot_logs',)
+2025-04-01 00:22:38,212 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-04-01 00:22:38,254 [WARNING]  * Debugger is active!
+2025-04-01 00:22:38,265 [INFO]  * Debugger PIN: 691-115-437
+2025-04-01 00:31:56,217 [INFO] Shutdown signal received, closing connections...
+2025-04-01 00:31:56,218 [INFO] Shutdown signal received, closing connections...
+2025-04-01 00:31:56,220 [INFO] All connections closed. Shutting down.
+2025-04-01 00:31:56,221 [INFO] All connections closed. Shutting down.
+2025-04-01 00:31:58,044 [INFO] Successfully connected to Redis
+2025-04-01 00:31:58,044 [INFO] 📡 Kafka-MQTT router listening on topic: iot_logs
+2025-04-01 00:31:58,046 [INFO] 🔄 Restoring previous configurations...
+2025-04-01 00:31:58,047 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-04-01 00:31:58,052 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-04-01 00:31:58,054 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-04-01 00:31:58,054 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-04-01 00:31:58,055 [INFO] Updating subscribed topics to: ('iot_logs',)
+2025-04-01 00:31:58,100 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:31:58,111 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.1.99:5004
+2025-04-01 00:31:58,112 [INFO] [33mPress CTRL+C to quit[0m
+2025-04-01 00:31:58,113 [INFO]  * Restarting with stat
+2025-04-01 00:31:58,201 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:31:58,202 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-04-01 00:31:58,308 [INFO] Group coordinator for iot-mqtt-router-group is BrokerMetadata(nodeId='coordinator-0', host='unknown5227764dc3f1.lan', port=9092, rack=None)
+2025-04-01 00:31:58,308 [INFO] Discovered coordinator coordinator-0 for group iot-mqtt-router-group
+2025-04-01 00:31:58,308 [INFO] Starting new heartbeat thread
+2025-04-01 00:31:58,308 [INFO] Revoking previously assigned partitions set() for group iot-mqtt-router-group
+2025-04-01 00:31:58,309 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:31:58,414 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:31:58,461 [INFO] Successfully connected to Redis
+2025-04-01 00:31:58,461 [INFO] 📡 Kafka-MQTT router listening on topic: iot_logs
+2025-04-01 00:31:58,464 [INFO] 🔄 Restoring previous configurations...
+2025-04-01 00:31:58,465 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-04-01 00:31:58,466 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-04-01 00:31:58,466 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-04-01 00:31:58,467 [INFO] Updating subscribed topics to: ('iot_logs',)
+2025-04-01 00:31:58,471 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:31:58,472 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-04-01 00:31:58,513 [WARNING]  * Debugger is active!
+2025-04-01 00:31:58,521 [INFO] (Re-)joining group iot-mqtt-router-group
+2025-04-01 00:31:58,522 [INFO]  * Debugger PIN: 691-115-437
+2025-04-01 00:31:58,528 [INFO] Elected group leader -- performing partition assignments using range
+2025-04-01 00:31:58,536 [INFO] Successfully joined group iot-mqtt-router-group with generation 1
+2025-04-01 00:31:58,536 [INFO] Updated partition assignment: [TopicPartition(topic='iot_logs', partition=0)]
+2025-04-01 00:31:58,536 [INFO] Setting newly assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-mqtt-router-group
+2025-04-01 00:31:58,548 [INFO] 📤 Forwarded message from BIN-AVE-004 to MQTT topic waste/bin_monitoring
+2025-04-01 00:31:58,548 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 00:31:58,580 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:31:58,580 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-04-01 00:31:58,691 [INFO] Group coordinator for iot-mqtt-router-group is BrokerMetadata(nodeId='coordinator-0', host='unknown5227764dc3f1.lan', port=9092, rack=None)
+2025-04-01 00:31:58,691 [INFO] Discovered coordinator coordinator-0 for group iot-mqtt-router-group
+2025-04-01 00:31:58,692 [INFO] Starting new heartbeat thread
+2025-04-01 00:31:58,692 [INFO] Revoking previously assigned partitions set() for group iot-mqtt-router-group
+2025-04-01 00:31:58,694 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:31:58,803 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:31:58,911 [INFO] (Re-)joining group iot-mqtt-router-group
+2025-04-01 00:32:01,538 [WARNING] Heartbeat failed for group iot-mqtt-router-group because it is rebalancing
+2025-04-01 00:32:01,541 [INFO] Revoking previously assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-mqtt-router-group
+2025-04-01 00:32:01,541 [INFO] (Re-)joining group iot-mqtt-router-group
+2025-04-01 00:32:01,542 [INFO] Elected group leader -- performing partition assignments using range
+2025-04-01 00:32:01,544 [INFO] Successfully joined group iot-mqtt-router-group with generation 2
+2025-04-01 00:32:01,544 [INFO] Successfully joined group iot-mqtt-router-group with generation 2
+2025-04-01 00:32:01,545 [INFO] Updated partition assignment: [TopicPartition(topic='iot_logs', partition=0)]
+2025-04-01 00:32:01,545 [INFO] Updated partition assignment: []
+2025-04-01 00:32:01,545 [INFO] Setting newly assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-mqtt-router-group
+2025-04-01 00:32:01,545 [INFO] Setting newly assigned partitions set() for group iot-mqtt-router-group
+2025-04-01 00:32:13,008 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 00:32:21,492 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 00:33:26,985 [INFO] Stopping heartbeat thread
+2025-04-01 00:33:29,994 [WARNING] Heartbeat thread did not fully terminate during close
+2025-04-01 00:33:37,586 [WARNING] Heartbeat failed for group iot-mqtt-router-group because it is rebalancing
+2025-04-01 00:33:37,587 [INFO] Revoking previously assigned partitions set() for group iot-mqtt-router-group
+2025-04-01 00:33:37,587 [INFO] (Re-)joining group iot-mqtt-router-group
+2025-04-01 00:33:37,588 [INFO] Elected group leader -- performing partition assignments using range
+2025-04-01 00:33:37,591 [INFO] Successfully joined group iot-mqtt-router-group with generation 3
+2025-04-01 00:33:37,591 [INFO] Updated partition assignment: [TopicPartition(topic='iot_logs', partition=0)]
+2025-04-01 00:33:37,591 [INFO] Setting newly assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-mqtt-router-group
+2025-04-01 00:33:37,598 [INFO] Stopping heartbeat thread
+2025-04-01 00:33:40,606 [WARNING] Heartbeat thread did not fully terminate during close
+2025-04-01 00:34:09,823 [INFO] Shutdown signal received, closing connections...
+2025-04-01 00:34:09,823 [INFO] Shutdown signal received, closing connections...
+2025-04-01 00:34:09,823 [INFO] All connections closed. Shutting down.
+2025-04-01 00:34:09,823 [INFO] All connections closed. Shutting down.
+2025-04-01 00:34:11,184 [INFO] Successfully connected to Redis
+2025-04-01 00:34:11,184 [INFO] 📡 Kafka-MQTT router listening on topic: iot_logs
+2025-04-01 00:34:11,187 [INFO] 🔄 Restoring previous configurations...
+2025-04-01 00:34:11,187 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-04-01 00:34:11,188 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-04-01 00:34:11,189 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-04-01 00:34:11,189 [INFO] Updating subscribed topics to: ('iot_logs',)
+2025-04-01 00:34:11,195 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-04-01 00:34:11,204 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:34:11,242 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.1.99:5004
+2025-04-01 00:34:11,242 [INFO] [33mPress CTRL+C to quit[0m
+2025-04-01 00:34:11,243 [INFO]  * Restarting with stat
+2025-04-01 00:34:11,315 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:34:11,315 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-04-01 00:34:11,424 [INFO] Group coordinator for iot-mqtt-router-group is BrokerMetadata(nodeId='coordinator-0', host='unknown5227764dc3f1.lan', port=9092, rack=None)
+2025-04-01 00:34:11,424 [INFO] Discovered coordinator coordinator-0 for group iot-mqtt-router-group
+2025-04-01 00:34:11,425 [INFO] Starting new heartbeat thread
+2025-04-01 00:34:11,425 [INFO] Revoking previously assigned partitions set() for group iot-mqtt-router-group
+2025-04-01 00:34:11,426 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:34:11,536 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:34:11,588 [INFO] Successfully connected to Redis
+2025-04-01 00:34:11,588 [INFO] 📡 Kafka-MQTT router listening on topic: iot_logs
+2025-04-01 00:34:11,590 [INFO] 🔄 Restoring previous configurations...
+2025-04-01 00:34:11,591 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-04-01 00:34:11,593 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-04-01 00:34:11,593 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-04-01 00:34:11,594 [INFO] Updating subscribed topics to: ('iot_logs',)
+2025-04-01 00:34:11,598 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:34:11,599 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-04-01 00:34:11,641 [INFO] (Re-)joining group iot-mqtt-router-group
+2025-04-01 00:34:11,642 [WARNING]  * Debugger is active!
+2025-04-01 00:34:11,644 [INFO] Elected group leader -- performing partition assignments using range
+2025-04-01 00:34:11,646 [INFO] Successfully joined group iot-mqtt-router-group with generation 5
+2025-04-01 00:34:11,646 [INFO] Updated partition assignment: [TopicPartition(topic='iot_logs', partition=0)]
+2025-04-01 00:34:11,646 [INFO] Setting newly assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-mqtt-router-group
+2025-04-01 00:34:11,652 [INFO]  * Debugger PIN: 691-115-437
+2025-04-01 00:34:11,652 [INFO] Stopping heartbeat thread
+2025-04-01 00:34:11,704 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:34:11,704 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-04-01 00:34:11,814 [INFO] Group coordinator for iot-mqtt-router-group is BrokerMetadata(nodeId='coordinator-0', host='unknown5227764dc3f1.lan', port=9092, rack=None)
+2025-04-01 00:34:11,815 [INFO] Discovered coordinator coordinator-0 for group iot-mqtt-router-group
+2025-04-01 00:34:11,815 [INFO] Starting new heartbeat thread
+2025-04-01 00:34:11,815 [INFO] Revoking previously assigned partitions set() for group iot-mqtt-router-group
+2025-04-01 00:34:11,817 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:34:11,924 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:34:12,032 [INFO] (Re-)joining group iot-mqtt-router-group
+2025-04-01 00:34:14,662 [WARNING] Heartbeat thread did not fully terminate during close
+2025-04-01 00:34:21,741 [INFO] Elected group leader -- performing partition assignments using range
+2025-04-01 00:34:21,744 [INFO] Successfully joined group iot-mqtt-router-group with generation 6
+2025-04-01 00:34:21,744 [INFO] Updated partition assignment: [TopicPartition(topic='iot_logs', partition=0)]
+2025-04-01 00:34:21,744 [INFO] Setting newly assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-mqtt-router-group
+2025-04-01 00:34:21,750 [INFO] Stopping heartbeat thread
+2025-04-01 00:34:24,758 [WARNING] Heartbeat thread did not fully terminate during close
+2025-04-01 00:34:26,392 [INFO] Shutdown signal received, closing connections...
+2025-04-01 00:34:26,392 [INFO] Shutdown signal received, closing connections...
+2025-04-01 00:34:26,393 [INFO] All connections closed. Shutting down.
+2025-04-01 00:34:26,393 [INFO] All connections closed. Shutting down.
+2025-04-01 00:34:30,421 [INFO] Successfully connected to Redis
+2025-04-01 00:34:30,421 [INFO] 📡 Kafka-MQTT router listening on topic: iot_logs
+2025-04-01 00:34:30,423 [INFO] 🔄 Restoring previous configurations...
+2025-04-01 00:34:30,424 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-04-01 00:34:30,427 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-04-01 00:34:30,427 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-04-01 00:34:30,427 [INFO] Updating subscribed topics to: ('iot_logs',)
+2025-04-01 00:34:30,431 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-04-01 00:34:30,470 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:34:30,472 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:34:30,472 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-04-01 00:34:30,480 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.1.99:5004
+2025-04-01 00:34:30,480 [INFO] [33mPress CTRL+C to quit[0m
+2025-04-01 00:34:30,481 [INFO]  * Restarting with stat
+2025-04-01 00:34:30,580 [INFO] Group coordinator for iot-mqtt-router-group is BrokerMetadata(nodeId='coordinator-0', host='unknown5227764dc3f1.lan', port=9092, rack=None)
+2025-04-01 00:34:30,580 [INFO] Discovered coordinator coordinator-0 for group iot-mqtt-router-group
+2025-04-01 00:34:30,581 [INFO] Starting new heartbeat thread
+2025-04-01 00:34:30,581 [INFO] Revoking previously assigned partitions set() for group iot-mqtt-router-group
+2025-04-01 00:34:30,582 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:34:30,691 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:34:30,797 [INFO] (Re-)joining group iot-mqtt-router-group
+2025-04-01 00:34:30,806 [INFO] Successfully connected to Redis
+2025-04-01 00:34:30,807 [INFO] 📡 Kafka-MQTT router listening on topic: iot_logs
+2025-04-01 00:34:30,809 [INFO] 🔄 Restoring previous configurations...
+2025-04-01 00:34:30,810 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-04-01 00:34:30,813 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-04-01 00:34:30,813 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-04-01 00:34:30,813 [INFO] Updating subscribed topics to: ('iot_logs',)
+2025-04-01 00:34:30,818 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:34:30,818 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-04-01 00:34:30,859 [WARNING]  * Debugger is active!
+2025-04-01 00:34:30,867 [INFO]  * Debugger PIN: 691-115-437
+2025-04-01 00:34:30,928 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:34:30,928 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-04-01 00:34:31,037 [INFO] Group coordinator for iot-mqtt-router-group is BrokerMetadata(nodeId='coordinator-0', host='unknown5227764dc3f1.lan', port=9092, rack=None)
+2025-04-01 00:34:31,038 [INFO] Discovered coordinator coordinator-0 for group iot-mqtt-router-group
+2025-04-01 00:34:31,038 [INFO] Starting new heartbeat thread
+2025-04-01 00:34:31,038 [INFO] Revoking previously assigned partitions set() for group iot-mqtt-router-group
+2025-04-01 00:34:31,040 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:34:31,150 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:34:31,259 [INFO] (Re-)joining group iot-mqtt-router-group
+2025-04-01 00:34:31,879 [INFO] Elected group leader -- performing partition assignments using range
+2025-04-01 00:34:31,881 [INFO] Successfully joined group iot-mqtt-router-group with generation 7
+2025-04-01 00:34:31,881 [INFO] Successfully joined group iot-mqtt-router-group with generation 7
+2025-04-01 00:34:31,881 [INFO] Updated partition assignment: []
+2025-04-01 00:34:31,881 [INFO] Setting newly assigned partitions set() for group iot-mqtt-router-group
+2025-04-01 00:34:31,881 [INFO] Updated partition assignment: [TopicPartition(topic='iot_logs', partition=0)]
+2025-04-01 00:34:31,881 [INFO] Setting newly assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-mqtt-router-group
+2025-04-01 00:34:31,887 [INFO] Stopping heartbeat thread
+2025-04-01 00:34:34,897 [WARNING] Heartbeat thread did not fully terminate during close
+2025-04-01 00:34:43,889 [WARNING] Heartbeat failed for group iot-mqtt-router-group because it is rebalancing
+2025-04-01 00:34:43,889 [INFO] Revoking previously assigned partitions set() for group iot-mqtt-router-group
+2025-04-01 00:34:43,890 [INFO] (Re-)joining group iot-mqtt-router-group
+2025-04-01 00:34:43,891 [INFO] Elected group leader -- performing partition assignments using range
+2025-04-01 00:34:43,893 [INFO] Successfully joined group iot-mqtt-router-group with generation 8
+2025-04-01 00:34:43,893 [INFO] Updated partition assignment: [TopicPartition(topic='iot_logs', partition=0)]
+2025-04-01 00:34:43,893 [INFO] Setting newly assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-mqtt-router-group
+2025-04-01 00:34:43,900 [INFO] Stopping heartbeat thread
+2025-04-01 00:34:46,909 [WARNING] Heartbeat thread did not fully terminate during close
+2025-04-01 00:35:53,959 [INFO]  * Detected change in '/Users/pedrocarneiro/Desktop/Universidade/2024_2025/SECOND_SEMESTER/EGS/waste_project/W.A.S.T.E./s_binMonitoring/binAPI.py', reloading
+2025-04-01 00:35:54,026 [INFO]  * Restarting with stat
+2025-04-01 00:35:54,421 [INFO] Successfully connected to Redis
+2025-04-01 00:35:54,421 [INFO] 📡 Kafka-MQTT router listening on topic: iot_logs
+2025-04-01 00:35:54,424 [INFO] 🔄 Restoring previous configurations...
+2025-04-01 00:35:54,428 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-04-01 00:35:54,474 [WARNING]  * Debugger is active!
+2025-04-01 00:35:54,482 [INFO]  * Debugger PIN: 691-115-437
+2025-04-01 00:36:02,605 [INFO]  * Detected change in '/Users/pedrocarneiro/Desktop/Universidade/2024_2025/SECOND_SEMESTER/EGS/waste_project/W.A.S.T.E./s_binMonitoring/binAPI.py', reloading
+2025-04-01 00:36:02,678 [INFO]  * Restarting with stat
+2025-04-01 00:36:03,110 [INFO] Successfully connected to Redis
+2025-04-01 00:36:03,111 [INFO] 📡 Kafka-MQTT router listening on topic: iot_logs
+2025-04-01 00:36:03,114 [INFO] 🔄 Restoring previous configurations...
+2025-04-01 00:36:03,114 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-04-01 00:36:03,116 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-04-01 00:36:03,116 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-04-01 00:36:03,116 [INFO] Updating subscribed topics to: ('iot_logs',)
+2025-04-01 00:36:03,121 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-04-01 00:36:03,157 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:36:03,163 [WARNING]  * Debugger is active!
+2025-04-01 00:36:03,171 [INFO]  * Debugger PIN: 691-115-437
+2025-04-01 00:36:03,267 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:36:03,267 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-04-01 00:36:03,377 [INFO] Group coordinator for iot-mqtt-router-group is BrokerMetadata(nodeId='coordinator-0', host='unknown5227764dc3f1.lan', port=9092, rack=None)
+2025-04-01 00:36:03,378 [INFO] Discovered coordinator coordinator-0 for group iot-mqtt-router-group
+2025-04-01 00:36:03,378 [INFO] Starting new heartbeat thread
+2025-04-01 00:36:03,378 [INFO] Revoking previously assigned partitions set() for group iot-mqtt-router-group
+2025-04-01 00:36:03,380 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:36:03,489 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:36:03,591 [INFO] (Re-)joining group iot-mqtt-router-group
+2025-04-01 00:36:03,594 [INFO] Elected group leader -- performing partition assignments using range
+2025-04-01 00:36:03,597 [INFO] Successfully joined group iot-mqtt-router-group with generation 10
+2025-04-01 00:36:03,597 [INFO] Updated partition assignment: [TopicPartition(topic='iot_logs', partition=0)]
+2025-04-01 00:36:03,597 [INFO] Setting newly assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-mqtt-router-group
+2025-04-01 00:36:03,601 [WARNING] Failed to deserialize message: b'mosquitto_sub -h localhost -t "waste/bin_monitoring"' → Expecting value: line 1 column 1 (char 0)
+2025-04-01 00:36:03,601 [WARNING] Failed to deserialize message: b'pedro' → Expecting value: line 1 column 1 (char 0)
+2025-04-01 00:36:03,601 [WARNING] Received message without serial: {}
+2025-04-01 00:36:03,602 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 00:36:03,603 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 00:36:03,603 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 00:36:03,603 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 00:36:03,604 [WARNING] Received message without serial: {}
+2025-04-01 00:36:11,557 [WARNING] Failed to deserialize message: b'pedro' → Expecting value: line 1 column 1 (char 0)
+2025-04-01 00:36:11,558 [WARNING] Received message without serial: {}
+2025-04-01 00:36:23,768 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 00:36:32,840 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 00:36:40,970 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 00:36:43,268 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 00:37:01,699 [WARNING] No topic mapping found for serial: BIN-AVE-055
+2025-04-01 00:41:59,988 [INFO] Shutdown signal received, closing connections...
+2025-04-01 00:41:59,988 [INFO] Shutdown signal received, closing connections...
+2025-04-01 00:41:59,989 [INFO] All connections closed. Shutting down.
+2025-04-01 00:41:59,989 [INFO] All connections closed. Shutting down.
+2025-04-01 00:42:32,064 [INFO] Successfully connected to Redis
+2025-04-01 00:42:32,064 [INFO] 📡 Kafka-MQTT router listening on topic: iot_logs
+2025-04-01 00:42:32,066 [INFO] 🔄 Restoring previous configurations...
+2025-04-01 00:42:32,067 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-04-01 00:42:32,069 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-04-01 00:42:32,069 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-04-01 00:42:32,070 [INFO] Updating subscribed topics to: ('iot_logs',)
+2025-04-01 00:42:32,074 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-04-01 00:42:32,110 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:42:32,111 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:42:32,111 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-04-01 00:42:32,121 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.1.99:5004
+2025-04-01 00:42:32,122 [INFO] [33mPress CTRL+C to quit[0m
+2025-04-01 00:42:32,122 [INFO]  * Restarting with stat
+2025-04-01 00:42:32,219 [INFO] Group coordinator for iot-mqtt-router-group is BrokerMetadata(nodeId='coordinator-0', host='unknown5227764dc3f1.lan', port=9092, rack=None)
+2025-04-01 00:42:32,219 [INFO] Discovered coordinator coordinator-0 for group iot-mqtt-router-group
+2025-04-01 00:42:32,220 [INFO] Starting new heartbeat thread
+2025-04-01 00:42:32,220 [INFO] Revoking previously assigned partitions set() for group iot-mqtt-router-group
+2025-04-01 00:42:32,221 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:42:32,330 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:42:32,434 [INFO] (Re-)joining group iot-mqtt-router-group
+2025-04-01 00:42:32,436 [INFO] Elected group leader -- performing partition assignments using range
+2025-04-01 00:42:32,438 [INFO] Successfully joined group iot-mqtt-router-group with generation 12
+2025-04-01 00:42:32,438 [INFO] Updated partition assignment: [TopicPartition(topic='iot_logs', partition=0)]
+2025-04-01 00:42:32,438 [INFO] Setting newly assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-mqtt-router-group
+2025-04-01 00:42:32,454 [INFO] Successfully connected to Redis
+2025-04-01 00:42:32,454 [INFO] 📡 Kafka-MQTT router listening on topic: iot_logs
+2025-04-01 00:42:32,456 [INFO] 🔄 Restoring previous configurations...
+2025-04-01 00:42:32,458 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-04-01 00:42:32,459 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-04-01 00:42:32,460 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-04-01 00:42:32,460 [INFO] Updating subscribed topics to: ('iot_logs',)
+2025-04-01 00:42:32,465 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:42:32,465 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-04-01 00:42:32,466 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:42:32,466 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-04-01 00:42:32,506 [WARNING]  * Debugger is active!
+2025-04-01 00:42:32,516 [INFO]  * Debugger PIN: 691-115-437
+2025-04-01 00:42:32,574 [INFO] Group coordinator for iot-mqtt-router-group is BrokerMetadata(nodeId='coordinator-0', host='unknown5227764dc3f1.lan', port=9092, rack=None)
+2025-04-01 00:42:32,574 [INFO] Discovered coordinator coordinator-0 for group iot-mqtt-router-group
+2025-04-01 00:42:32,575 [INFO] Starting new heartbeat thread
+2025-04-01 00:42:32,575 [INFO] Revoking previously assigned partitions set() for group iot-mqtt-router-group
+2025-04-01 00:42:32,576 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 00:42:32,682 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 00:42:32,788 [INFO] (Re-)joining group iot-mqtt-router-group
+2025-04-01 00:42:35,440 [WARNING] Heartbeat failed for group iot-mqtt-router-group because it is rebalancing
+2025-04-01 00:42:35,442 [INFO] Revoking previously assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-mqtt-router-group
+2025-04-01 00:42:35,442 [INFO] (Re-)joining group iot-mqtt-router-group
+2025-04-01 00:42:35,444 [INFO] Elected group leader -- performing partition assignments using range
+2025-04-01 00:42:35,445 [INFO] Successfully joined group iot-mqtt-router-group with generation 13
+2025-04-01 00:42:35,445 [INFO] Successfully joined group iot-mqtt-router-group with generation 13
+2025-04-01 00:42:35,445 [INFO] Updated partition assignment: []
+2025-04-01 00:42:35,445 [INFO] Updated partition assignment: [TopicPartition(topic='iot_logs', partition=0)]
+2025-04-01 00:42:35,446 [INFO] Setting newly assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-mqtt-router-group
+2025-04-01 00:42:35,446 [INFO] Setting newly assigned partitions set() for group iot-mqtt-router-group
+2025-04-01 01:05:44,521 [WARNING] No topic mapping found for serial: BIN-AVE-055
+2025-04-01 01:06:18,308 [WARNING] No topic mapping found for serial: BIN-AVE-055
+2025-04-01 01:06:36,984 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 01:07:08,683 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 01:10:37,398 [INFO]  * Detected change in '/Users/pedrocarneiro/Desktop/Universidade/2024_2025/SECOND_SEMESTER/EGS/waste_project/W.A.S.T.E./s_binMonitoring/binAPI.py', reloading
+2025-04-01 01:10:37,487 [INFO]  * Restarting with stat
+2025-04-01 01:10:38,072 [INFO] Successfully connected to Redis
+2025-04-01 01:10:38,072 [INFO] 📡 Kafka-MQTT router listening on topic: iot_logs
+2025-04-01 01:10:38,074 [INFO] 🔄 Restoring previous configurations...
+2025-04-01 01:10:38,075 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-04-01 01:10:38,077 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-04-01 01:10:38,077 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-04-01 01:10:38,077 [INFO] Updating subscribed topics to: ('iot_logs',)
+2025-04-01 01:10:38,082 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-04-01 01:10:38,100 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 01:10:38,132 [WARNING]  * Debugger is active!
+2025-04-01 01:10:38,143 [INFO]  * Debugger PIN: 691-115-437
+2025-04-01 01:10:38,211 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 01:10:38,211 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-04-01 01:10:38,320 [INFO] Group coordinator for iot-mqtt-router-group is BrokerMetadata(nodeId='coordinator-0', host='unknown5227764dc3f1.lan', port=9092, rack=None)
+2025-04-01 01:10:38,321 [INFO] Discovered coordinator coordinator-0 for group iot-mqtt-router-group
+2025-04-01 01:10:38,321 [INFO] Starting new heartbeat thread
+2025-04-01 01:10:38,321 [INFO] Revoking previously assigned partitions set() for group iot-mqtt-router-group
+2025-04-01 01:10:38,323 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 01:10:38,431 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 01:10:38,540 [INFO] (Re-)joining group iot-mqtt-router-group
+2025-04-01 01:10:39,308 [WARNING] Heartbeat failed for group iot-mqtt-router-group because it is rebalancing
+2025-04-01 01:10:39,309 [INFO] Revoking previously assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-mqtt-router-group
+2025-04-01 01:10:39,309 [INFO] (Re-)joining group iot-mqtt-router-group
+2025-04-01 01:10:46,323 [INFO] Elected group leader -- performing partition assignments using range
+2025-04-01 01:10:46,324 [INFO] Successfully joined group iot-mqtt-router-group with generation 14
+2025-04-01 01:10:46,324 [INFO] Successfully joined group iot-mqtt-router-group with generation 14
+2025-04-01 01:10:46,325 [INFO] Updated partition assignment: [TopicPartition(topic='iot_logs', partition=0)]
+2025-04-01 01:10:46,325 [INFO] Updated partition assignment: []
+2025-04-01 01:10:46,325 [INFO] Setting newly assigned partitions set() for group iot-mqtt-router-group
+2025-04-01 01:10:46,325 [INFO] Setting newly assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-mqtt-router-group
+2025-04-01 01:10:50,384 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 01:10:56,402 [INFO]  * Detected change in '/Users/pedrocarneiro/Desktop/Universidade/2024_2025/SECOND_SEMESTER/EGS/waste_project/W.A.S.T.E./s_binMonitoring/binAPI.py', reloading
+2025-04-01 01:10:56,466 [INFO]  * Restarting with stat
+2025-04-01 01:10:56,835 [INFO] Successfully connected to Redis
+2025-04-01 01:10:56,835 [INFO] 📡 Kafka-MQTT router listening on topic: iot_logs
+2025-04-01 01:10:56,837 [INFO] 🔄 Restoring previous configurations...
+2025-04-01 01:10:56,838 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-04-01 01:10:56,839 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-04-01 01:10:56,839 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-04-01 01:10:56,840 [INFO] Updating subscribed topics to: ('iot_logs',)
+2025-04-01 01:10:56,845 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-04-01 01:10:56,851 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 01:10:56,889 [WARNING]  * Debugger is active!
+2025-04-01 01:10:56,899 [INFO]  * Debugger PIN: 691-115-437
+2025-04-01 01:10:56,960 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 01:10:56,960 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-04-01 01:10:57,069 [INFO] Group coordinator for iot-mqtt-router-group is BrokerMetadata(nodeId='coordinator-0', host='unknown5227764dc3f1.lan', port=9092, rack=None)
+2025-04-01 01:10:57,069 [INFO] Discovered coordinator coordinator-0 for group iot-mqtt-router-group
+2025-04-01 01:10:57,070 [INFO] Starting new heartbeat thread
+2025-04-01 01:10:57,070 [INFO] Revoking previously assigned partitions set() for group iot-mqtt-router-group
+2025-04-01 01:10:57,071 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 01:10:57,181 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 01:10:57,288 [INFO] (Re-)joining group iot-mqtt-router-group
+2025-04-01 01:10:58,331 [WARNING] Heartbeat failed for group iot-mqtt-router-group because it is rebalancing
+2025-04-01 01:10:58,333 [INFO] Revoking previously assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-mqtt-router-group
+2025-04-01 01:10:58,333 [INFO] (Re-)joining group iot-mqtt-router-group
+2025-04-01 01:11:05,350 [INFO] Elected group leader -- performing partition assignments using range
+2025-04-01 01:11:05,353 [INFO] Successfully joined group iot-mqtt-router-group with generation 15
+2025-04-01 01:11:05,353 [INFO] Successfully joined group iot-mqtt-router-group with generation 15
+2025-04-01 01:11:05,353 [INFO] Updated partition assignment: [TopicPartition(topic='iot_logs', partition=0)]
+2025-04-01 01:11:05,353 [INFO] Updated partition assignment: []
+2025-04-01 01:11:05,353 [INFO] Setting newly assigned partitions set() for group iot-mqtt-router-group
+2025-04-01 01:11:05,353 [INFO] Setting newly assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-mqtt-router-group
+2025-04-01 01:11:05,356 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 01:11:19,206 [INFO]  * Detected change in '/Users/pedrocarneiro/Desktop/Universidade/2024_2025/SECOND_SEMESTER/EGS/waste_project/W.A.S.T.E./s_binMonitoring/binAPI.py', reloading
+2025-04-01 01:11:19,267 [INFO]  * Restarting with stat
+2025-04-01 01:11:19,743 [INFO] Successfully connected to Redis
+2025-04-01 01:11:19,743 [INFO] 📡 Kafka-MQTT router listening on topic: iot_logs
+2025-04-01 01:11:19,746 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-04-01 01:11:19,746 [INFO] 🔄 Restoring previous configurations...
+2025-04-01 01:11:19,747 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-04-01 01:11:19,747 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-04-01 01:11:19,748 [INFO] Updating subscribed topics to: ('iot_logs',)
+2025-04-01 01:11:19,754 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-04-01 01:11:19,766 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 01:11:19,767 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 01:11:19,767 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-04-01 01:11:19,796 [WARNING]  * Debugger is active!
+2025-04-01 01:11:19,805 [INFO]  * Debugger PIN: 691-115-437
+2025-04-01 01:11:19,878 [INFO] Group coordinator for iot-mqtt-router-group is BrokerMetadata(nodeId='coordinator-0', host='unknown5227764dc3f1.lan', port=9092, rack=None)
+2025-04-01 01:11:19,878 [INFO] Discovered coordinator coordinator-0 for group iot-mqtt-router-group
+2025-04-01 01:11:19,878 [INFO] Starting new heartbeat thread
+2025-04-01 01:11:19,878 [INFO] Revoking previously assigned partitions set() for group iot-mqtt-router-group
+2025-04-01 01:11:19,880 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 01:11:19,990 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 01:11:20,099 [INFO] (Re-)joining group iot-mqtt-router-group
+2025-04-01 01:11:20,359 [WARNING] Heartbeat failed for group iot-mqtt-router-group because it is rebalancing
+2025-04-01 01:11:20,360 [INFO] Revoking previously assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-mqtt-router-group
+2025-04-01 01:11:20,361 [INFO] (Re-)joining group iot-mqtt-router-group
+2025-04-01 01:11:27,473 [INFO] Elected group leader -- performing partition assignments using range
+2025-04-01 01:11:27,475 [INFO] Successfully joined group iot-mqtt-router-group with generation 16
+2025-04-01 01:11:27,475 [INFO] Successfully joined group iot-mqtt-router-group with generation 16
+2025-04-01 01:11:27,475 [INFO] Updated partition assignment: [TopicPartition(topic='iot_logs', partition=0)]
+2025-04-01 01:11:27,475 [INFO] Updated partition assignment: []
+2025-04-01 01:11:27,475 [INFO] Setting newly assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-mqtt-router-group
+2025-04-01 01:11:27,475 [INFO] Setting newly assigned partitions set() for group iot-mqtt-router-group
+2025-04-01 01:12:45,069 [INFO]  * Detected change in '/Users/pedrocarneiro/Desktop/Universidade/2024_2025/SECOND_SEMESTER/EGS/waste_project/W.A.S.T.E./s_binMonitoring/binAPI.py', reloading
+2025-04-01 01:12:45,142 [INFO]  * Restarting with stat
+2025-04-01 01:12:45,687 [INFO] Successfully connected to Redis
+2025-04-01 01:12:45,687 [INFO] 📡 Kafka-MQTT router listening on topic: iot_logs
+2025-04-01 01:12:45,690 [INFO] 🔄 Restoring previous configurations...
+2025-04-01 01:12:45,690 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-04-01 01:12:45,692 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <checking_api_versions_recv> [IPv6 ('::1', 9092, 0, 0)]>: Broker version identified as 2.6
+2025-04-01 01:12:45,692 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-04-01 01:12:45,693 [INFO] Updating subscribed topics to: ('iot_logs',)
+2025-04-01 01:12:45,698 [INFO] ✅ Restore complete. Sensors and topics are ready.
+2025-04-01 01:12:45,711 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 01:12:45,747 [WARNING]  * Debugger is active!
+2025-04-01 01:12:45,756 [INFO]  * Debugger PIN: 691-115-437
+2025-04-01 01:12:45,819 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 01:12:45,820 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-04-01 01:12:45,929 [INFO] Group coordinator for iot-mqtt-router-group is BrokerMetadata(nodeId='coordinator-0', host='unknown5227764dc3f1.lan', port=9092, rack=None)
+2025-04-01 01:12:45,929 [INFO] Discovered coordinator coordinator-0 for group iot-mqtt-router-group
+2025-04-01 01:12:45,929 [INFO] Starting new heartbeat thread
+2025-04-01 01:12:45,930 [INFO] Revoking previously assigned partitions set() for group iot-mqtt-router-group
+2025-04-01 01:12:45,931 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connecting> [IPv4 ('192.168.1.99', 9092)]>: connecting to unknown5227764dc3f1.lan:9092 [('192.168.1.99', 9092) IPv4]
+2025-04-01 01:12:46,040 [INFO] <BrokerConnection client_id=kafka-python-2.1.4, node_id=coordinator-0 host=unknown5227764dc3f1.lan:9092 <connected> [IPv4 ('192.168.1.99', 9092)]>: Connection complete.
+2025-04-01 01:12:46,148 [INFO] (Re-)joining group iot-mqtt-router-group
+2025-04-01 01:12:48,508 [WARNING] Heartbeat failed for group iot-mqtt-router-group because it is rebalancing
+2025-04-01 01:12:48,510 [INFO] Revoking previously assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-mqtt-router-group
+2025-04-01 01:12:48,510 [INFO] (Re-)joining group iot-mqtt-router-group
+2025-04-01 01:12:52,640 [INFO] Elected group leader -- performing partition assignments using range
+2025-04-01 01:12:52,642 [INFO] Successfully joined group iot-mqtt-router-group with generation 17
+2025-04-01 01:12:52,642 [INFO] Successfully joined group iot-mqtt-router-group with generation 17
+2025-04-01 01:12:52,642 [INFO] Updated partition assignment: []
+2025-04-01 01:12:52,643 [INFO] Updated partition assignment: [TopicPartition(topic='iot_logs', partition=0)]
+2025-04-01 01:12:52,643 [INFO] Setting newly assigned partitions set() for group iot-mqtt-router-group
+2025-04-01 01:12:52,643 [INFO] Setting newly assigned partitions {TopicPartition(topic='iot_logs', partition=0)} for group iot-mqtt-router-group
+2025-04-01 01:13:36,283 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 01:23:10,931 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 01:26:27,162 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 01:30:25,971 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 01:42:51,962 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 01:45:10,892 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 01:57:33,102 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 02:01:19,595 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 02:02:34,039 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 02:03:09,572 [INFO] 127.0.0.1 - - [01/Apr/2025 02:03:09] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-04-01 02:03:09,575 [INFO] Removed sensors: ['BIN-AVE-030']
+2025-04-01 02:03:09,575 [INFO] 127.0.0.1 - - [01/Apr/2025 02:03:09] "DELETE /v2/sensors HTTP/1.1" 200 -
+2025-04-01 02:03:56,939 [INFO] 127.0.0.1 - - [01/Apr/2025 02:03:56] "OPTIONS /v2/topic HTTP/1.1" 200 -
+2025-04-01 02:03:58,971 [INFO] 127.0.0.1 - - [01/Apr/2025 02:03:58] "[31m[1mPOST /v2/topic HTTP/1.1[0m" 409 -
+2025-04-01 02:03:58,974 [INFO] 127.0.0.1 - - [01/Apr/2025 02:03:58] "OPTIONS /v2/sensors HTTP/1.1" 200 -
+2025-04-01 02:03:58,977 [INFO] Sensor BIN-AVE-030 added to topic bin_monitoring
+2025-04-01 02:03:58,978 [INFO] 127.0.0.1 - - [01/Apr/2025 02:03:58] "[35m[1mPOST /v2/sensors HTTP/1.1[0m" 201 -
+2025-04-01 02:04:09,105 [INFO] 📤 Forwarded message from BIN-AVE-005 to MQTT topic waste/bin_monitoring
+2025-04-01 02:06:51,892 [INFO] 127.0.0.1 - - [01/Apr/2025 02:06:51] "GET /v2/sensors HTTP/1.1" 200 -
+2025-04-01 02:19:49,876 [INFO]  * Detected change in '/Users/pedrocarneiro/Desktop/Universidade/2024_2025/SECOND_SEMESTER/EGS/waste_project/W.A.S.T.E./s_binMonitoring/binAPI.py', reloading
+2025-04-01 02:19:50,034 [INFO]  * Restarting with stat
+2025-04-01 02:21:51,891 [INFO] Successfully connected to Redis
+2025-04-01 02:21:51,892 [INFO] 📡 Kafka-WebSocket router listening on topic: iot_logs
+2025-04-01 02:22:25,587 [INFO] Successfully connected to Redis
+2025-04-01 02:22:25,587 [INFO] 📡 Kafka-WebSocket router listening on topic: iot_logs
+2025-04-01 02:22:39,394 [INFO] Successfully connected to Redis
+2025-04-01 02:22:39,394 [INFO] 📡 Kafka-WebSocket router listening on topic: iot_logs

@@ -4,9 +4,11 @@ import json
 from datetime import datetime
 import service_core as sc
 import osrm_api as osrm
+from flask_cors import CORS
 
 app = Flask(__name__)
 Swagger(app)
+CORS(app)  # Enable CORS for all routes
 
 @app.route("/v1/routes", methods=["POST"])
 def create_route():
