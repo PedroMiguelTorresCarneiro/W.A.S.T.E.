@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1014407108227",
+    "project_id": "waste-3fba8",
+    "storage_bucket": "waste-3fba8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1014407108227:android:f99a6891e196f7d5892db6",
+        "android_client_info": {
+          "package_name": "com.example.waste_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1014407108227-a3l1iuo845vortnval1133kqmisfaj2c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWgEr9tc8QyXOqfAzlX6Yrlotnz5-0P5E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1014407108227-a3l1iuo845vortnval1133kqmisfaj2c.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1014407108227-kpmkhhqujgnmsthlhhroqra128k75nrc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.wasteApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

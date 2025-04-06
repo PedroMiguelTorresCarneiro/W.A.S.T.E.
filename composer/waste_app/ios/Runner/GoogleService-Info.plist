@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1014407108227-kpmkhhqujgnmsthlhhroqra128k75nrc.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1014407108227-kpmkhhqujgnmsthlhhroqra128k75nrc</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBomcZ1DuqRL8VUHnDA8T-QEM_9Tmiqqzo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1014407108227</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.wasteApp</string>
+	<key>PROJECT_ID</key>
+	<string>waste-3fba8</string>
+	<key>STORAGE_BUCKET</key>
+	<string>waste-3fba8.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1014407108227:ios:aa6cc48ca0f01cca892db6</string>
+</dict>
+</plist>
