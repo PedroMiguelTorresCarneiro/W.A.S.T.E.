@@ -1,7 +1,6 @@
 node_modules/
 venv/
+venv_ws/
 .DS_Store
 *.gpx
 __pycache__/
-pwa/
-waste_app/
