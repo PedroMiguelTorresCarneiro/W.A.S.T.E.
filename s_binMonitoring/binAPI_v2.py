@@ -1,8 +1,9 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
 from flasgger import Swagger
 from flask_cors import CORS
-from flask_socketio import SocketIO, emit
-from kafka import KafkaConsumer
+from kafka import KafkaProducer, KafkaConsumer
+from kafka.admin import KafkaAdminClient, NewTopic
+from kafka.errors import UnknownTopicOrPartitionError, TopicAlreadyExistsError
 import threading
 import redis
 import json
@@ -11,8 +12,8 @@ import re
 import os
 import signal
 import time
-
-
+import sys
+from functools import wraps
 
 # ========================
 # 🔧 Configurações Iniciais
@@ -20,7 +21,8 @@ import time
 app = Flask(__name__)
 swagger = Swagger(app)
 CORS(app)
-socketio = SocketIO(app, cors_allowed_origins="*")
+logging.basicConfig(level=logging.WARNING)
+logger = logging.getLogger("binAPI")
 
 REDIS_HOST = "localhost"
 REDIS_PORT = 6379
@@ -40,8 +42,20 @@ except redis.RedisError as e:
     exit(1)
 
 # ========================
-# 🤖 Kafka ➞ WebSocket
+# 🤖 Kafka ➞ Router
 # ========================
+
+try:
+    producer = KafkaProducer(
+        bootstrap_servers=KAFKA_SERVER,
+        value_serializer=lambda v: json.dumps(v).encode("utf-8")
+    )
+    print("✅ Kafka Producer iniciado com sucesso.")
+except Exception as e:
+    print(f"❌ Erro ao inicializar Kafka Producer: {e}")
+    exit(1)
+
+
 def safe_deserializer(msg):
     try:
         return json.loads(msg.decode('utf-8'))
@@ -49,32 +63,40 @@ def safe_deserializer(msg):
         print(f"❌ Erro ao decodificar mensagem Kafka: {e}")
         return {}
 
+
+def validate_topic_name(topic):
+    return re.match(r'^[\w.-]+$', topic) is not None
+
+
 def kafka_router():
     print(f"📢 Subscrito no Kafka ({KAFKA_TOPIC})...")
     consumer = KafkaConsumer(
         KAFKA_TOPIC,
         bootstrap_servers=KAFKA_SERVER,
         value_deserializer=safe_deserializer,
-        auto_offset_reset='earliest',
+        auto_offset_reset='latest',
         enable_auto_commit=True,
-        group_id=f'iot-ws-router-{int(time.time())}'
+        group_id=f'iot-kafka-router-{int(time.time())}'
     )
+
     for msg in consumer:
         data = msg.value
         serial = data.get("serial")
         if not serial:
             print("⚠️ Mensagem sem serial ignorada.")
             continue
+
         topic = r.get(serial)
         if topic:
-            socketio.emit(f"{topic}", data)
-            print(f"📢 Emitido para tópico WebSocket '{topic}': {data}")
+            try:
+                producer.send(topic, value=data)
+                print(f"Reencaminhado para tópico Kafka '{topic}': {data}")
+            except Exception as e:
+                print(f"❌ Erro ao publicar no tópico Kafka '{topic}': {e}")
         else:
-            print(f"⚠️ Sem topico para serial: {serial}")
+            print(f"⚠️ Nenhum tópico associado no Redis para o serial '{serial}'")
 
-# ========================
-# 🚀 Start Thread
-# ========================
+
 kafka_thread = threading.Thread(target=kafka_router, daemon=True)
 kafka_thread.start()
 
@@ -451,48 +473,26 @@ def api_create_topic():
     # Validate request format
     if not request.is_json:
         return jsonify({"error": "Request must be JSON"}), 415
-        
-    data = request.json
-    
-    # Check for missing body
-    if not data:
-        return jsonify({"error": "Empty request body"}), 400
-        
-    topic = data.get("topic")
 
+    data = request.json
+    topic = data.get("topic")
     if not topic:
         return jsonify({"error": "topic name is required"}), 400
-        
     if not validate_topic_name(topic):
-        return jsonify({"error": "Invalid topic name. Use only alphanumeric characters, dots, underscores, and hyphens"}), 400
+        return jsonify({"error": "Invalid topic name"}), 400
 
     try:
-        # Check if topic already exists
-        existing_topics = subprocess.check_output(
-            f"{KAFKA_BIN} --list --bootstrap-server {KAFKA_SERVER}",
-            shell=True, text=True
-        ).split("\n")
-        
-        if topic in existing_topics:
-            return jsonify({"error": f"Topic {topic} already exists"}), 409
-            
-        result = subprocess.run(
-            f"{KAFKA_BIN} --create --topic {topic} --bootstrap-server {KAFKA_SERVER} --partitions 3 --replication-factor 1",
-            shell=True, capture_output=True, text=True
-        )
-        
-        if result.returncode != 0:
-            logger.error(f"Failed to create topic {topic}: {result.stderr}")
-            return jsonify({"error": f"Failed to create topic: {result.stderr.strip()}"}), 500
-            
-        logger.info(f"Topic {topic} created")
+        admin_client = KafkaAdminClient(bootstrap_servers=KAFKA_SERVER, client_id="bin_api_admin")
+        new_topic = NewTopic(name=topic, num_partitions=3, replication_factor=1)
+        admin_client.create_topics(new_topics=[new_topic], validate_only=False)
+        admin_client.close()
         return jsonify({"message": f"Topic {topic} created"}), 201
-    except subprocess.SubprocessError as e:
-        logger.error(f"Kafka command error: {str(e)}")
-        return jsonify({"error": "Failed to communicate with Kafka", "details": str(e)}), 500
+    except TopicAlreadyExistsError:
+        return jsonify({"error": f"Topic {topic} already exists"}), 409
     except Exception as e:
-        logger.error(f"Unexpected error during topic creation: {str(e)}")
-        return jsonify({"error": "Internal server error", "details": str(e)}), 500
+        logger.error(f"Erro ao criar tópico: {str(e)}")
+        return jsonify({"error": "Failed to create topic", "details": str(e)}), 500
+
 
 @app.route("/v2/topic", methods=["GET"])
 def api_list_topics():
@@ -523,18 +523,15 @@ def api_list_topics():
             }
     """
     try:
-        topics = subprocess.check_output(
-            f"{KAFKA_BIN} --list --bootstrap-server {KAFKA_SERVER}",
-            shell=True, text=True
-        ).split("\n")
-        
-        return jsonify({"topics": [topic for topic in topics if topic]}), 200
-    except subprocess.SubprocessError as e:
-        logger.error(f"Kafka command error during topic listing: {str(e)}")
-        return jsonify({"error": "Failed to communicate with Kafka", "details": str(e)}), 500
+        admin_client = KafkaAdminClient(bootstrap_servers=KAFKA_SERVER, client_id="bin_api_admin")
+        topics = admin_client.list_topics()
+        admin_client.close()
+        return jsonify({"topics": list(topics)}), 200
     except Exception as e:
-        logger.error(f"Unexpected error during topic listing: {str(e)}")
-        return jsonify({"error": "Internal server error", "details": str(e)}), 500
+        logger.error(f"Erro ao listar tópicos: {str(e)}")
+        return jsonify({"error": "Failed to list topics", "details": str(e)}), 500
+
+
 
 @app.route("/v2/topic", methods=["DELETE"])
 #@requires_auth
@@ -594,11 +591,6 @@ def api_delete_topics():
         examples:
           application/json:
             {"error": "Provide topic_names list or set 'all' to true"}
-      401:
-        description: Authentication required
-        examples:
-          application/json:
-            {"error": "Authentication required"}
       404:
         description: One or more topics not found
         examples:
@@ -624,114 +616,34 @@ def api_delete_topics():
     # Validate request format
     if not request.is_json:
         return jsonify({"error": "Request must be JSON"}), 415
-        
+
     data = request.json
-    
-    # Check for missing body
-    if not data:
-        return jsonify({"error": "Empty request body"}), 400
+    topics = data.get("topic_names")
+    if not topics:
+        return jsonify({"error": "topic_names list is required"}), 400
 
+    failed = []
+    deleted = []
     try:
-        if data.get("all", False):  # If "all" is true, delete all topics
+        admin_client = KafkaAdminClient(bootstrap_servers=KAFKA_SERVER, client_id="bin_api_admin")
+        for topic in topics:
             try:
-                all_topics = subprocess.check_output(
-                    f"{KAFKA_BIN} --list --bootstrap-server {KAFKA_SERVER}",
-                    shell=True, text=True
-                ).split("\n")
-
-                all_topics = [topic for topic in all_topics if topic and topic != "__consumer_offsets"]
-
-                if not all_topics:
-                    return jsonify({"error": "No topics found"}), 404
-
-                successful_deletions = []
-                failed_deletions = []
-                
-                for topic in all_topics:
-                    try:
-                        result = subprocess.run(
-                            f"{KAFKA_BIN} --delete --topic {topic} --bootstrap-server {KAFKA_SERVER}",
-                            shell=True, capture_output=True, text=True
-                        )
-                        if result.returncode == 0:
-                            successful_deletions.append(topic)
-                        else:
-                            failed_deletions.append({"topic": topic, "error": result.stderr.strip()})
-                    except subprocess.SubprocessError as e:
-                        failed_deletions.append({"topic": topic, "error": str(e)})
-
-                response = {"message": f"Topics removed: {successful_deletions}"}
-                
-                if failed_deletions:
-                    response["warning"] = "Some topics could not be deleted"
-                    response["failed_deletions"] = failed_deletions
-                    return jsonify(response), 207  # 207 Multi-Status
-                
-                logger.info(f"All topics removed (total: {len(successful_deletions)})")
-                return jsonify(response), 200
-            except subprocess.SubprocessError as e:
-                logger.error(f"Kafka command error: {str(e)}")
-                return jsonify({"error": "Failed to communicate with Kafka"}), 500
-
-        topic_names = data.get("topic_names", [])
-        
-        if not topic_names:
-            return jsonify({"error": "Provide topic_names list or set 'all' to true"}), 400
-
-        # Validate all topic names
-        invalid_topics = [topic for topic in topic_names if not validate_topic_name(topic)]
-        if invalid_topics:
-            return jsonify({"error": "Invalid topic names", "invalid_topics": invalid_topics}), 400
-
-        # Get existing topics
-        existing_topics = subprocess.check_output(
-            f"{KAFKA_BIN} --list --bootstrap-server {KAFKA_SERVER}",
-            shell=True, text=True
-        ).split("\n")
-
-        not_found = [topic for topic in topic_names if topic not in existing_topics]
-        
-        if not_found and len(not_found) == len(topic_names):
-            return jsonify({"error": "None of the specified topics found", "not_found": not_found}), 404
-        
-        successful_deletions = []
-        failed_deletions = []
-        
-        for topic in [t for t in topic_names if t not in not_found]:
-            try:
-                result = subprocess.run(
-                    f"{KAFKA_BIN} --delete --topic {topic} --bootstrap-server {KAFKA_SERVER}",
-                    shell=True, capture_output=True, text=True
-                )
-                if result.returncode == 0:
-                    successful_deletions.append(topic)
-                else:
-                    failed_deletions.append({"topic": topic, "error": result.stderr.strip()})
-            except subprocess.SubprocessError as e:
-                failed_deletions.append({"topic": topic, "error": str(e)})
-
-        response = {"message": f"Topics removed: {successful_deletions}"}
-        
-        if not_found:
-            response["warning"] = "Some topics were not found"
-            response["not_found"] = not_found
-            
-        if failed_deletions:
-            response["error"] = "Some topics could not be deleted"
-            response["failed_deletions"] = failed_deletions
-            return jsonify(response), 207  # 207 Multi-Status
-            
-        logger.info(f"Topics removed: {successful_deletions}")
-        if not_found:
-            logger.warning(f"Topics not found: {not_found}")
-            
-        return jsonify(response), 200
-    except subprocess.SubprocessError as e:
-        logger.error(f"Kafka command error during topic deletion: {str(e)}")
-        return jsonify({"error": "Failed to communicate with Kafka", "details": str(e)}), 500
+                admin_client.delete_topics([topic])
+                deleted.append(topic)
+            except UnknownTopicOrPartitionError:
+                failed.append({"topic": topic, "error": "Topic not found"})
+            except Exception as e:
+                failed.append({"topic": topic, "error": str(e)})
+        admin_client.close()
     except Exception as e:
-        logger.error(f"Unexpected error during topic deletion: {str(e)}")
-        return jsonify({"error": "Internal server error", "details": str(e)}), 500
+        return jsonify({"error": "Kafka admin client error", "details": str(e)}), 500
+
+    response = {"message": f"Topics removed: {deleted}"}
+    if failed:
+        response["failed"] = failed
+        return jsonify(response), 207
+    return jsonify(response), 200
+
 
 
 # =========================
@@ -775,9 +687,12 @@ def handle_exception(e):
 def signal_handler(sig, frame):
     logger.info("Shutdown signal received, closing connections...")
     try:
+        if global_consumer:
+            global_consumer.close()
+        producer.close()
         r.close()
-    except:
-        pass
+    except Exception as e:
+        logger.warning(f"Error during shutdown: {e}")
     logger.info("All connections closed. Shutting down.")
     sys.exit(0)
 
@@ -788,5 +703,5 @@ signal.signal(signal.SIGTERM, signal_handler)
 # 🚀 Run App
 # ========================
 if __name__ == '__main__':
-    socketio.run(app, host="0.0.0.0", port=5004, debug=True)
+    app.run(host="0.0.0.0", port=5004, debug=True)
 
