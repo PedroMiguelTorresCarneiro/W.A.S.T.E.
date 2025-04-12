@@ -4,3 +4,4 @@ venv_ws/
 .DS_Store
 *.gpx
 __pycache__/
+.env
