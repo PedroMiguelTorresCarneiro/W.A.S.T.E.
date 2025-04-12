@@ -2,10 +2,8 @@ import random
 import time
 import json
 from kafka import KafkaProducer
+from config import KAFKA_TOPIC, KAFKA_SERVER
 
-# Configurações Kafka
-KAFKA_TOPIC = "iot_logs"
-KAFKA_SERVER = "localhost:9092"
 
 # Lista dos caixotes (serials)
 BINS = [f"BIN-AVE-{str(i).zfill(3)}" for i in range(1, 31)]

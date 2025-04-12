@@ -4,6 +4,7 @@ from pydantic import BaseModel
 import pymysql
 from typing import Union
 from datetime import datetime
+from config import DB_HOST, DB_PORT, DB_USER, DB_PASS, DB_NAME
 
 app = FastAPI()
 
@@ -18,11 +19,11 @@ app.add_middleware(
 
 # Dados de conexão
 conn = pymysql.connect(
-    host="localhost",
-    port=3307,
-    user="waste_user",
-    password="wastepass",
-    database="waste_db",
+    host=DB_HOST,
+    port=DB_PORT,
+    user=DB_USER,
+    password=DB_PASS,
+    database=DB_NAME,
     cursorclass=pymysql.cursors.DictCursor
 )
 
@@ -106,6 +107,16 @@ def get_users():
     with conn.cursor() as cursor:
         cursor.execute("SELECT * FROM users")
         return cursor.fetchall()
+
+@app.get("/users/{uid}")
+def get_user_by_uid(uid: str):
+    with conn.cursor() as cursor:
+        cursor.execute("SELECT uid, role, imei, usage_count FROM users WHERE uid = %s", (uid,))
+        result = cursor.fetchone()
+        if result:
+            return result
+        else:
+            raise HTTPException(status_code=404, detail="User not found")
 
 @app.post("/users")
 def add_user(user: User):

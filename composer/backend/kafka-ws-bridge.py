@@ -4,12 +4,10 @@ from kafka import KafkaConsumer
 import json
 import threading
 import time
+from config import KAFKA_SERVER, KAFKA_TOPICS, FLASK_HOST, FLASK_PORT, FLASK_DEBUG
 
 app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode='threading')
-
-KAFKA_SERVER = "localhost:9092"
-TOPICS = ["bin_monitoring", "nfc_logs", "nfc-tags"]
 
 def safe_deserializer(msg):
     try:
@@ -32,7 +30,7 @@ def kafka_consumer_worker(topic):
     for msg in consumer:
         data = msg.value
         print(f"📥 Kafka [{topic}] => {data}")
-        socketio.emit(topic, data)  # envia para todos os clientes
+        socketio.emit(topic, data)
         print(f"📤 Emitido para WebSocket: {topic} => {data}")
 
 @app.route("/")
@@ -42,8 +40,8 @@ def index():
 if __name__ == "__main__":
     print("🚀 A iniciar o Kafka-WS bridge...")
 
-    for topic in TOPICS:
+    for topic in KAFKA_TOPICS:
         t = threading.Thread(target=kafka_consumer_worker, args=(topic,), daemon=True)
         t.start()
 
-    socketio.run(app, host='0.0.0.0', port=5006, debug=True, use_reloader=False)
+    socketio.run(app, host=FLASK_HOST, port=FLASK_PORT, debug=FLASK_DEBUG, use_reloader=False)

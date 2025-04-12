@@ -14,21 +14,17 @@ import signal
 import time
 import sys
 from functools import wraps
+from config import (
+    REDIS_HOST, REDIS_PORT, KAFKA_TOPIC, KAFKA_SERVER, LOOKUP_FILE,
+    FLASK_PORT, FLASK_HOST, FLASK_DEBUG,
+    BASIC_AUTH_USER, BASIC_AUTH_PASS
+)
 
-# ========================
-# 🔧 Configurações Iniciais
-# ========================
 app = Flask(__name__)
 swagger = Swagger(app)
 CORS(app)
 logging.basicConfig(level=logging.WARNING)
 logger = logging.getLogger("binAPI")
-
-REDIS_HOST = "localhost"
-REDIS_PORT = 6379
-KAFKA_TOPIC = "iot_logs"
-KAFKA_SERVER = "localhost:9092"
-LOOKUP_FILE = "sensor_lookup.txt"
 
 # ========================
 # 📂 Redis
@@ -68,6 +64,10 @@ def validate_topic_name(topic):
     return re.match(r'^[\w.-]+$', topic) is not None
 
 
+def validate_sensor_id(sensor_id):
+    return re.match(r'^[\w.-]+$', sensor_id) is not None
+
+
 def kafka_router():
     print(f"📢 Subscrito no Kafka ({KAFKA_TOPIC})...")
     consumer = KafkaConsumer(
@@ -105,7 +105,8 @@ kafka_thread.start()
 # ============================
 
 def check_auth(username, password):
-    return username == 'admin' and password == 'secret'
+    return username == BASIC_AUTH_USER and password == BASIC_AUTH_PASS
+
 
 def requires_auth(f):
     @wraps(f)
@@ -703,5 +704,4 @@ signal.signal(signal.SIGTERM, signal_handler)
 # 🚀 Run App
 # ========================
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5004, debug=True)
-
+    app.run(host=FLASK_HOST, port=FLASK_PORT, debug=FLASK_DEBUG)

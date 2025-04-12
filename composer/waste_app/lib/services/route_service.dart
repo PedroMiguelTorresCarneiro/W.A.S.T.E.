@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:latlong2/latlong.dart';
+import '../config/config.dart';
 
 class RouteData {
   final String routeId;
@@ -9,6 +10,8 @@ class RouteData {
   final int month;
   final int year;
   final List<LatLng> coordinates;
+  final double? durationMin;
+  final double? distanceKm;
 
   RouteData({
     required this.routeId,
@@ -17,6 +20,8 @@ class RouteData {
     required this.month,
     required this.year,
     required this.coordinates,
+    this.durationMin,
+    this.distanceKm,
   });
 
   factory RouteData.fromJson(Map<String, dynamic> json) {
@@ -29,19 +34,15 @@ class RouteData {
       year: json['year'] ?? 0,
       coordinates:
           coords.map<LatLng>((coord) => LatLng(coord[0], coord[1])).toList(),
+      durationMin: (json['duration_min'] as num?)?.toDouble(),
+      distanceKm: (json['distance_km'] as num?)?.toDouble(),
     );
   }
 }
 
 class RouteService {
-  static const String baseUrl = "http://127.0.0.1:5002/v2/routes";
-
   static Future<List<RouteData>> getRoutes({String? truckId}) async {
-    String url = baseUrl;
-    if (truckId != null) {
-      url += "?truck_id=$truckId";
-    }
-
+    final url = AppConfig.getRouteQueryUrl(truckId: truckId);
     final res = await http.get(Uri.parse(url));
     if (res.statusCode == 200) {
       final List data = json.decode(res.body);
@@ -52,7 +53,7 @@ class RouteService {
   }
 
   static Future<void> deleteRoute(String routeId) async {
-    final url = Uri.parse("$baseUrl?id=$routeId");
+    final url = Uri.parse(AppConfig.deleteRouteUrl(routeId));
     final res = await http.delete(url);
     if (res.statusCode != 200) {
       throw Exception("Erro ao apagar rota");
@@ -71,7 +72,7 @@ class RouteService {
     };
 
     final res = await http.post(
-      Uri.parse(baseUrl),
+      Uri.parse(AppConfig.routesApiV2),
       headers: {"Content-Type": "application/json"},
       body: json.encode(payload),
     );

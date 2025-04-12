@@ -1,8 +1,9 @@
 import 'package:socket_io_client/socket_io_client.dart' as IO;
+import '../config/config.dart';
 
 class KafkaSocketService {
   static final IO.Socket socket = IO.io(
-    'http://localhost:5006',
+    AppConfig.kafkaWebSocketUrl, // ✅ Usar URL centralizada
     IO.OptionBuilder()
         .setTransports(['websocket'])
         .disableAutoConnect()

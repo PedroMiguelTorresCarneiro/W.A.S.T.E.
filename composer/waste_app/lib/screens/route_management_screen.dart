@@ -257,7 +257,10 @@ class _RouteManagementScreenState extends State<RouteManagementScreen> {
                                 "Truck: ${route.truckId.isEmpty ? 'N/D' : route.truckId} | ID: ${route.routeId}",
                               ),
                               subtitle: Text(
-                                "${route.day.toString().padLeft(2, '0')}/${route.month.toString().padLeft(2, '0')}/${route.year} • Paragens: ${route.coordinates.length}",
+                                formatRouteInfo(
+                                  durationMin: route.durationMin ?? 0.0,
+                                  distanceKm: route.distanceKm ?? 0.0,
+                                ),
                               ),
                               trailing: Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -288,4 +291,24 @@ class _RouteManagementScreenState extends State<RouteManagementScreen> {
       ),
     );
   }
+}
+
+String formatRouteInfo({
+  required double durationMin,
+  required double distanceKm,
+}) {
+  final int minutes = durationMin.floor();
+  final int seconds = ((durationMin - minutes) * 60).round();
+  final String formattedTime =
+      "${minutes}m${seconds.toString().padLeft(2, '0')}s";
+
+  final String formattedKm = distanceKm.toStringAsFixed(1).replaceAll('.', ',');
+  final double fuelConsumption = (distanceKm * 35) / 100;
+  final String formattedLiters = fuelConsumption
+      .toStringAsFixed(2)
+      .replaceAll('.', ',');
+
+  return "$formattedTime • $formattedKm"
+      "Km • $formattedLiters"
+      "L";
 }

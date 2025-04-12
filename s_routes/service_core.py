@@ -27,7 +27,9 @@ def setup_database():
                 day INT NOT NULL,
                 month INT NOT NULL,
                 year INT NOT NULL,
-                truck_id VARCHAR(255) DEFAULT NULL
+                truck_id VARCHAR(255) DEFAULT NULL,
+                distance_km FLOAT DEFAULT NULL,         -- ✅ NOVO
+                duration_min FLOAT DEFAULT NULL         -- ✅ NOVO
             );
         """)
         conn.commit()
@@ -40,7 +42,7 @@ def setup_database():
 
 def connect_db():
     """Ensures the database is set up and establishes a connection."""
-    setup_database()  # Ensures database and table exist
+    setup_database()
     try:
         conn = mariadb.connect(**DB_CONFIG)
         return conn
@@ -48,17 +50,9 @@ def connect_db():
         print(f"Error connecting to MariaDB: {e}")
         return None
 
-def create_route(route_id, coordinates, truck_id=None):
+def create_route(route_id, coordinates, truck_id=None, distance_km=None, duration_min=None):  # ✅ NOVOS PARAMS
     """
     Stores a new route in the database.
-
-    Parameters:
-        route_id (str): Unique identifier for the route.
-        coordinates (list): List of (lat, lon) coordinates.
-        truck_id (str, optional): Identifier for the truck (if applicable).
-
-    Returns:
-        dict: Status message.
     """
     conn = connect_db()
     if not conn:
@@ -69,9 +63,18 @@ def create_route(route_id, coordinates, truck_id=None):
 
     try:
         cur.execute("""
-            INSERT INTO routes (route_id, coordinates, day, month, year, truck_id)
-            VALUES (?, ?, ?, ?, ?, ?)
-        """, (route_id, json.dumps(coordinates), now.day, now.month, now.year, truck_id))
+            INSERT INTO routes (route_id, coordinates, day, month, year, truck_id, distance_km, duration_min)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        """, (
+            route_id,
+            json.dumps(coordinates),
+            now.day,
+            now.month,
+            now.year,
+            truck_id,
+            distance_km,
+            duration_min
+        ))
 
         conn.commit()
         return {"message": "Route stored successfully"}
@@ -84,12 +87,6 @@ def create_route(route_id, coordinates, truck_id=None):
 def get_route(route_id):
     """
     Retrieves a specific route from the database.
-
-    Parameters:
-        route_id (str): The route's unique identifier.
-
-    Returns:
-        dict: Route details or an error message.
     """
     conn = connect_db()
     if not conn:
@@ -108,7 +105,9 @@ def get_route(route_id):
                 "day": row[2],
                 "month": row[3],
                 "year": row[4],
-                "truck_id": row[5]
+                "truck_id": row[5],
+                "distance_km": row[6],     # ✅ NOVO
+                "duration_min": row[7]     # ✅ NOVO
             }
         return {"error": "Route not found"}
     finally:
@@ -118,15 +117,6 @@ def get_route(route_id):
 def get_routes_history(day=None, month=None, year=None, truck_id=None):
     """
     Retrieves stored routes with optional filtering.
-
-    Parameters:
-        day (int, optional): Day of route creation.
-        month (int, optional): Month of route creation.
-        year (int, optional): Year of route creation.
-        truck_id (str, optional): Truck ID for filtering.
-
-    Returns:
-        list: List of routes matching the filters.
     """
     conn = connect_db()
     if not conn:
@@ -165,7 +155,9 @@ def get_routes_history(day=None, month=None, year=None, truck_id=None):
                 "day": row[2],
                 "month": row[3],
                 "year": row[4],
-                "truck_id": row[5]
+                "truck_id": row[5],
+                "distance_km": row[6],     # ✅ NOVO
+                "duration_min": row[7]     # ✅ NOVO
             })
         return routes
     finally:
@@ -175,12 +167,6 @@ def get_routes_history(day=None, month=None, year=None, truck_id=None):
 def delete_route(route_id):
     """
     Deletes a stored route from the database.
-
-    Parameters:
-        route_id (str): The route's unique identifier.
-
-    Returns:
-        dict: Status message.
     """
     conn = connect_db()
     if not conn:

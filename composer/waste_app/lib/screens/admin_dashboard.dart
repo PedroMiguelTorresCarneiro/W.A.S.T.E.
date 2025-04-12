@@ -4,9 +4,10 @@ import 'package:waste_app/widgets/map_widget.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:waste_app/screens/sensor_management_screen.dart';
 import 'package:waste_app/screens/route_management_screen.dart';
-import 'package:waste_app/services/auth_service.dart';
+//import 'package:waste_app/services/auth_service.dart';
 import 'package:waste_app/services/composer_bin_service.dart';
 import 'package:waste_app/widgets/binlist_widget.dart';
+import 'package:waste_app/screens/persona_page.dart';
 
 class AdminDashboard extends StatefulWidget {
   final String name;
@@ -88,12 +89,29 @@ class _AdminDashboardState extends State<AdminDashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Dashboard"),
+        title: const Text(
+          "Painel de Administração",
+        ), // ou "Painel do Utilizador"
         actions: [
+          // Botão de logout
           IconButton(
             icon: const Icon(Icons.logout),
-            onPressed: () async {
-              await AuthService().signOut(context);
+            tooltip: "Logout",
+            onPressed: () {
+              // Aqui colocas o teu método de logout
+              // Ex: AuthService.logout(), Navigator.pushReplacementNamed, etc.
+            },
+          ),
+
+          // Botão de perfil
+          IconButton(
+            icon: const Icon(Icons.account_circle),
+            tooltip: "Perfil",
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const PersonaPage()),
+              );
             },
           ),
         ],

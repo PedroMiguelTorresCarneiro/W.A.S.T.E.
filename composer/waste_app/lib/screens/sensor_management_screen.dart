@@ -128,7 +128,7 @@ class _SensorManagementScreenState extends State<SensorManagementScreen> {
                   child: ListTile(
                     title: Text("Sensor: ${bin.sensorSerial}"),
                     subtitle: Text(
-                      "Lat: ${bin.lat}, Lon: ${bin.lon}\nToken: ${bin.nfcToken}\nTópico: ${bin.topic}",
+                      "Lat: ${bin.lat}, Lon: ${bin.lon}\nToken: ${bin.nfcToken}\n",
                     ),
                     trailing: Wrap(
                       spacing: 8,
@@ -213,7 +213,7 @@ class _BinForm extends StatelessWidget {
           ),
           TextField(
             controller: controller.topic,
-            decoration: const InputDecoration(labelText: "Tópico"),
+            decoration: const InputDecoration(labelText: "Categoria"),
           ),
         ],
       ),

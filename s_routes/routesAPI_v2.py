@@ -193,9 +193,15 @@ def create_route():
     route_result["created_at"] = str(datetime.today().date())
 
     if data["mode"] == "car":
-        db_result = sc.create_route(route_result["route_id"], route_result["route_coordinates"], truck_id=data["truck_id"])
-        if "error" in db_result:
-            return jsonify({"error": f"Rota calculada, mas não pôde ser salva: {db_result['error']}"}), 500
+      db_result = sc.create_route(
+          route_result["route_id"],
+          route_result["route_coordinates"],
+          truck_id=data["truck_id"],
+          distance_km=route_result.get("distance_km"),
+          duration_min=route_result.get("duration_min")
+      )
+      if "error" in db_result:
+          return jsonify({"error": f"Rota calculada, mas não pôde ser salva: {db_result['error']}"}), 500
 
     return jsonify(route_result), 201
 
@@ -261,6 +267,14 @@ def get_routes():
                 type: integer
               truck_id:
                 type: string
+              distance_km:
+                type: number
+                format: float
+                example: 3.5
+              duration_min:
+                type: number
+                format: float
+                example: 25.2
       400:
         description: Parâmetros de consulta inválidos
         schema:

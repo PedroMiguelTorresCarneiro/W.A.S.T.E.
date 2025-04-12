@@ -3,7 +3,9 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+//import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
+import '../config/config.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -32,6 +34,12 @@ class AuthService {
       );
 
       final userCredential = await _auth.signInWithCredential(credential);
+
+      //final user = userCredential.user!;
+      // 🖨️ Imprimir UID e nome
+      //print('✅ UID: ${user.uid}');
+      //print('✅ Nome: ${user.displayName}');
+
       await _handleUserAfterLogin(context, userCredential.user!);
     } catch (e) {
       print("❌ Google login failed: $e");
@@ -65,26 +73,46 @@ class AuthService {
 
   // 🔹 Lidar com o utilizador após login
   Future<void> _handleUserAfterLogin(BuildContext context, User user) async {
-    final prefs = await SharedPreferences.getInstance();
-    final usersData = prefs.getString('users');
-    final Map<String, dynamic> usersMap =
-        usersData != null ? jsonDecode(usersData) : {};
+    //print("✅ UID: ${user.uid}");
+    //print("✅ Nome: ${user.displayName}");
 
-    if (!usersMap.containsKey(user.uid)) {
-      // ⚠️ Novo utilizador → perguntar se é admin
-      final role = await _askForAdminCode(context);
+    final uri = Uri.parse(AppConfig.userExistsUrl(user.uid));
+    final response = await http.get(uri);
 
-      usersMap[user.uid] = {
-        'name': user.displayName ?? 'Sem Nome',
-        'role': role,
-      };
-
-      await prefs.setString('users', jsonEncode(usersMap));
+    if (response.statusCode != 200) {
+      _showError(context, "Erro ao verificar utilizador");
+      return;
     }
 
-    final role = usersMap[user.uid]['role'];
-    final name = usersMap[user.uid]['name'];
+    final data = jsonDecode(response.body);
 
+    String role;
+    if (data["exists"] == false) {
+      // ⚠️ Novo utilizador → perguntar se é admin
+      role = await _askForAdminCode(context);
+
+      final postUri = Uri.parse(AppConfig.createUserUrl);
+      final postResponse = await http.post(
+        postUri,
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({
+          'uid': user.uid,
+          'role': role,
+          'imei': '', // adicionar depois se quiseres
+        }),
+      );
+
+      if (postResponse.statusCode != 200) {
+        _showError(context, "Erro ao criar utilizador: ${postResponse.body}");
+        return;
+      }
+    } else {
+      role = data["role"];
+    }
+
+    final name = user.displayName ?? "Sem Nome";
+
+    // 🔁 Redirecionar consoante o papel
     if (role == 'admin') {
       Navigator.pushReplacementNamed(
         context,

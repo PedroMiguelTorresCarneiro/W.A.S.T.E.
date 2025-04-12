@@ -1,24 +1,14 @@
 import 'dart:convert';
-import 'dart:io' show Platform;
-import 'package:flutter/foundation.dart' show kIsWeb;
+//import 'dart:io' show Platform;
+//import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:http/http.dart' as http;
 import 'package:latlong2/latlong.dart';
+import '../config/config.dart';
 
 class ApiService {
-  /// Retorna a URL correta dependendo do ambiente
-  static String getApiUrl() {
-    if (kIsWeb) {
-      return 'http://localhost:5002/v1/routes?id=r1741451296';
-    } else if (Platform.isAndroid) {
-      return 'http://10.0.2.2:5002/v1/routes?id=r1741451296';
-    } else {
-      return 'http://localhost:5002/v1/routes?id=r1741451296';
-    }
-  }
-
   /// Faz um GET na API e retorna a lista de coordenadas
   static Future<List<LatLng>> fetchRoute() async {
-    final String url = getApiUrl();
+    final String url = AppConfig.routeUrl;
 
     try {
       final response = await http.get(
@@ -28,7 +18,7 @@ class ApiService {
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
-        print("API Response: $data"); // Para debug
+        print("API Response: $data");
 
         if (data == null || !data.containsKey("coordinates")) {
           throw Exception(

@@ -5,4 +5,5 @@ venv_ws/
 *.gpx
 __pycache__/
 .env
-s_nfc/
+nfc_backend/
+project_flutterV3/

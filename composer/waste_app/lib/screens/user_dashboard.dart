@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:waste_app/widgets/map_widget.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:waste_app/services/auth_service.dart';
+//import 'package:waste_app/services/auth_service.dart';
 import 'package:waste_app/services/composer_bin_service.dart';
 import 'package:waste_app/services/kafka_socket_service.dart';
 import 'package:waste_app/widgets/binlist_widget.dart';
+import 'package:waste_app/screens/persona_page.dart';
 
 class UserDashboard extends StatefulWidget {
   final String name;
@@ -81,11 +82,28 @@ class _UserDashboardState extends State<UserDashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Dashboard"),
+        title: const Text("Painel do Utilizador"), // ou "Painel do Utilizador"
         actions: [
+          // Botão de logout
           IconButton(
             icon: const Icon(Icons.logout),
-            onPressed: () => AuthService().signOut(context),
+            tooltip: "Logout",
+            onPressed: () {
+              // Aqui colocas o teu método de logout
+              // Ex: AuthService.logout(), Navigator.pushReplacementNamed, etc.
+            },
+          ),
+
+          // Botão de perfil
+          IconButton(
+            icon: const Icon(Icons.account_circle),
+            tooltip: "Perfil",
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const PersonaPage()),
+              );
+            },
           ),
         ],
       ),

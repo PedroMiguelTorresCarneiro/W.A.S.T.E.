@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import '../config/config.dart';
 
 class Bin {
   final int? id;
@@ -41,11 +42,12 @@ class Bin {
 }
 
 class BinService {
-  static const String baseUrl = 'http://127.0.0.1:8000';
-  static const String externalApi = 'http://127.0.0.1:5004/v2';
+  static final String baseUrl = AppConfig.binsUrl;
+  static final String externalTopicUrl = AppConfig.topicUrl;
+  static final String externalSensorUrl = AppConfig.sensorUrl;
 
   static Future<List<Bin>> getBins() async {
-    final response = await http.get(Uri.parse('$baseUrl/bins'));
+    final response = await http.get(Uri.parse(baseUrl));
     if (response.statusCode == 200) {
       List data = json.decode(response.body);
       return data.map((e) => Bin.fromJson(e)).toList();
@@ -56,7 +58,7 @@ class BinService {
 
   static Future<void> addBin(Bin bin) async {
     final response = await http.post(
-      Uri.parse('$baseUrl/bins'),
+      Uri.parse(baseUrl),
       headers: {'Content-Type': 'application/json'},
       body: json.encode(bin.toJson()),
     );
@@ -66,13 +68,13 @@ class BinService {
 
     // Sync with external service
     await http.post(
-      Uri.parse('$externalApi/topic'),
+      Uri.parse(externalTopicUrl),
       headers: {'Content-Type': 'application/json'},
       body: json.encode({'topic': bin.topic}),
     );
 
     await http.post(
-      Uri.parse('$externalApi/sensors'),
+      Uri.parse(externalSensorUrl),
       headers: {'Content-Type': 'application/json'},
       body: json.encode({'sensor_id': bin.sensorSerial, 'topic': bin.topic}),
     );
@@ -80,7 +82,7 @@ class BinService {
 
   static Future<void> updateBin(int id, Bin bin) async {
     final response = await http.put(
-      Uri.parse('$baseUrl/bins/$id'),
+      Uri.parse('$baseUrl/$id'),
       headers: {'Content-Type': 'application/json'},
       body: json.encode(bin.toJson()),
     );
@@ -89,20 +91,20 @@ class BinService {
     }
 
     await http.post(
-      Uri.parse('$externalApi/sensors'),
+      Uri.parse(externalSensorUrl),
       headers: {'Content-Type': 'application/json'},
       body: json.encode({'sensor_id': bin.sensorSerial, 'topic': bin.topic}),
     );
   }
 
   static Future<void> deleteBin(int id, String sensorSerial) async {
-    final response = await http.delete(Uri.parse('$baseUrl/bins/$id'));
+    final response = await http.delete(Uri.parse('$baseUrl/$id'));
     if (response.statusCode != 200) {
       throw Exception('Erro ao remover sensor');
     }
 
     await http.delete(
-      Uri.parse('$externalApi/sensors'),
+      Uri.parse(externalSensorUrl),
       headers: {'Content-Type': 'application/json'},
       body: json.encode({
         'sensor_ids': [sensorSerial],
@@ -112,7 +114,7 @@ class BinService {
 
   static Future<void> updateFillLevel(String serial, String level) async {
     final response = await http.put(
-      Uri.parse('$baseUrl/bins/fill/$serial'),
+      Uri.parse(AppConfig.fillLevelUrl(serial)),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({'fill_level': level}),
     );

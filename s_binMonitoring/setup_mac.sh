@@ -1,68 +1,75 @@
 #!/bin/bash
 
-echo "Setting up Kafka Wrapper Service on macOS..."
+echo "🚀 Setup do serviço s_binMonitoring no macOS..."
 
-# 1️⃣ Create and Activate Virtual Environment
+# 1️⃣ Carregar variáveis do .env
+if [ -f ".env" ]; then
+    export $(grep -v '^#' .env | xargs)
+    echo "✅ Variáveis do .env carregadas com sucesso."
+else
+    echo "⚠️ Ficheiro .env não encontrado. Algumas variáveis podem não estar definidas!"
+fi
+
+# 2️⃣ Criar e ativar ambiente virtual
 if [ -d "venv" ]; then
-    echo "Virtual environment already exists."
-    echo "Activating the virtual environment..."
+    echo "✅ Ambiente virtual já existe."
+    echo "🔄 Ativando o ambiente virtual..."
     source venv/bin/activate
 else
-    echo "🛠 Creating a new virtual environment..."
+    echo "🛠 Criando novo ambiente virtual..."
     python3 -m venv venv
     source venv/bin/activate
-    echo "Virtual environment created and activated!"
+    echo "✅ Ambiente virtual criado e ativado!"
 fi
 
-# 2️⃣ Install Dependencies
+# 3️⃣ Instalar dependências
 if [ -f requirements.txt ]; then
-    echo "Installing dependencies from requirements.txt..."
+    echo "📦 Instalando dependências do requirements.txt..."
     pip install -r requirements.txt
 else
-    echo "requirements.txt not found. Installing required packages manually..."
-    pip install flask flasgger redis subprocess
+    echo "⚠️ Arquivo requirements.txt não encontrado. Instalando dependências mínimas..."
+    pip install flask flasgger redis kafka-python python-dotenv flask-cors
 fi
 
-# 3️⃣ Check and Install Redis
-echo "Checking if Redis is installed..."
-if ! command -v redis-server &> /dev/null
-then
-    echo "Redis is not installed. Installing now..."
+# 4️⃣ Verificar instalação do Redis
+echo "🔍 Verificando Redis..."
+if ! command -v redis-server &> /dev/null; then
+    echo "❌ Redis não encontrado. Instalando via brew..."
     brew install redis
-    echo "Redis installed successfully!"
+    echo "✅ Redis instalado!"
 fi
 
-# 4️⃣ Start Redis Service
-echo "Starting Redis service..."
+# 5️⃣ Iniciar Redis
+echo "🔄 Iniciando Redis..."
 brew services start redis
 
-# 5️⃣ Check and Install Kafka & Zookeeper
-echo "Checking if Kafka is installed..."
-if ! command -v kafka-server-start &> /dev/null
-then
-    echo "Kafka is not installed. Installing now..."
+# 6️⃣ Verificar Kafka
+echo "🔍 Verificando Kafka..."
+if ! command -v kafka-server-start &> /dev/null; then
+    echo "❌ Kafka não encontrado. Instalando via brew..."
     brew install kafka
-    echo "Kafka installed successfully!"
+    echo "✅ Kafka instalado!"
 fi
 
-echo "Checking if Zookeeper is installed..."
-if ! command -v zookeeper-server-start &> /dev/null
-then
-    echo "Zookeeper is not installed. Installing now..."
+# 7️⃣ Verificar Zookeeper
+echo "🔍 Verificando Zookeeper..."
+if ! command -v zookeeper-server-start &> /dev/null; then
+    echo "❌ Zookeeper não encontrado. Instalando via brew..."
     brew install zookeeper
-    echo "Zookeeper installed successfully!"
+    echo "✅ Zookeeper instalado!"
 fi
 
-# 6️⃣ Start Kafka & Zookeeper Services
-echo "Starting Zookeeper..."
+# 8️⃣ Iniciar serviços Kafka e Zookeeper
+echo "🔄 Iniciando Zookeeper..."
 brew services start zookeeper
-sleep 5  # Allow Zookeeper some time to start
+sleep 5
 
-echo "Starting Kafka..."
+echo "🔄 Iniciando Kafka..."
 brew services start kafka
 
-# 7️⃣ Display Final Instructions
-echo "Setup complete!"
-echo "To run the Kafka Wrapper service, use:"
+# 9️⃣ Mensagem final
+echo "✅ Setup concluído com sucesso!"
+echo ""
+echo "▶️ Para correr o serviço:"
 echo "   source venv/bin/activate && python3 binAPI.py"
-echo "To see the API documentation, visit http://localhost:5004/apidocs/"
+echo ""
