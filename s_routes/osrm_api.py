@@ -1,7 +1,10 @@
 import datetime
 import requests
 import json
+from dotenv import load_dotenv
 import os
+from config import OSRM_BASE_URL
+
 
 def calculate_routing_driving(start, waypoints, end):
     """
@@ -20,7 +23,7 @@ def calculate_routing_driving(start, waypoints, end):
         return {"error": "Invalid start or end"}, 400
     
     # OSRM base URL
-    base_url = "http://router.project-osrm.org/trip/v1/driving/"
+    base_url = f"{OSRM_BASE_URL}/trip/v1/driving/"
     
     # Merge coordinates into one sequence: Start -> Waypoints -> End
     all_coordinates = [start] + waypoints + [end]
@@ -63,7 +66,7 @@ def calculate_routing_walking(start, end):
         return {"error": "Invalid start or end"}, 400
     
     # OSRM base URL
-    base_url = "http://router.project-osrm.org/route/v1/foot/"
+    base_url = f"{OSRM_BASE_URL}/route/v1/foot/"
     
     coords_str = f"{start[1]},{start[0]};{end[1]},{end[0]}"
     url = f"{base_url}{coords_str}?overview=full&geometries=geojson"

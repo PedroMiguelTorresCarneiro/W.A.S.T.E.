@@ -1,23 +1,25 @@
 import mariadb
 import json
 import datetime
+from config import DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT
 
 # Database Configuration
 DB_CONFIG = {
-    "host": "localhost",
-    "user": "admin",
-    "password": "admin",
-    "database": "routes_service"
+    "host": DB_HOST,
+    "user": DB_USER,
+    "password": DB_PASS,
+    "database": DB_NAME,
+    "port": DB_PORT
 }
 
 def setup_database():
     """Ensures the database and table exist before running the service."""
-    conn = mariadb.connect(host=DB_CONFIG["host"], user=DB_CONFIG["user"], password=DB_CONFIG["password"])
+    conn = mariadb.connect(host=DB_CONFIG["host"], user=DB_CONFIG["user"], password=DB_CONFIG["password"], port=DB_CONFIG["port"])
     cur = conn.cursor()
 
     try:
-        cur.execute("CREATE DATABASE IF NOT EXISTS routes_service;")
-        cur.execute("USE routes_service;")
+        cur.execute(f"CREATE DATABASE IF NOT EXISTS {DB_NAME};")
+        cur.execute(f"USE {DB_NAME};")
         cur.execute("""
             CREATE TABLE IF NOT EXISTS routes (
                 route_id VARCHAR(255) PRIMARY KEY,
@@ -61,10 +63,10 @@ def create_route(route_id, coordinates, truck_id=None):
     conn = connect_db()
     if not conn:
         return {"error": "Database connection failed"}
-    
+
     cur = conn.cursor()
     now = datetime.datetime.now()
-    
+
     try:
         cur.execute("""
             INSERT INTO routes (route_id, coordinates, day, month, year, truck_id)
@@ -92,13 +94,13 @@ def get_route(route_id):
     conn = connect_db()
     if not conn:
         return {"error": "Database connection failed"}
-    
+
     cur = conn.cursor()
-    
+
     try:
         cur.execute("SELECT * FROM routes WHERE route_id = ?", (route_id,))
         row = cur.fetchone()
-        
+
         if row:
             return {
                 "route_id": row[0],
@@ -129,12 +131,12 @@ def get_routes_history(day=None, month=None, year=None, truck_id=None):
     conn = connect_db()
     if not conn:
         return {"error": "Database connection failed"}
-    
+
     cur = conn.cursor()
-    
+
     query = "SELECT * FROM routes WHERE 1=1"
     params = []
-    
+
     if day:
         query += " AND day = ?"
         params.append(day)
@@ -151,7 +153,7 @@ def get_routes_history(day=None, month=None, year=None, truck_id=None):
     try:
         cur.execute(query, params)
         rows = cur.fetchall()
-        
+
         if not rows:
             return {"error": "No routes found"}
 
@@ -183,13 +185,13 @@ def delete_route(route_id):
     conn = connect_db()
     if not conn:
         return {"error": "Database connection failed"}
-    
+
     cur = conn.cursor()
-    
+
     try:
         cur.execute("DELETE FROM routes WHERE route_id = ?", (route_id,))
         conn.commit()
-        
+
         if cur.rowcount > 0:
             return {"message": "Route deleted successfully"}
         return {"error": "Route not found"}

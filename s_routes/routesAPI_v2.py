@@ -5,6 +5,8 @@ from datetime import datetime
 import service_core as sc
 import osrm_api as osrm
 from flask_cors import CORS
+from config import FLASK_PORT, FLASK_DEBUG, FLASK_HOST
+
 
 app = Flask(__name__)
 # Configuração do Swagger
@@ -420,4 +422,4 @@ def delete_route():
     return jsonify({"message": f"Rota '{route_id}' excluída com sucesso"})
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=5002)
+    app.run(debug=FLASK_DEBUG, host=FLASK_HOST, port=FLASK_PORT)

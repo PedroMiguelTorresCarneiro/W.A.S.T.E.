@@ -9,7 +9,7 @@ app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode='threading')
 
 KAFKA_SERVER = "localhost:9092"
-TOPICS = ["bin_monitoring", "nfc_logs"]
+TOPICS = ["bin_monitoring", "nfc_logs", "nfc-tags"]
 
 def safe_deserializer(msg):
     try:
