@@ -5,7 +5,8 @@ class KafkaSocketService {
   static final IO.Socket socket = IO.io(
     AppConfig.kafkaWebSocketUrl, // ✅ Usar URL centralizada
     IO.OptionBuilder()
-        .setTransports(['websocket'])
+        .setTransports(['polling', 'websocket'])
+        .setPath("/socket.io") // ✅ Aqui sim
         .disableAutoConnect()
         .build(),
   );
@@ -47,7 +48,10 @@ class KafkaSocketService {
 
   /// Fecha a conexão WebSocket
   static void disconnect() {
-    socket.disconnect();
+    if (socket.connected) socket.disconnect();
+    for (final topic in _listeningTopics) {
+      socket.off(topic);
+    }
     _listeningTopics.clear();
   }
 }

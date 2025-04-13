@@ -56,28 +56,42 @@ class BinService {
     }
   }
 
-  static Future<void> addBin(Bin bin) async {
-    final response = await http.post(
-      Uri.parse(baseUrl),
+  static Future<Bin> addBin(Bin bin) async {
+    // 1. Tenta criar o sensor no serviço de sensores
+    final sensorResponse = await http.post(
+      Uri.parse(externalSensorUrl),
       headers: {'Content-Type': 'application/json'},
-      body: json.encode(bin.toJson()),
+      body: json.encode({'sensor_id': bin.sensorSerial, 'topic': bin.topic}),
     );
-    if (response.statusCode != 200) {
-      throw Exception('Erro ao adicionar sensor');
+
+    if (sensorResponse.statusCode != 200 && sensorResponse.statusCode != 201) {
+      throw Exception('Erro ao criar sensor no serviço de monitorização');
     }
 
-    // Sync with external service
-    await http.post(
+    // 2. Cria o tópico (se necessário)
+    final topicResponse = await http.post(
       Uri.parse(externalTopicUrl),
       headers: {'Content-Type': 'application/json'},
       body: json.encode({'topic': bin.topic}),
     );
 
-    await http.post(
-      Uri.parse(externalSensorUrl),
+    if (topicResponse.statusCode != 200 && topicResponse.statusCode != 201) {
+      throw Exception('Erro ao criar tópico');
+    }
+
+    // 3. Cria o Bin no serviço principal
+    final binResponse = await http.post(
+      Uri.parse(baseUrl),
       headers: {'Content-Type': 'application/json'},
-      body: json.encode({'sensor_id': bin.sensorSerial, 'topic': bin.topic}),
+      body: json.encode(bin.toJson()),
     );
+
+    if (binResponse.statusCode != 200 && binResponse.statusCode != 201) {
+      throw Exception('Erro ao adicionar Bin à base de dados');
+    }
+
+    final jsonResponse = json.decode(binResponse.body);
+    return Bin.fromJson(jsonResponse);
   }
 
   static Future<void> updateBin(int id, Bin bin) async {

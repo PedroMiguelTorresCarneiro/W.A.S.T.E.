@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:waste_app/services/user_service.dart';
 import 'package:waste_app/widgets/map_widget.dart';
 import 'package:latlong2/latlong.dart';
-//import 'package:waste_app/services/auth_service.dart';
+import 'package:waste_app/services/auth_service.dart';
 import 'package:waste_app/services/composer_bin_service.dart';
 import 'package:waste_app/services/kafka_socket_service.dart';
 import 'package:waste_app/widgets/binlist_widget.dart';
@@ -24,6 +25,28 @@ class _UserDashboardState extends State<UserDashboard> {
   void initState() {
     super.initState();
     KafkaSocketService.connect();
+
+    KafkaSocketService.listenToTopic("nfc_logs", (data) async {
+      try {
+        final imei = data['imei'];
+        if (imei == null) return;
+
+        // Verifica se há user com este IMEI
+        final user = await UserService.fetchUserByImei(imei);
+        if (user['uid'] != null) {
+          final uid = user['uid'];
+          await UserService.incrementUsage(uid);
+          print(
+            "✅ usage_count incrementado para o user com UID: $uid (IMEI: $imei)",
+          );
+        } else {
+          print("⚠️ Nenhum utilizador encontrado com o IMEI: $imei");
+        }
+      } catch (e) {
+        print("❌ Erro ao processar mensagem do nfc_logs: $e");
+      }
+    });
+
     _loadBins();
   }
 
@@ -88,9 +111,8 @@ class _UserDashboardState extends State<UserDashboard> {
           IconButton(
             icon: const Icon(Icons.logout),
             tooltip: "Logout",
-            onPressed: () {
-              // Aqui colocas o teu método de logout
-              // Ex: AuthService.logout(), Navigator.pushReplacementNamed, etc.
+            onPressed: () async {
+              await AuthService().signOut(context);
             },
           ),
 
@@ -155,5 +177,11 @@ class _UserDashboardState extends State<UserDashboard> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    KafkaSocketService.disconnect(); // 🔒 Fecha a ligação WebSocket e limpa listeners
+    super.dispose();
   }
 }

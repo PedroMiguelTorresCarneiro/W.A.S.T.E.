@@ -49,20 +49,25 @@ class AuthService {
 
   // 🔹 Login com GitHub
   Future<void> loginWithGitHub(BuildContext context) async {
-    if (kIsWeb) {
-      _showError(context, "GitHub login ainda não é suportado na Web.");
-      return;
-    }
-
     try {
       final githubProvider =
           GithubAuthProvider()
             ..addScope('read:user')
             ..setCustomParameters({'allow_signup': 'false'});
 
-      final userCredential = await FirebaseAuth.instance.signInWithProvider(
-        githubProvider,
-      );
+      UserCredential userCredential;
+
+      if (kIsWeb) {
+        // 🔹 WEB login com popup
+        userCredential = await FirebaseAuth.instance.signInWithPopup(
+          githubProvider,
+        );
+      } else {
+        // 🔹 Mobile (não suportado no teu caso web-only)
+        userCredential = await FirebaseAuth.instance.signInWithProvider(
+          githubProvider,
+        );
+      }
 
       await _handleUserAfterLogin(context, userCredential.user!);
     } catch (e) {

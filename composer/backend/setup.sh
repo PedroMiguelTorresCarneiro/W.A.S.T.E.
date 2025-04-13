@@ -39,7 +39,7 @@ sleep 5
 echo ""
 echo "🌉 Para iniciar a Kafka WebSocket Bridge, corre os seguintes comandos num novo terminal:"
 echo "   source venv/bin/activate"
-echo "   python3 kafka-ws-bridge.py"
+echo "   python3 kafka-ws-bridge_v2.py"
 echo ""
 
 

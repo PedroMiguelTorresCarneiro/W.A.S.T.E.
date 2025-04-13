@@ -72,7 +72,7 @@ class RouteService {
     };
 
     final res = await http.post(
-      Uri.parse(AppConfig.routesApiV2),
+      Uri.parse("${AppConfig.routesApiBase}/routes/v2/routes"),
       headers: {"Content-Type": "application/json"},
       body: json.encode(payload),
     );

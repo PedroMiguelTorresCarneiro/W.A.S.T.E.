@@ -1,0 +1,62 @@
+_format_version: "3.0"
+
+services:
+  - name: s_backend
+    url: http://host.docker.internal:5008
+    routes:
+      - name: s_backend_route
+        paths:
+          - /api
+
+  - name: s_routes
+    url: http://host.docker.internal:5002
+    routes:
+      - name: s_routes_route
+        paths:
+          - /routes
+        plugins:
+          - name: cors
+            config:
+              origins:
+                - "*"
+              methods:
+                - GET
+                - POST
+                - DELETE
+                - PUT
+              headers:
+                - "*"
+              credentials: true
+
+  - name: s_monitoring
+    url: http://host.docker.internal:5004
+    routes:
+      - name: s_monitoring_route
+        paths:
+          - /monitoring
+        strip_path: true
+        plugins:
+          - name: cors
+            config:
+              origins:
+                - "*"
+              methods:
+                - GET
+                - POST
+                - PUT
+                - DELETE
+              headers:
+                - "*"
+              credentials: true
+
+  - name: kafka_ws
+    url: http://host.docker.internal:5006
+    routes:
+      - name: kafka_ws_route
+        paths:
+          - /socket.io
+        protocols:
+          - http
+        strip_path: false
+        preserve_host: true
+        

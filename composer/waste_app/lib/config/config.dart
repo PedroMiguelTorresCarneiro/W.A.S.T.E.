@@ -1,38 +1,45 @@
 class AppConfig {
   // URL base do serviço de rotas (ajustável consoante o domínio do backend)
-  static const String routesApiBase = "http://localhost:5002";
+  //tatic const String routesApiBase = "http://localhost:5002";
   // URL base do serviço FastAPI (ajustável consoante o domínio do backend)
-  static const String fastApiBase = "http://localhost:8000";
+  //static const String fastApiBase = "http://localhost:5008";
   // URL base do serviço de sensores (ajustável consoante o domínio do backend)
-  static const String sensorApiBase = "http://localhost:5004/v2";
+  //static const String sensorApiBase = "http://localhost:5004/v2";
   // URL base do serviço de rotas (ajustável consoante o domínio do backend)
-  static const String routesApiV2 = "http://localhost:5002/v2/routes";
+  //static const String routesApiV2 = "http://localhost:5002/v2/routes";
   // URL base do serviço de sensores (ajustável consoante o domínio do backend)
-  static const String kafkaWebSocketUrl = "http://localhost:5006";
+  //static const String kafkaWebSocketUrl = "http://localhost:5006";
 
-  // ID da rota (pode ser parametrizado no futuro)
+  // Kong faz o routing para os serviços certos com base nos paths
+  static const String fastApiBase =
+      "http://localhost:8000/api"; // FastAPI: users, bins
+  static const String routesApiBase =
+      "http://localhost:8000/routes"; // Serviço de rotas
+  static const String sensorApiBase =
+      "http://localhost:8000/monitoring"; // Serviço de sensores
+  static const String kafkaWebSocketUrl =
+      "http://localhost:8000"; // ✅ Sem /socket.io
+
+  // Rota por omissão
   static const String defaultRouteId = "r1741451296";
 
-  // URL completo do endpoint de rota
-  static String get routeUrl => "$routesApiBase/v1/routes?id=$defaultRouteId";
+  // Rotas
+  static String get routeUrl => "$routesApiBase/v2/routes?id=$defaultRouteId";
+  static String getRouteQueryUrl({String? truckId}) {
+    final base = "$routesApiBase/v2/routes";
+    return truckId != null ? "$base?truck_id=$truckId" : base;
+  }
 
-  // URL base do serviço FastAPI (ajustável consoante o domínio do backend)
-  static String userExistsUrl(String uid) => "$fastApiBase/users/exists/$uid";
+  static String deleteRouteUrl(String routeId) =>
+      "$routesApiBase/v2/routes?id=$routeId";
+
+  // Users
+  static String userExistsUrl(String uid) => "$fastApiBase/users/$uid";
   static String get createUserUrl => "$fastApiBase/users";
-
-  // URL base do serviço FastAPI (ajustável consoante o domínio do backend)
   static String get binsUrl => "$fastApiBase/bins";
   static String fillLevelUrl(String serial) => "$fastApiBase/bins/fill/$serial";
 
-  // URL base do serviço FastAPI (ajustável consoante o domínio do backend)
-  static String get topicUrl => "$sensorApiBase/topic";
-  static String get sensorUrl => "$sensorApiBase/sensors";
-
-  // URL base do serviço FastAPI (ajustável consoante o domínio do backend)
-  static String getRouteQueryUrl({String? truckId}) {
-    return truckId != null ? "$routesApiV2?truck_id=$truckId" : routesApiV2;
-  }
-
-  // URL base do serviço FastAPI (ajustável consoante o domínio do backend)
-  static String deleteRouteUrl(String routeId) => "$routesApiV2?id=$routeId";
+  // Sensores
+  static String get topicUrl => "$sensorApiBase/v2/topic";
+  static String get sensorUrl => "$sensorApiBase/v2/sensors";
 }

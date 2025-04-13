@@ -170,3 +170,22 @@ def check_user_exists(uid: str):
             return {"exists": True, "role": result["role"]}
         else:
             return {"exists": False}
+
+# 🔹 GET /users/by_imei/{imei}
+@app.get("/users/by_imei/{imei}")
+def get_user_by_imei(imei: str):
+    with conn.cursor() as cursor:
+        cursor.execute("SELECT uid, role, imei, usage_count FROM users WHERE imei = %s", (imei,))
+        result = cursor.fetchone()
+        if result:
+            return result
+        else:
+            raise HTTPException(status_code=404, detail="User not found with this IMEI")
+
+@app.post("/users/{uid}/reset_usage")
+def reset_usage_count(uid: str):
+    with conn.cursor() as cursor:
+        sql = "UPDATE users SET usage_count = 0 WHERE uid = %s"
+        cursor.execute(sql, (uid,))
+        conn.commit()
+        return {"message": f"usage_count resetado para o user {uid}"}

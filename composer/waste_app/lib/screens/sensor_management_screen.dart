@@ -12,8 +12,13 @@ class _SensorManagementScreenState extends State<SensorManagementScreen> {
   List<Bin> bins = [];
 
   Future<void> _fetchBins() async {
-    final data = await BinService.getBins();
-    setState(() => bins = data);
+    try {
+      final data = await BinService.getBins();
+      setState(() => bins = data);
+    } catch (e) {
+      print("Erro ao obter bins: $e");
+      setState(() => bins = []); // limpa a lista visual
+    }
   }
 
   Future<void> _showAddBinDialog() async {
@@ -31,9 +36,17 @@ class _SensorManagementScreenState extends State<SensorManagementScreen> {
               ),
               TextButton(
                 onPressed: () async {
-                  await BinService.addBin(controller.toBin());
-                  Navigator.pop(context);
-                  _fetchBins();
+                  try {
+                    await BinService.addBin(controller.toBin());
+                    Navigator.pop(context);
+                    await _fetchBins(); // Atualiza a lista a partir do backend
+                  } catch (e) {
+                    // Mostra erro se falhar
+                    Navigator.pop(context);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Erro ao adicionar sensor: $e')),
+                    );
+                  }
                 },
                 child: const Text("Adicionar"),
               ),
