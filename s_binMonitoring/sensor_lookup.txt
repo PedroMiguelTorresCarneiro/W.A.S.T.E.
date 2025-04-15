@@ -29,4 +29,3 @@ BIN-AVE-028:bin_monitoring
 BIN-AVE-029:bin_monitoring
 BIN-AVE-030:bin_monitoring
 BIN-AVE-030:bin_monitoring
-TEst1:nfc-tags

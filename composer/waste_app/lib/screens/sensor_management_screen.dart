@@ -14,10 +14,12 @@ class _SensorManagementScreenState extends State<SensorManagementScreen> {
   Future<void> _fetchBins() async {
     try {
       final data = await BinService.getBins();
-      setState(() => bins = data);
+      setState(() {
+        bins = data; // Atualiza a lista com a resposta da API
+      });
     } catch (e) {
       print("Erro ao obter bins: $e");
-      setState(() => bins = []); // limpa a lista visual
+      setState(() => bins = []); // Limpa a lista em caso de erro
     }
   }
 
@@ -37,11 +39,13 @@ class _SensorManagementScreenState extends State<SensorManagementScreen> {
               TextButton(
                 onPressed: () async {
                   try {
+                    // Adiciona o bin
                     await BinService.addBin(controller.toBin());
+
+                    // Fecha o diálogo
                     Navigator.pop(context);
-                    await _fetchBins(); // Atualiza a lista a partir do backend
                   } catch (e) {
-                    // Mostra erro se falhar
+                    // Exibe erro corretamente na SnackBar
                     Navigator.pop(context);
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('Erro ao adicionar sensor: $e')),
@@ -186,13 +190,35 @@ class _BinFormController {
     return c;
   }
 
-  Bin toBin() => Bin(
-    sensorSerial: serial.text,
-    lat: double.tryParse(lat.text) ?? 0.0,
-    lon: double.tryParse(lon.text) ?? 0.0,
-    nfcToken: token.text,
-    topic: topic.text,
-  );
+  Bin toBin() {
+    // Verificar se os campos não são vazios
+    if (serial.text.isEmpty ||
+        lat.text.isEmpty ||
+        lon.text.isEmpty ||
+        token.text.isEmpty ||
+        topic.text.isEmpty) {
+      throw Exception("Todos os campos são obrigatórios.");
+    }
+
+    // Garantir que lat e lon sejam números válidos, se não, usar valores padrão
+    double latValue = double.tryParse(lat.text) ?? 0.0;
+    double lonValue = double.tryParse(lon.text) ?? 0.0;
+
+    String fillLevelValue = "0";
+
+    print(
+      "Campos do formulário inicializados: ${serial.text}, ${lat.text}, ${lon.text}, ${token.text}, ${topic.text}, fill_level: $fillLevelValue",
+    );
+
+    return Bin(
+      sensorSerial: serial.text,
+      lat: latValue,
+      lon: lonValue,
+      nfcToken: token.text,
+      topic: topic.text,
+      fillLevel: fillLevelValue,
+    );
+  }
 }
 
 class _BinForm extends StatelessWidget {

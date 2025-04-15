@@ -320,6 +320,17 @@ def api_remove_sensors():
             {
               "message": "Sensors removed: ['temperature_sensor_1', 'humidity_sensor_2']"
             }
+      207:
+        description: Partial success (some topics deleted, some failed)
+        examples:
+          application/json:
+            {
+              "message": "Topics removed: ['temperature_readings']",
+              "error": "Some topics could not be deleted",
+              "failed_deletions": [
+                {"topic": "humidity_readings", "error": "Topic is in use"}
+              ]
+            }
       400:
         description: Invalid input
         examples:
@@ -369,6 +380,9 @@ def api_remove_sensors():
                 for sensor_id in all_sensors:
                     r.delete(sensor_id)
 
+                # Remove all sensors from the lookup file
+                with open(LOOKUP_FILE, "w") as f:
+                    f.truncate(0)  # Clear file content
                 logger.info(f"All sensors removed (total: {len(all_sensors)})")
                 return jsonify({"message": f"All sensors removed ({len(all_sensors)} total)"}), 200
             except redis.RedisError as e:
@@ -394,6 +408,18 @@ def api_remove_sensors():
         for sensor_id in found_sensors:
             r.delete(sensor_id)
 
+            # Also remove the sensor from the lookup file
+            try:
+                with open(LOOKUP_FILE, "r") as f:
+                    lines = f.readlines()
+                with open(LOOKUP_FILE, "w") as f:
+                    for line in lines:
+                        if not line.startswith(sensor_id):
+                            f.write(line)
+            except IOError as e:
+                logger.error(f"Failed to update lookup file: {str(e)}")
+                # Continue even if file write fails
+
         result = {
             "message": f"Sensors removed: {found_sensors}"
         }
@@ -413,6 +439,7 @@ def api_remove_sensors():
     except Exception as e:
         logger.error(f"Unexpected error during sensor removal: {str(e)}")
         return jsonify({"error": "Internal server error", "details": str(e)}), 500
+
 
 # ===========================
 # 🔥 TOPIC ROUTES (v2/topic)

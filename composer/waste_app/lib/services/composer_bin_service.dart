@@ -18,7 +18,7 @@ class Bin {
     required this.lon,
     required this.nfcToken,
     required this.topic,
-    this.fillLevel,
+    this.fillLevel = "0",
   });
 
   factory Bin.fromJson(Map<String, dynamic> json) => Bin(
@@ -28,7 +28,7 @@ class Bin {
     lon: json['lon'],
     nfcToken: json['nfc_token'],
     topic: json['topic'],
-    fillLevel: json['fill_level'],
+    fillLevel: json['fill_level'] ?? "0",
   );
 
   Map<String, dynamic> toJson() => {
@@ -57,34 +57,60 @@ class BinService {
   }
 
   static Future<Bin> addBin(Bin bin) async {
-    // 1. Tenta criar o sensor no serviço de sensores
+    // 1. Verifica se o sensor já existe
+    final sensorExistsResponse = await http.get(
+      Uri.parse('$externalSensorUrl/${bin.sensorSerial}'),
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (sensorExistsResponse.statusCode == 200) {
+      // Se o sensor já existe, lança erro
+      throw Exception('Sensor ${bin.sensorSerial} já existe!');
+    }
+
+    // 2. Tenta criar o sensor no serviço de sensores
     final sensorResponse = await http.post(
       Uri.parse(externalSensorUrl),
       headers: {'Content-Type': 'application/json'},
       body: json.encode({'sensor_id': bin.sensorSerial, 'topic': bin.topic}),
     );
 
+    print(
+      'Sensor Response: ${sensorResponse.statusCode}, Body: ${sensorResponse.body}',
+    );
+
     if (sensorResponse.statusCode != 200 && sensorResponse.statusCode != 201) {
       throw Exception('Erro ao criar sensor no serviço de monitorização');
     }
 
-    // 2. Cria o tópico (se necessário)
+    // 3. Tenta criar o tópico, e se já existir (409), considera como sucesso
     final topicResponse = await http.post(
       Uri.parse(externalTopicUrl),
       headers: {'Content-Type': 'application/json'},
       body: json.encode({'topic': bin.topic}),
     );
 
-    if (topicResponse.statusCode != 200 && topicResponse.statusCode != 201) {
-      throw Exception('Erro ao criar tópico');
+    print(
+      'Topic Response: ${topicResponse.statusCode}, Body: ${topicResponse.body}',
+    );
+
+    if (topicResponse.statusCode != 200 &&
+        topicResponse.statusCode != 201 &&
+        topicResponse.statusCode != 409) {
+      throw Exception('Erro ao criar ou verificar tópico');
+    } else if (topicResponse.statusCode == 409) {
+      // Se o tópico já existir, não faz nada
+      print("✅ O tópico ${bin.topic} já existe!");
     }
 
-    // 3. Cria o Bin no serviço principal
+    // 4. Cria o Bin no serviço principal
     final binResponse = await http.post(
       Uri.parse(baseUrl),
       headers: {'Content-Type': 'application/json'},
       body: json.encode(bin.toJson()),
     );
+
+    print('Bin Response: ${binResponse.statusCode}, Body: ${binResponse.body}');
 
     if (binResponse.statusCode != 200 && binResponse.statusCode != 201) {
       throw Exception('Erro ao adicionar Bin à base de dados');
