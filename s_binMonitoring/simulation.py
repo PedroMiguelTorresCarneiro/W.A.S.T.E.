@@ -34,8 +34,8 @@ try:
         producer.send(KAFKA_TOPIC, value=message)
         print(f"📤 Enviado: {message}")
 
-        # Esperar entre 1 e 2 segundos
-        time.sleep(random.uniform(4.0, 10.0))
+        # Esperar entre 6 e 15 segundos
+        time.sleep(random.uniform(6.0, 15.0))
 
 except KeyboardInterrupt:
     print("\n🛑 Simulador interrompido pelo utilizador.")

@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  bd-routes:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: waste_db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+  routesapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: .env
+    ports:
+      - "5002:5002"
+    depends_on:
+      - bd-routes
+    restart: on-failure
+
+volumes:
+  mariadb_data:

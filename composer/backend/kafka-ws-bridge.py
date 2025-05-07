@@ -1,13 +1,16 @@
+import eventlet
+eventlet.monkey_patch()
+
+import json
+import time
 from flask import Flask
 from flask_socketio import SocketIO
 from kafka import KafkaConsumer
-import json
-import threading
-import time
+
 from config import KAFKA_SERVER, KAFKA_TOPICS, FLASK_HOST, FLASK_PORT, FLASK_DEBUG
 
 app = Flask(__name__)
-socketio = SocketIO(app, cors_allowed_origins="*", async_mode='threading')
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode="eventlet")
 
 def safe_deserializer(msg):
     try:
@@ -35,13 +38,12 @@ def kafka_consumer_worker(topic):
 
 @app.route("/")
 def index():
-    return "🧠 Kafka-to-WebSocket Bridge ativo"
+    return "🧠 Kafka-to-WebSocket Bridge com Eventlet ativo"
 
 if __name__ == "__main__":
-    print("🚀 A iniciar o Kafka-WS bridge...")
+    print("🚀 A iniciar bridge com Eventlet...")
 
     for topic in KAFKA_TOPICS:
-        t = threading.Thread(target=kafka_consumer_worker, args=(topic,), daemon=True)
-        t.start()
+        eventlet.spawn(kafka_consumer_worker, topic)
 
-    socketio.run(app, host=FLASK_HOST, port=FLASK_PORT, debug=FLASK_DEBUG, use_reloader=False)
+    socketio.run(app, host=FLASK_HOST, port=FLASK_PORT, debug=FLASK_DEBUG)

@@ -17,175 +17,222 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Dados de conexão
-conn = pymysql.connect(
-    host=DB_HOST,
-    port=DB_PORT,
-    user=DB_USER,
-    password=DB_PASS,
-    database=DB_NAME,
-    cursorclass=pymysql.cursors.DictCursor
-)
+# Função para criar nova ligação à base de dados
+def get_connection():
+    return pymysql.connect(
+        host=DB_HOST,
+        port=DB_PORT,
+        user=DB_USER,
+        password=DB_PASS,
+        database=DB_NAME,
+        cursorclass=pymysql.cursors.DictCursor
+    )
 
-# Modelo para os dados dos bins
+# Modelos Pydantic
 class Bin(BaseModel):
     sensor_serial: str
     lat: float
     lon: float
     nfc_token: str
     topic: str
-    #fill_level: str | None = None  # opcional ao criar
     fill_level: Union[str, None] = None
-    
-# Modelo para atualizar o nível de preenchimento
+
 class FillLevelUpdate(BaseModel):
     fill_level: str
 
 class User(BaseModel):
     uid: str
-    role: str  # "admin" ou "user"
+    role: str
     imei: Union[str, None] = None
 
 class ImeiUpdate(BaseModel):
     imei: str
 
 class UsageIncrement(BaseModel):
-    pass  # Este modelo é vazio, apenas para formalidade
+    pass
 
-
-# 🔹 GET /bins
+# Endpoints Bins
 @app.get("/bins")
 def get_bins():
-    with conn.cursor() as cursor:
-        cursor.execute("SELECT * FROM bins")
-        return cursor.fetchall()
+    conn = get_connection()
+    try:
+        with conn.cursor() as cursor:
+            cursor.execute("SELECT * FROM bins")
+            return cursor.fetchall()
+    finally:
+        conn.close()
 
-# 🔹 POST /bins
 @app.post("/bins")
 def add_bin(bin: Bin):
-    with conn.cursor() as cursor:
-        sql = """
-        INSERT INTO bins (sensor_serial, lat, lon, nfc_token, topic)
-        VALUES (%s, %s, %s, %s, %s)
-        """
-        cursor.execute(sql, (bin.sensor_serial, bin.lat, bin.lon, bin.nfc_token, bin.topic))
+    conn = get_connection()
+    try:
+        with conn.cursor() as cursor:
+            sql = """
+            INSERT INTO bins (sensor_serial, lat, lon, nfc_token, topic)
+            VALUES (%s, %s, %s, %s, %s)
+            """
+            cursor.execute(sql, (bin.sensor_serial, bin.lat, bin.lon, bin.nfc_token, bin.topic))
         conn.commit()
         return {"message": "Bin added successfully"}
+    finally:
+        conn.close()
 
-# 🔹 PUT /bins/{id}
 @app.put("/bins/{bin_id}")
 def update_bin(bin_id: int, bin: Bin):
-    with conn.cursor() as cursor:
-        sql = """
-        UPDATE bins SET sensor_serial=%s, lat=%s, lon=%s, nfc_token=%s, topic=%s WHERE id=%s
-        """
-        cursor.execute(sql, (bin.sensor_serial, bin.lat, bin.lon, bin.nfc_token, bin.topic, bin_id))
+    conn = get_connection()
+    try:
+        with conn.cursor() as cursor:
+            sql = """
+            UPDATE bins SET sensor_serial=%s, lat=%s, lon=%s, nfc_token=%s, topic=%s WHERE id=%s
+            """
+            cursor.execute(sql, (bin.sensor_serial, bin.lat, bin.lon, bin.nfc_token, bin.topic, bin_id))
         conn.commit()
         return {"message": "Bin updated successfully"}
+    finally:
+        conn.close()
 
-# 🔹 DELETE /bins/{id}
 @app.delete("/bins/{bin_id}")
 def delete_bin(bin_id: int):
-    with conn.cursor() as cursor:
-        cursor.execute("DELETE FROM bins WHERE id = %s", (bin_id,))
+    conn = get_connection()
+    try:
+        with conn.cursor() as cursor:
+            cursor.execute("DELETE FROM bins WHERE id = %s", (bin_id,))
         conn.commit()
         return {"message": "Bin deleted successfully"}
+    finally:
+        conn.close()
 
-# 🔹 PUT /bins/fill/{sensor_serial}
 @app.put("/bins/fill/{sensor_serial}")
 def update_fill_level(sensor_serial: str, payload: FillLevelUpdate):
-    with conn.cursor() as cursor:
-        sql = "UPDATE bins SET fill_level = %s WHERE sensor_serial = %s"
-        cursor.execute(sql, (payload.fill_level, sensor_serial))
+    conn = get_connection()
+    try:
+        with conn.cursor() as cursor:
+            sql = "UPDATE bins SET fill_level = %s WHERE sensor_serial = %s"
+            cursor.execute(sql, (payload.fill_level, sensor_serial))
         conn.commit()
         return {"message": "Fill level updated successfully"}
+    finally:
+        conn.close()
 
-
-# Endpoints para Users
+# Endpoints Users
 @app.get("/users")
 def get_users():
-    with conn.cursor() as cursor:
-        cursor.execute("SELECT * FROM users")
-        return cursor.fetchall()
+    conn = get_connection()
+    try:
+        with conn.cursor() as cursor:
+            cursor.execute("SELECT * FROM users")
+            return cursor.fetchall()
+    finally:
+        conn.close()
 
 @app.get("/users/{uid}")
 def get_user_by_uid(uid: str):
-    with conn.cursor() as cursor:
-        cursor.execute("SELECT uid, role, imei, usage_count FROM users WHERE uid = %s", (uid,))
-        result = cursor.fetchone()
-        if result:
-            return result
-        else:
-            raise HTTPException(status_code=404, detail="User not found")
+    conn = get_connection()
+    try:
+        with conn.cursor() as cursor:
+            cursor.execute("SELECT uid, role, imei, usage_count FROM users WHERE uid = %s", (uid,))
+            result = cursor.fetchone()
+            if result:
+                return result
+            else:
+                raise HTTPException(status_code=404, detail="User not found")
+    finally:
+        conn.close()
 
 @app.post("/users")
 def add_user(user: User):
-    with conn.cursor() as cursor:
-        cursor.execute("SELECT * FROM users WHERE uid = %s", (user.uid,))
-        existing = cursor.fetchone()
-        if existing:
-            raise HTTPException(status_code=400, detail="User already exists")
+    conn = get_connection()
+    try:
+        with conn.cursor() as cursor:
+            cursor.execute("SELECT * FROM users WHERE uid = %s", (user.uid,))
+            existing = cursor.fetchone()
+            if existing:
+                raise HTTPException(status_code=400, detail="User already exists")
 
-        sql = """
-        INSERT INTO users (uid, role, imei, created_at)
-        VALUES (%s, %s, %s, %s)
-        """
-        cursor.execute(sql, (user.uid, user.role, user.imei, datetime.utcnow()))
+            sql = """
+            INSERT INTO users (uid, role, imei, created_at)
+            VALUES (%s, %s, %s, %s)
+            """
+            cursor.execute(sql, (user.uid, user.role, user.imei, datetime.utcnow()))
         conn.commit()
         return {"message": "User added successfully"}
+    finally:
+        conn.close()
 
 @app.put("/users/{uid}/imei")
 def update_user_imei(uid: str, payload: ImeiUpdate):
-    with conn.cursor() as cursor:
-        sql = "UPDATE users SET imei = %s WHERE uid = %s"
-        cursor.execute(sql, (payload.imei, uid))
+    conn = get_connection()
+    try:
+        with conn.cursor() as cursor:
+            sql = "UPDATE users SET imei = %s WHERE uid = %s"
+            cursor.execute(sql, (payload.imei, uid))
         conn.commit()
         return {"message": "IMEI updated successfully"}
+    finally:
+        conn.close()
 
 @app.post("/users/{uid}/increment_usage")
 def increment_usage_count(uid: str):
-    with conn.cursor() as cursor:
-        sql = "UPDATE users SET usage_count = COALESCE(usage_count, 0) + 1 WHERE uid = %s"
-        cursor.execute(sql, (uid,))
+    conn = get_connection()
+    try:
+        with conn.cursor() as cursor:
+            sql = "UPDATE users SET usage_count = COALESCE(usage_count, 0) + 1 WHERE uid = %s"
+            cursor.execute(sql, (uid,))
         conn.commit()
         return {"message": f"usage_count incremented for user {uid}"}
+    finally:
+        conn.close()
 
 @app.get("/users/{uid}/usage_count")
 def get_usage_count(uid: str):
-    with conn.cursor() as cursor:
-        cursor.execute("SELECT usage_count FROM users WHERE uid = %s", (uid,))
-        result = cursor.fetchone()
-        if result:
-            return {"uid": uid, "usage_count": result["usage_count"]}
-        else:
-            raise HTTPException(status_code=404, detail="User not found")
+    conn = get_connection()
+    try:
+        with conn.cursor() as cursor:
+            cursor.execute("SELECT usage_count FROM users WHERE uid = %s", (uid,))
+            result = cursor.fetchone()
+            if result:
+                return {"uid": uid, "usage_count": result["usage_count"]}
+            else:
+                raise HTTPException(status_code=404, detail="User not found")
+    finally:
+        conn.close()
 
-# 🔹 GET /users/exists/{uid}
 @app.get("/users/exists/{uid}")
 def check_user_exists(uid: str):
-    with conn.cursor() as cursor:
-        cursor.execute("SELECT role FROM users WHERE uid = %s", (uid,))
-        result = cursor.fetchone()
-        if result:
-            return {"exists": True, "role": result["role"]}
-        else:
-            return {"exists": False}
+    conn = get_connection()
+    try:
+        with conn.cursor() as cursor:
+            cursor.execute("SELECT role FROM users WHERE uid = %s", (uid,))
+            result = cursor.fetchone()
+            if result:
+                return {"exists": True, "role": result["role"]}
+            else:
+                return {"exists": False}
+    finally:
+        conn.close()
 
-# 🔹 GET /users/by_imei/{imei}
 @app.get("/users/by_imei/{imei}")
 def get_user_by_imei(imei: str):
-    with conn.cursor() as cursor:
-        cursor.execute("SELECT uid, role, imei, usage_count FROM users WHERE imei = %s", (imei,))
-        result = cursor.fetchone()
-        if result:
-            return result
-        else:
-            raise HTTPException(status_code=404, detail="User not found with this IMEI")
+    conn = get_connection()
+    try:
+        with conn.cursor() as cursor:
+            cursor.execute("SELECT uid, role, imei, usage_count FROM users WHERE imei = %s", (imei,))
+            result = cursor.fetchone()
+            if result:
+                return result
+            else:
+                raise HTTPException(status_code=404, detail="User not found with this IMEI")
+    finally:
+        conn.close()
 
 @app.post("/users/{uid}/reset_usage")
 def reset_usage_count(uid: str):
-    with conn.cursor() as cursor:
-        sql = "UPDATE users SET usage_count = 0 WHERE uid = %s"
-        cursor.execute(sql, (uid,))
+    conn = get_connection()
+    try:
+        with conn.cursor() as cursor:
+            sql = "UPDATE users SET usage_count = 0 WHERE uid = %s"
+            cursor.execute(sql, (uid,))
         conn.commit()
         return {"message": f"usage_count resetado para o user {uid}"}
+    finally:
+        conn.close()
