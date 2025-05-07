@@ -1,22 +1,18 @@
-FROM python:3.11-slim
+FROM python:3.8-alpine
 
-# Instala dependências do sistema (incluindo MariaDB C Connector)
-RUN apt-get update && apt-get install -y \
-    libmariadb-dev \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
+MAINTAINER Pedro Carneiro
 
-# Define o diretório de trabalho
-WORKDIR /app
+# Instala só MariaDB Connector e headers Python
+RUN apk add --no-cache \
+    gcc \
+    musl-dev \
+    python3-dev \
+    mariadb-dev
 
-# Copia apenas o ficheiro de dependências
-COPY requirements.txt .
+COPY requirements.txt requirements.txt
 
-# Instala dependências Python
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
-# Copia o código-fonte
 COPY . .
 
-# Define o comando de arranque
 CMD ["python", "routesAPI_v2.py"]
