@@ -1,0 +1,60 @@
+version: "3.8"
+
+services:
+  # Redis
+  redis:
+    image: redis:7.2
+    container_name: redis_binmonitoring
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: always
+
+  # Zookeeper
+  zookeeper:
+    image: bitnami/zookeeper:3.9
+    container_name: zookeeper_binmonitoring
+    ports:
+      - "2181:2181"
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    restart: always
+
+  # Kafka
+  kafka:
+    image: bitnami/kafka:3.7
+    container_name: kafka_binmonitoring
+    ports:
+      - "9092:9092"
+      - "29092:29092"  # Internal port for containers
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka:29092,EXTERNAL://localhost:9092
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://0.0.0.0:29092,EXTERNAL://0.0.0.0:9092
+      - KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      - ALLOW_PLAINTEXT_LISTENER=yes
+    depends_on:
+      - zookeeper
+    restart: always
+
+  # Serviço s_binmonitoring
+  s_binmonitoring:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: s_binmonitoring
+    env_file:
+      - .env
+    ports:
+      - "5004:5004"
+    depends_on:
+      - redis
+      - kafka
+    volumes:
+      - ./sensor_lookup.txt:/app/sensor_lookup.txt  # 📁 persistência do ficheiro
+    restart: on-failure
+
+volumes:
+  redis_data:

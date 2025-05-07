@@ -19,6 +19,7 @@ from config import (
     FLASK_PORT, FLASK_HOST, FLASK_DEBUG,
     BASIC_AUTH_USER, BASIC_AUTH_PASS
 )
+from config import load_lookup_file
 
 app = Flask(__name__)
 swagger = Swagger(app)
@@ -731,4 +732,5 @@ signal.signal(signal.SIGTERM, signal_handler)
 # 🚀 Run App
 # ========================
 if __name__ == '__main__':
+    load_lookup_file()
     app.run(host=FLASK_HOST, port=FLASK_PORT, debug=FLASK_DEBUG)
