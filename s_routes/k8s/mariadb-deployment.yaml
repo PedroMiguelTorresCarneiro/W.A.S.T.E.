@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bd-routes
+  namespace: waste-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bd-routes
+  template:
+    metadata:
+      labels:
+        app: bd-routes
+    spec:
+      containers:
+        - name: mariadb
+          image: mariadb:10.6
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: routesapi-secret
+                  key: db_password
+            - name: MYSQL_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: routesapi-config
+                  key: DB_NAME
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: routesapi-secret
+                  key: db_user
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: routesapi-secret
+                  key: db_password
+          volumeMounts:
+            - name: mariadb-storage
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mariadb-storage
+          persistentVolumeClaim:
+            claimName: bd-routes-pvc

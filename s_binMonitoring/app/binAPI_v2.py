@@ -22,7 +22,23 @@ from config import (
 from config import load_lookup_file
 
 app = Flask(__name__)
-swagger = Swagger(app)
+
+swagger_config = {
+    "headers": [],
+    "specs": [
+        {
+            "endpoint": 'apispec',
+            "route": '/v2/binmonitoring/apidocs/apispec.json',
+            "rule_filter": lambda rule: True,
+            "model_filter": lambda tag: True,
+        }
+    ],
+    "static_url_path": "/v2/binmonitoring/flasgger_static",
+    "swagger_ui": True,
+    "specs_route": "/v2/binmonitoring/apidocs/"
+}
+
+swagger = Swagger(app, config=swagger_config)
 CORS(app)
 logging.basicConfig(level=logging.WARNING)
 logger = logging.getLogger("binAPI")
@@ -122,7 +138,7 @@ def requires_auth(f):
 # 🚀 SENSOR ROUTES (v2/sensors)
 # ==============================
 
-@app.route("/v2/sensors", methods=["POST"])
+@app.route("/v2/binmonitoring/sensors", methods=["POST"])
 def api_add_sensor():
     """
     Register a new sensor and assign it to a topic.
@@ -221,7 +237,7 @@ def api_add_sensor():
         logger.error(f"Redis error during sensor creation: {str(e)}")
         return jsonify({"error": "Database error occurred"}), 503
 
-@app.route("/v2/sensors", methods=["GET"])
+@app.route("/v2/binmonitoring/sensors", methods=["GET"])
 def api_list_sensors():
     """
     Get all registered sensors and their topics. If a sensor ID is provided, return only that sensor.
@@ -280,7 +296,7 @@ def api_list_sensors():
         logger.error(f"Unexpected error during sensor listing: {str(e)}")
         return jsonify({"error": "Internal server error", "details": str(e)}), 500
 
-@app.route("/v2/sensors", methods=["DELETE"])
+@app.route("/v2/binmonitoring/sensors", methods=["DELETE"])
 def api_remove_sensors():
     """
     Remove one or multiple sensors from the system.
@@ -446,7 +462,7 @@ def api_remove_sensors():
 # 🔥 TOPIC ROUTES (v2/topic)
 # ===========================
 
-@app.route("/v2/topic", methods=["POST"])
+@app.route("/v2/binmonitoring/topic", methods=["POST"])
 def api_create_topic():
     """
     Create a new Kafka topic.
@@ -523,7 +539,7 @@ def api_create_topic():
         return jsonify({"error": "Failed to create topic", "details": str(e)}), 500
 
 
-@app.route("/v2/topic", methods=["GET"])
+@app.route("/v2/binmonitoring/topic", methods=["GET"])
 def api_list_topics():
     """
     Get all existing Kafka topics.
@@ -562,7 +578,7 @@ def api_list_topics():
 
 
 
-@app.route("/v2/topic", methods=["DELETE"])
+@app.route("/v2/binmonitoring/topic", methods=["DELETE"])
 #@requires_auth
 def api_delete_topics():
     """

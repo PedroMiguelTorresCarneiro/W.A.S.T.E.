@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-ws-bridge
+  namespace: waste-app
+  labels:
+    app: kafka-ws-bridge
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kafka-ws-bridge
+  template:
+    metadata:
+      labels:
+        app: kafka-ws-bridge
+    spec:
+      containers:
+        - name: kafka-ws-bridge
+          image: registry.deti/waste-app/kafka_ws_bridge:latest
+          ports:
+            - containerPort: 5006
+          envFrom:
+            - secretRef:
+                name: waste-env

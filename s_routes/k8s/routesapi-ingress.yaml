@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: routesapi-ingress
+  namespace: waste-app
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/frontend-entry-points: http,https
+    traefik.ingress.kubernetes.io/redirect-entry-point: https
+    traefik.ingress.kubernetes.io/redirect-permanent: "true"
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: grupo2-egs-deti.ua.pt
+      http:
+        paths:
+          - path: /v2/routes
+            pathType: Prefix
+            backend:
+              service:
+                name: routesapi-service
+                port:
+                  number: 80

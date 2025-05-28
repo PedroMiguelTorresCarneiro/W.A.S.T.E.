@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+  namespace: waste-app
+  labels:
+    app: api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: api
+          image: registry.deti/waste-app/api:latest
+          ports:
+            - containerPort: 5008
+          envFrom:
+            - secretRef:
+                name: waste-env

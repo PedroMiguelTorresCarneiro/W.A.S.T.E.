@@ -2,17 +2,19 @@ FROM python:3.8-alpine
 
 MAINTAINER Pedro Carneiro
 
-# Instala só MariaDB Connector e headers Python
+WORKDIR /app
+
 RUN apk add --no-cache \
     gcc \
     musl-dev \
     python3-dev \
     mariadb-dev
 
-COPY requirements.txt requirements.txt
+COPY requirements.txt .
+COPY app/ /app/
 
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+EXPOSE 5002
 
 CMD ["python", "routesAPI_v2.py"]

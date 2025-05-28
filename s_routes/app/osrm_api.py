@@ -4,51 +4,129 @@ import json
 from dotenv import load_dotenv
 import os
 from config import OSRM_BASE_URL
+import traceback
 
 
 def calculate_routing_driving(start, waypoints, end):
     """
     Calculates an optimized driving route using OSRM, considering a start point, waypoints, and an endpoint.
-    
-    Parameters:
-        start (tuple): The starting point as (latitude, longitude).
-        waypoints (list of tuples): Intermediate waypoints [(lat1, lon1), (lat2, lon2), ...].
-        end (tuple): The endpoint as (latitude, longitude).
-    
-    Returns:
-        dict: A dictionary containing the distance (km), duration (min), and route coordinates.
-        int: HTTP status code (200 for success, 400/500 for errors).
     """
     if not start or not end:
         return {"error": "Invalid start or end"}, 400
-    
+
     # OSRM base URL
     base_url = f"{OSRM_BASE_URL}/trip/v1/driving/"
-    
+
     # Merge coordinates into one sequence: Start -> Waypoints -> End
     all_coordinates = [start] + waypoints + [end]
     coords_str = ";".join([f"{lon},{lat}" for lat, lon in all_coordinates])
     url = f"{base_url}{coords_str}?source=first&destination=last&overview=full&geometries=geojson"
-    
-    # Debug: Print the request URL
-    #print(f"OSRM Request URL: {url}")
-    
-    response = requests.get(url)
+
+    print(f"[DEBUG] OSRM Request URL: {url}")
+
+    try:
+        response = requests.get(url, timeout=5)
+        response_text = response.text
+        print(f"[DEBUG] OSRM status code: {response.status_code}")
+    except Exception as e:
+        print("[EXCEPTION] Falha ao fazer request para OSRM")
+        print(f"[EXCEPTION] URL: {url}")
+        print(f"[EXCEPTION] Tipo: {type(e).__name__}")
+        print(f"[EXCEPTION] Erro: {str(e)}")
+        traceback.print_exc()
+        return {"error": "Falha ao comunicar com o serviço OSRM (exceção)"}, 500
+
     if response.status_code != 200:
-        return {"error": f"Failed to get route from OSRM. Status Code: {response.status_code}"}, 500
-    
-    data = response.json()
+        print(f"[ERROR] OSRM response status: {response.status_code}")
+        print(f"[ERROR] OSRM response text: {response_text}")
+        return {"error": f"Falha ao comunicar com o serviço OSRM. Código: {response.status_code}"}, 503
+
+    try:
+        data = response.json()
+    except Exception as e:
+        print("[ERROR] OSRM returned non-JSON response")
+        print(f"[RAW RESPONSE] {response_text}")
+        print(f"[EXCEPTION] {type(e).__name__}: {str(e)}")
+        traceback.print_exc()
+        return {"error": "Invalid JSON from OSRM"}, 500
+
     if "trips" not in data or not data["trips"]:
+        print("[ERROR] OSRM response has no 'trips'")
+        print(data)
         return {"error": "No route found"}, 404
-    
+
     trip_info = data["trips"][0]
-    route_coordinates = [(lat, lon) for lon, lat in trip_info["geometry"]["coordinates"]]  # Convert to (lat, lon) format
-    
+    if "geometry" not in trip_info or not trip_info["geometry"]:
+        print("[ERROR] 'geometry' missing in trip_info")
+        print(trip_info)
+        return {"error": "Invalid geometry data from OSRM"}, 500
+
+    route_coordinates = [(lat, lon) for lon, lat in trip_info["geometry"]["coordinates"]]
+
     return {
         "distance_km": trip_info["distance"] / 1000,
         "duration_min": trip_info["duration"] / 60,
         "route_coordinates": route_coordinates
     }, 200
+
+# def calculate_routing_driving(start, waypoints, end):
+#     """
+#     Calculates an optimized driving route using OSRM, considering a start point, waypoints, and an endpoint.
+    
+#     Parameters:
+#         start (tuple): The starting point as (latitude, longitude).
+#         waypoints (list of tuples): Intermediate waypoints [(lat1, lon1), (lat2, lon2), ...].
+#         end (tuple): The endpoint as (latitude, longitude).
+    
+#     Returns:
+#         dict: A dictionary containing the distance (km), duration (min), and route coordinates.
+#         int: HTTP status code (200 for success, 400/500 for errors).
+#     """
+#     if not start or not end:
+#         return {"error": "Invalid start or end"}, 400
+    
+#     # OSRM base URL
+#     base_url = f"{OSRM_BASE_URL}/trip/v1/driving/"
+#     #base_url = f"{OSRM_BASE_URL}/route/v1/driving/"
+
+#     # Merge coordinates into one sequence: Start -> Waypoints -> End
+#     all_coordinates = [start] + waypoints + [end]
+#     coords_str = ";".join([f"{lon},{lat}" for lat, lon in all_coordinates])
+#     url = f"{base_url}{coords_str}?source=first&destination=last&overview=full&geometries=geojson"
+#     # Debug: Print the request URL
+#     print(f"OSRM Request URL: {url}")
+    
+#     try:
+#         response = requests.get(url, timeout=5)
+#         print(f"[DEBUG] OSRM status code: {response.status_code}")
+#         print(f"[DEBUG] OSRM response text: {response.text}")
+#     except Exception as e:
+#         print("[EXCEPTION] Falha ao fazer request para OSRM")
+#         print(f"[EXCEPTION] URL: {url}")
+#         print(f"[EXCEPTION] Tipo: {type(e).__name__}")
+#         print(f"[EXCEPTION] Erro: {str(e)}")
+#         traceback.print_exc()
+#         return {"error": "Falha ao comunicar com o serviço OSRM (exceção)"}, 500
+
+
+#     try:
+#         data = response.json()
+#     except Exception as e:
+#         print("[ERROR] OSRM returned non-JSON response")
+#         print(response.text)
+#         return {"error": "Invalid JSON from OSRM"}, 500
+
+#     if "trips" not in data or not data["trips"]:
+#         return {"error": "No route found"}, 404
+    
+#     trip_info = data["trips"][0]
+#     route_coordinates = [(lat, lon) for lon, lat in trip_info["geometry"]["coordinates"]]  # Convert to (lat, lon) format
+    
+#     return {
+#         "distance_km": trip_info["distance"] / 1000,
+#         "duration_min": trip_info["duration"] / 60,
+#         "route_coordinates": route_coordinates
+#     }, 200
 
 def calculate_routing_walking(start, end):
     """

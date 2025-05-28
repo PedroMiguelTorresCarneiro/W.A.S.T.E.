@@ -1,3 +1,40 @@
+# Docker and Kubernetes
+
+1. BUILD
+```bash
+docker build -t registry.deti/waste-app/routesapi:latest .
+```
+
+2. PUSH
+```bash
+docker push registry.deti/waste-app/routesapi:latest
+```
+
+3. APPLY DEPLOYMENT
+```bash
+# ADD
+kubectl apply -f k8s/ -n waste-app 
+
+# DELETE
+kubectl delete -f k8s/ -n waste-app 
+```
+
+4. APAGAR O POD (RESTART)
+```bash
+kubectl delete pod -l app=routesapi -n waste-app
+```
+
+5. RE-DEPLOY
+```bash
+kubectl rollout restart deployment routesapi -n waste-app
+```
+
+
+
+
+
+
+
 # Route Service
 
 This service allows calculating routes based on coordinates, storing them, and retrieving them.

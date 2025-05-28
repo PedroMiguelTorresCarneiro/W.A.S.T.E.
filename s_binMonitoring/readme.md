@@ -1,6 +1,43 @@
 BIN MONITORING:
 
 
+1. BUILD
+```bash
+docker build -t registry.deti/waste-app/bin_monitoring:latest .
+```
+
+2. PUSH
+```bash
+docker push registry.deti/waste-app/bin_monitoring:latest
+```
+
+3. APPLY DEPLOYMENT
+```bash
+# ADD
+kubectl apply -f k8s/ -n waste-app 
+
+# DELETE
+kubectl delete -f k8s/ -n waste-app 
+```
+
+4. APAGAR O POD (RESTART)
+```bash
+kubectl delete pod -l app=bin_monitoring -n waste-app
+```
+
+5. RE-DEPLOY
+```bash
+kubectl rollout restart deployment bin_monitoring -n waste-app
+```
+
+
+
+
+
+
+
+---
+
 - main topic to receive raw data:
 	`iot_raw_data`
 - re-route the sensor msg to the specific topics based on previous configuration

@@ -1,13 +1,19 @@
-FROM python:3.8-alpine
+# Dockerfile (na raiz do projeto bin_monitoring/)
+FROM python:3.10-slim
 
 MAINTAINER Inês Águia
 
 WORKDIR /app
 
-COPY requirements.txt requirements.txt
+# Copia requirements e instala
+COPY app/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN pip install -r requirements.txt
+# Copia todos os ficheiros da app
+COPY app/ /app/
 
-COPY . .
 
+EXPOSE 5004
+
+# Arranca a aplicação
 CMD ["python", "binAPI_v2.py"]

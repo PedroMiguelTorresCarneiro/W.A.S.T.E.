@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: routesapi-config
+  namespace: waste-app
+data:
+  DB_HOST: bd-routes
+  DB_PORT: "3306"
+  DB_NAME: waste_db
+  OSRM_BASE_URL: "http://router.project-osrm.org"
+  FLASK_HOST: 0.0.0.0
+  FLASK_PORT: "5002"
+  FLASK_DEBUG: "False"

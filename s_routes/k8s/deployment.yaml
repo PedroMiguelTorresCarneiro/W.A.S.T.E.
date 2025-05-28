@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: routesapi
+  namespace: waste-app
+  labels:
+    app: routesapi
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: routesapi
+  template:
+    metadata:
+      labels:
+        app: routesapi
+    spec:
+      containers:
+        - name: routesapi
+          image: registry.deti/waste-app/routesapi:latest
+          ports:
+            - containerPort: 5002
+          env:
+            - name: FLASK_ENV
+              value: production
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: routesapi-config
+                  key: DB_HOST
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: routesapi-secret
+                  key: db_user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: routesapi-secret
+                  key: db_password
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: routesapi-config
+                  key: DB_PORT
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: routesapi-config
+                  key: DB_NAME
+            - name: OSRM_BASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: routesapi-config
+                  key: OSRM_BASE_URL
+            - name: FLASK_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: routesapi-config
+                  key: FLASK_HOST
+            - name: FLASK_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: routesapi-config
+                  key: FLASK_PORT
+            - name: FLASK_DEBUG
+              valueFrom:
+                configMapKeyRef:
+                  name: routesapi-config
+                  key: FLASK_DEBUG

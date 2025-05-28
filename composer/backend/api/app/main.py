@@ -6,7 +6,7 @@ from typing import Union
 from datetime import datetime
 from config import DB_HOST, DB_PORT, DB_USER, DB_PASS, DB_NAME
 
-app = FastAPI()
+app = FastAPI(root_path="/v2/api")
 
 # CORS para permitir chamadas do Flutter
 app.add_middleware(
@@ -52,7 +52,7 @@ class UsageIncrement(BaseModel):
     pass
 
 # Endpoints Bins
-@app.get("/bins")
+@app.get("/v2/api/bins", tags=["bins"])
 def get_bins():
     conn = get_connection()
     try:
@@ -62,7 +62,7 @@ def get_bins():
     finally:
         conn.close()
 
-@app.post("/bins")
+@app.post("/v2/api/bins", tags=["bins"])
 def add_bin(bin: Bin):
     conn = get_connection()
     try:
@@ -77,7 +77,7 @@ def add_bin(bin: Bin):
     finally:
         conn.close()
 
-@app.put("/bins/{bin_id}")
+@app.put("/v2/api/bins/{bin_id}", tags=["bins"])
 def update_bin(bin_id: int, bin: Bin):
     conn = get_connection()
     try:
@@ -91,7 +91,7 @@ def update_bin(bin_id: int, bin: Bin):
     finally:
         conn.close()
 
-@app.delete("/bins/{bin_id}")
+@app.delete("/v2/api/bins/{bin_id}", tags=["bins"])
 def delete_bin(bin_id: int):
     conn = get_connection()
     try:
@@ -102,7 +102,7 @@ def delete_bin(bin_id: int):
     finally:
         conn.close()
 
-@app.put("/bins/fill/{sensor_serial}")
+@app.put("/v2/api/bins/fill/{sensor_serial}", tags=["bins"])
 def update_fill_level(sensor_serial: str, payload: FillLevelUpdate):
     conn = get_connection()
     try:
@@ -115,7 +115,7 @@ def update_fill_level(sensor_serial: str, payload: FillLevelUpdate):
         conn.close()
 
 # Endpoints Users
-@app.get("/users")
+@app.get("/v2/api/users", tags=["users"])
 def get_users():
     conn = get_connection()
     try:
@@ -125,7 +125,7 @@ def get_users():
     finally:
         conn.close()
 
-@app.get("/users/{uid}")
+@app.get("/v2/api/users/{uid}", tags=["users"])
 def get_user_by_uid(uid: str):
     conn = get_connection()
     try:
@@ -139,7 +139,7 @@ def get_user_by_uid(uid: str):
     finally:
         conn.close()
 
-@app.post("/users")
+@app.post("/v2/api/users", tags=["users"])
 def add_user(user: User):
     conn = get_connection()
     try:
@@ -159,7 +159,7 @@ def add_user(user: User):
     finally:
         conn.close()
 
-@app.put("/users/{uid}/imei")
+@app.put("/v2/api/users/{uid}/imei", tags=["users"])
 def update_user_imei(uid: str, payload: ImeiUpdate):
     conn = get_connection()
     try:
@@ -171,7 +171,7 @@ def update_user_imei(uid: str, payload: ImeiUpdate):
     finally:
         conn.close()
 
-@app.post("/users/{uid}/increment_usage")
+@app.post("/v2/api/users/{uid}/increment_usage", tags=["users"])
 def increment_usage_count(uid: str):
     conn = get_connection()
     try:
@@ -183,7 +183,7 @@ def increment_usage_count(uid: str):
     finally:
         conn.close()
 
-@app.get("/users/{uid}/usage_count")
+@app.get("/v2/api/users/{uid}/usage_count", tags=["users"])
 def get_usage_count(uid: str):
     conn = get_connection()
     try:
@@ -197,7 +197,7 @@ def get_usage_count(uid: str):
     finally:
         conn.close()
 
-@app.get("/users/exists/{uid}")
+@app.get("/v2/api/users/exists/{uid}", tags=["users"])
 def check_user_exists(uid: str):
     conn = get_connection()
     try:
@@ -211,7 +211,7 @@ def check_user_exists(uid: str):
     finally:
         conn.close()
 
-@app.get("/users/by_imei/{imei}")
+@app.get("/v2/api/users/by_imei/{imei}", tags=["users"])
 def get_user_by_imei(imei: str):
     conn = get_connection()
     try:
@@ -225,7 +225,7 @@ def get_user_by_imei(imei: str):
     finally:
         conn.close()
 
-@app.post("/users/{uid}/reset_usage")
+@app.post("/v2/api/users/{uid}/reset_usage", tags=["users"])
 def reset_usage_count(uid: str):
     conn = get_connection()
     try:
@@ -234,5 +234,17 @@ def reset_usage_count(uid: str):
             cursor.execute(sql, (uid,))
         conn.commit()
         return {"message": f"usage_count resetado para o user {uid}"}
+    finally:
+        conn.close()
+        
+        
+@app.delete("/v2/api/users/{uid}", tags=["users"])
+def delete_user(uid: str):
+    conn = get_connection()
+    try:
+        with conn.cursor() as cursor:
+            cursor.execute("DELETE FROM users WHERE uid = %s", (uid,))
+        conn.commit()
+        return {"message": f"Utilizador '{uid}' removido com sucesso"}
     finally:
         conn.close()

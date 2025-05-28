@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: routesapi-service
+  namespace: waste-app
+spec:
+  selector:
+    app: routesapi
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5002
