@@ -1,11 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: redis
+  name: posting-service
   namespace: waste-app
 spec:
   selector:
-    app: redis
+    app: posting-service
   ports:
     - protocol: TCP
-      port: 6379
+      port: 80
+      targetPort: 5010

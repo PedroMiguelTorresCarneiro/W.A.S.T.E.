@@ -5,7 +5,7 @@ import '../config/config.dart';
 class UserService {
   // 🔹 Obter utilizador completo
   static Future<Map<String, dynamic>> fetchFullUser(String uid) async {
-    final url = Uri.parse("${AppConfig.fastApiBase}/users/$uid");
+    final url = Uri.parse("${AppConfig.fastApiBase}/v2/api/users/$uid");
     final res = await http.get(url);
 
     if (res.statusCode == 200) {
@@ -17,9 +17,7 @@ class UserService {
 
   // 🔹 Incrementar usage_count
   static Future<void> incrementUsage(String uid) async {
-    final url = Uri.parse(
-      "${AppConfig.fastApiBase}/users/$uid/increment_usage",
-    );
+    final url = Uri.parse("${AppConfig.fastApiBase}/$uid/increment_usage");
     final response = await http.post(url);
 
     if (response.statusCode != 200) {
@@ -30,7 +28,7 @@ class UserService {
   // 🔹 Buscar utilizador por IMEI
   // 🔹 Buscar utilizador por IMEI
   static Future<Map<String, dynamic>> fetchUserByImei(String imei) async {
-    final url = Uri.parse("${AppConfig.fastApiBase}/users/by_imei/$imei");
+    final url = Uri.parse("${AppConfig.fastApiBase}/by_imei/$imei");
     final res = await http.get(url);
 
     if (res.statusCode == 200) {
@@ -41,7 +39,7 @@ class UserService {
   }
 
   static Future<void> resetUsage(String uid) async {
-    final url = Uri.parse("${AppConfig.fastApiBase}/users/$uid/reset_usage");
+    final url = Uri.parse("${AppConfig.fastApiBase}/$uid/reset_usage");
     final response = await http.post(url);
 
     if (response.statusCode != 200) {

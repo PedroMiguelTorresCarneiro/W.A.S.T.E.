@@ -44,6 +44,7 @@ class _SensorManagementScreenState extends State<SensorManagementScreen> {
 
                     // Fecha o diálogo
                     Navigator.pop(context);
+                    await _fetchBins(); // ← ADICIONA ISTO AQUI
                   } catch (e) {
                     // Exibe erro corretamente na SnackBar
                     Navigator.pop(context);

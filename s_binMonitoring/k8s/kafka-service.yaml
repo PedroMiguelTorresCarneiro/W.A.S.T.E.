@@ -8,7 +8,10 @@ spec:
   selector:
     app: kafka
   ports:
-    - name: kafka
+    - name: kafka-internal
       port: 9092
       targetPort: 9092
-      nodePort: 30092 # ou outro entre 30000–32767
+    - name: kafka-external
+      port: 29092
+      targetPort: 29092
+      nodePort: 30092  # Porta externa para sensores

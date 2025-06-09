@@ -10,36 +10,46 @@ class AppConfig {
   // URL base do serviço de sensores (ajustável consoante o domínio do backend)
   //static const String kafkaWebSocketUrl = "http://localhost:5006";
 
-  // Kong faz o routing para os serviços certos com base nos paths
+  // // Kong faz o routing para os serviços certos com base nos paths
+  // static const String fastApiBase =
+  //     "http://localhost:8000/api"; // FastAPI: users, bins
+  // static const String routesApiBase =
+  //     "http://localhost:8000/routes"; // Serviço de rotas
+  // static const String sensorApiBase =
+  //     "http://localhost:8000/monitoring"; // Serviço de sensores
+  // static const String kafkaWebSocketUrl =
+  //     "http://localhost:8000"; // ✅ Sem /socket.io
+
+  // Base URL dos serviços via Kong (domínio público)
   static const String fastApiBase =
-      "http://localhost:8000/api"; // FastAPI: users, bins
+      "https://grupo2-egs-deti.ua.pt/v2/api"; // FastAPI: users, bins
   static const String routesApiBase =
-      "http://localhost:8000/routes"; // Serviço de rotas
+      "https://grupo2-egs-deti.ua.pt/v2/routes"; // Serviço de rotas
   static const String sensorApiBase =
-      "http://localhost:8000/monitoring"; // Serviço de sensores
+      "https://grupo2-egs-deti.ua.pt/v2/binmonitoring"; // Serviço de sensores
   static const String kafkaWebSocketUrl =
-      "http://localhost:8000"; // ✅ Sem /socket.io
+      "ws://grupo2-egs-deti.ua.pt/ws"; // WebSocket via Kong
 
   // Rota por omissão
   static const String defaultRouteId = "r1741451296";
 
   // Rotas
-  static String get routeUrl => "$routesApiBase/v2/routes?id=$defaultRouteId";
+  static String get routeUrl => "$routesApiBase?id=$defaultRouteId";
   static String getRouteQueryUrl({String? truckId}) {
-    final base = "$routesApiBase/v2/routes";
+    final base = routesApiBase;
     return truckId != null ? "$base?truck_id=$truckId" : base;
   }
 
-  static String deleteRouteUrl(String routeId) =>
-      "$routesApiBase/v2/routes?id=$routeId";
+  static String deleteRouteUrl(String routeId) => "$routesApiBase?id=$routeId";
 
   // Users
-  static String userExistsUrl(String uid) => "$fastApiBase/users/$uid";
-  static String get createUserUrl => "$fastApiBase/users";
-  static String get binsUrl => "$fastApiBase/bins";
-  static String fillLevelUrl(String serial) => "$fastApiBase/bins/fill/$serial";
+  static String userExistsUrl(String uid) => "$fastApiBase/v2/api/users/$uid";
+  static String get createUserUrl => "$fastApiBase/v2/api/users";
+  static String get binsUrl => "$fastApiBase/v2/api/bins";
+  static String fillLevelUrl(String serial) =>
+      "$fastApiBase/v2/api/bins/fill/$serial";
 
   // Sensores
-  static String get topicUrl => "$sensorApiBase/v2/topic";
-  static String get sensorUrl => "$sensorApiBase/v2/sensors";
+  static String get topicUrl => "$sensorApiBase/topic";
+  static String get sensorUrl => "$sensorApiBase/sensors";
 }

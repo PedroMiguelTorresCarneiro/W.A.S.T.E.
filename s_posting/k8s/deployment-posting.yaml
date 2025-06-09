@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: posting-service
+  namespace: waste-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: posting-service
+  template:
+    metadata:
+      labels:
+        app: posting-service
+    spec:
+      containers:
+        - name: posting-service
+          image: registry.deti/waste-app/posting-service:v2
+          ports:
+            - containerPort: 5010
+          env:
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: "kafka.waste-app.svc.cluster.local:9092"

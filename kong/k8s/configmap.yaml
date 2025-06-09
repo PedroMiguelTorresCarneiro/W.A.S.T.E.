@@ -20,7 +20,8 @@ data:
         routes:
           - name: s_routes_route
             paths:
-              - /routes
+              - /v2/routes         
+            strip_path: false      
             plugins:
               - name: cors
                 config:
@@ -40,8 +41,8 @@ data:
         routes:
           - name: s_monitoring_route
             paths:
-              - /monitoring
-            strip_path: true
+              - /v2/binmonitoring
+            strip_path: false
             plugins:
               - name: cors
                 config:
@@ -59,10 +60,60 @@ data:
       - name: kafka_ws
         url: http://kafka-ws-bridge:80
         routes:
-          - name: kafka_ws_route
+          - name: kafka-ws-route
             paths:
-              - /socket.io
+              - /ws
             protocols:
               - http
+              - https
             strip_path: false
             preserve_host: true
+            plugins:
+              - name: cors
+                config:
+                  origins:
+                    - "*"               
+                  methods:
+                    - GET
+                    - POST
+                    - OPTIONS
+                  headers:
+                    - "*"               
+                  credentials: true
+
+            
+      - name: posting_service
+        url: http://posting-service:80
+        routes:
+          - name: posting_service_route
+            paths:
+              - /v1/posting
+            strip_path: false
+            plugins:
+              - name: cors
+                config:
+                  origins:
+                    - "*"
+                  methods:
+                    - POST
+                  headers:
+                    - "*"
+                  credentials: true
+      
+      - name: flutter_web
+        url: http://flutter-web-svc:5200
+        routes:
+          - name: flutter_web_route
+            paths:
+              - /
+            strip_path: false
+            plugins:
+              - name: cors
+                config:
+                  origins:
+                    - "*"
+                  methods:
+                    - GET
+                  headers:
+                    - "*"
+                  credentials: true

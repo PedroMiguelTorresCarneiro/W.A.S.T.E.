@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:waste_app/config/config.dart';
 import 'package:waste_app/services/user_service.dart';
 import 'package:waste_app/widgets/map_widget.dart';
 import 'package:latlong2/latlong.dart';
@@ -20,13 +21,18 @@ class UserDashboard extends StatefulWidget {
 class _UserDashboardState extends State<UserDashboard> {
   List<Bin> _bins = [];
   final Set<String> _subscribedTopics = {};
+  bool _firstLoadDone = false;
+
+  late KafkaWebSocketService kafkaWebSocketService;
 
   @override
   void initState() {
     super.initState();
-    KafkaSocketService.connect();
 
-    KafkaSocketService.listenToTopic("nfc_logs", (data) async {
+    kafkaWebSocketService = KafkaWebSocketService(AppConfig.kafkaWebSocketUrl);
+    kafkaWebSocketService.listen();
+
+    kafkaWebSocketService.addTopicListener("nfc_logs", (data) async {
       try {
         final imei = data['imei'];
         if (imei == null) return;
@@ -50,6 +56,18 @@ class _UserDashboardState extends State<UserDashboard> {
     _loadBins();
   }
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    if (_firstLoadDone) {
+      print('🔁 Voltei ao AdminDashboard — a recarregar bins...');
+      _loadBins(); // ← isto é o refresh automático
+    } else {
+      _firstLoadDone = true; // ← só para evitar duplo carregamento no arranque
+    }
+  }
+
   Future<void> _loadBins() async {
     try {
       final data = await BinService.getBins();
@@ -60,7 +78,7 @@ class _UserDashboardState extends State<UserDashboard> {
 
         if (!_subscribedTopics.contains(topic)) {
           _subscribedTopics.add(topic);
-          KafkaSocketService.listenToTopic(topic, (data) async {
+          kafkaWebSocketService.addTopicListener(topic, (data) async {
             final serial = data['serial'];
             final fillLevel = data['fill_level'];
 
@@ -171,6 +189,19 @@ class _UserDashboardState extends State<UserDashboard> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text("Aveiro", style: TextStyle(fontWeight: FontWeight.bold)),
+            IconButton(
+              icon: const Icon(Icons.refresh),
+              tooltip: "Atualizar lista de caixotes",
+              onPressed: () async {
+                await _loadBins();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text("🔄 Lista de caixotes atualizada!"),
+                    duration: Duration(seconds: 2),
+                  ),
+                );
+              },
+            ),
             const SizedBox(height: 10),
             BinListWidget(bins: _bins),
           ],
@@ -181,7 +212,8 @@ class _UserDashboardState extends State<UserDashboard> {
 
   @override
   void dispose() {
-    KafkaSocketService.disconnect(); // 🔒 Fecha a ligação WebSocket e limpa listeners
+    kafkaWebSocketService
+        .close(); // 🔒 Fecha a ligação WebSocket e limpa listeners
     super.dispose();
   }
 }

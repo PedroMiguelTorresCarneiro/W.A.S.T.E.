@@ -3,11 +3,19 @@
 
 Com o kong podemos aceder aos serviços assim:
 
-- https://grupo1-egs-deti.ua.pt/api/docs
+## API do backend
+- https://grupo2-egs-deti.ua.pt/v2/api/docs 
 
-- https://grupo1-egs-deti.ua.pt/routes
+## API S_Routes
+- https://grupo2-egs-deti.ua.pt/v2/routes/docs/
 
-- https://grupo1-egs-deti.ua.pt/monitoring
+## API S_BinMonitoring
+- https://grupo2-egs-deti.ua.pt/v2/binmonitoring/docs/
 
-- https://grupo1-egs-deti.ua.pt/socket.io
+## API S_Posting
+- http://grupo2-egs-deti.ua.pt/v1/posting/docs#/
 
+## Websockets (internal) 
+- https://grupo2-egs-deti.ua.pt/socket.io
+
+- ws://grupo2-egs-deti.ua.pt/socket.io/

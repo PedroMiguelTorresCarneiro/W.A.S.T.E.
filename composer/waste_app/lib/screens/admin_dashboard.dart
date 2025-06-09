@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:waste_app/config/config.dart';
 import 'package:waste_app/services/kafka_socket_service.dart';
 import 'package:waste_app/services/user_service.dart';
 import 'package:waste_app/widgets/map_widget.dart';
@@ -19,16 +20,23 @@ class AdminDashboard extends StatefulWidget {
   State<AdminDashboard> createState() => _AdminDashboardState();
 }
 
-class _AdminDashboardState extends State<AdminDashboard> {
+class _AdminDashboardState extends State<AdminDashboard>
+    with WidgetsBindingObserver {
   List<Bin> _bins = [];
   final Set<String> _subscribedTopics = {};
+  bool _firstLoadDone = false;
+
+  late KafkaWebSocketService kafkaWebSocketService;
 
   @override
   void initState() {
     super.initState();
-    KafkaSocketService.connect();
+    WidgetsBinding.instance.addObserver(this);
 
-    KafkaSocketService.listenToTopic("nfc_logs", (data) async {
+    kafkaWebSocketService = KafkaWebSocketService(AppConfig.kafkaWebSocketUrl);
+    kafkaWebSocketService.listen();
+
+    kafkaWebSocketService.addTopicListener("nfc_logs", (data) async {
       try {
         final imei = data['imei'];
         if (imei == null) return;
@@ -52,6 +60,18 @@ class _AdminDashboardState extends State<AdminDashboard> {
     _loadBins();
   }
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    if (_firstLoadDone) {
+      print('🔁 Voltei ao AdminDashboard — a recarregar bins...');
+      _loadBins(); // ← isto é o refresh automático
+    } else {
+      _firstLoadDone = true; // ← só para evitar duplo carregamento no arranque
+    }
+  }
+
   Future<void> _loadBins() async {
     try {
       final data = await BinService.getBins();
@@ -64,7 +84,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
         // 🔁 Evita subscrever múltiplas vezes ao mesmo tópico
         if (!_subscribedTopics.contains(topic)) {
           _subscribedTopics.add(topic);
-          KafkaSocketService.listenToTopic(topic, (data) async {
+          kafkaWebSocketService.addTopicListener(topic, (data) async {
             final serial = data['serial'];
             final fillLevel = data['fill_level'];
 
@@ -180,7 +200,28 @@ class _AdminDashboardState extends State<AdminDashboard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text("Aveiro", style: TextStyle(fontWeight: FontWeight.bold)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "Aveiro",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.refresh),
+                  tooltip: "Atualizar lista de caixotes",
+                  onPressed: () async {
+                    await _loadBins();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("🔄 Lista de caixotes atualizada!"),
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
             const SizedBox(height: 10),
             BinListWidget(bins: _bins),
           ],
@@ -199,24 +240,26 @@ class _AdminDashboardState extends State<AdminDashboard> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (_) => const RouteManagementScreen(),
                   ),
                 );
+                await _loadBins();
               },
               child: const Text("Rotas"),
             ),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (_) => const SensorManagementScreen(),
                   ),
                 );
+                await _loadBins();
               },
               child: const Text("Gestão da Rede"),
             ),
@@ -228,7 +271,17 @@ class _AdminDashboardState extends State<AdminDashboard> {
 
   @override
   void dispose() {
-    KafkaSocketService.disconnect(); // 🔒 Fecha a ligação WebSocket e limpa listeners
+    WidgetsBinding.instance.removeObserver(this);
+    kafkaWebSocketService
+        .close(); // 🔒 Fecha a ligação WebSocket e limpa listeners
     super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      print('🔁 A voltar ao AdminDashboard — a recarregar bins...');
+      _loadBins();
+    }
   }
 }

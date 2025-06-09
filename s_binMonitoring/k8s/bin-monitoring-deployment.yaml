@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bin-monitoring
+  namespace: waste-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bin-monitoring
+  template:
+    metadata:
+      labels:
+        app: bin-monitoring
+    spec:
+      containers:
+        - name: bin-monitoring
+          image: registry.deti/waste-app/bin_monitoring:v5
+          ports:
+            - containerPort: 5004
+          envFrom:
+            - configMapRef:
+                name: binmonitoring-config
+            - secretRef:
+                name: binmonitoring-secret
+      imagePullSecrets:
+        - name: deti-regcred

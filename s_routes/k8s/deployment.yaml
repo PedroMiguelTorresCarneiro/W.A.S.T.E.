@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: routesapi
-          image: registry.deti/waste-app/routesapi:latest
+          image: registry.deti/waste-app/routesapi:v5
           ports:
             - containerPort: 5002
           env:
@@ -68,3 +68,6 @@ spec:
                 configMapKeyRef:
                   name: routesapi-config
                   key: FLASK_DEBUG
+
+      imagePullSecrets:
+        - name: deti-regcred

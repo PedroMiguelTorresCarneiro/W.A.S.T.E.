@@ -14,7 +14,8 @@ data:
       lat DOUBLE NOT NULL,
       lon DOUBLE NOT NULL,
       nfc_token VARCHAR(100) NOT NULL,
-      topic VARCHAR(100) NOT NULL
+      topic VARCHAR(100) NOT NULL,
+      fill_level VARCHAR(10);
     );
 
     CREATE TABLE users (
@@ -22,5 +23,6 @@ data:
       uid VARCHAR(255) UNIQUE NOT NULL,
       role ENUM('admin', 'user') NOT NULL,
       imei VARCHAR(50),
+      usage_count INT DEFAULT 0,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );

@@ -17,9 +17,11 @@ spec:
     spec:
       containers:
         - name: api
-          image: registry.deti/waste-app/api:latest
+          image: registry.deti/waste-app/api:v3
           ports:
             - containerPort: 5008
           envFrom:
             - secretRef:
                 name: waste-env
+      imagePullSecrets:
+        - name: deti-regcred

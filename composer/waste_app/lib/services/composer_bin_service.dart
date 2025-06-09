@@ -21,14 +21,23 @@ class Bin {
     this.fillLevel = "0",
   });
 
+  // factory Bin.fromJson(Map<String, dynamic> json) => Bin(
+  //   id: json['id'],
+  //   sensorSerial: json['sensor_serial'],
+  //   lat: json['lat'],
+  //   lon: json['lon'],
+  //   nfcToken: json['nfc_token'],
+  //   topic: json['topic'],
+  //   fillLevel: json['fill_level'] ?? "0",
+  // );
   factory Bin.fromJson(Map<String, dynamic> json) => Bin(
     id: json['id'],
-    sensorSerial: json['sensor_serial'],
-    lat: json['lat'],
-    lon: json['lon'],
-    nfcToken: json['nfc_token'],
-    topic: json['topic'],
-    fillLevel: json['fill_level'] ?? "0",
+    sensorSerial: json['sensor_serial'] ?? '',
+    lat: (json['lat'] as num).toDouble(),
+    lon: (json['lon'] as num).toDouble(),
+    nfcToken: json['nfc_token'] ?? '',
+    topic: json['topic'] ?? '',
+    fillLevel: json['fill_level']?.toString() ?? '0',
   );
 
   Map<String, dynamic> toJson() => {
@@ -116,8 +125,13 @@ class BinService {
       throw Exception('Erro ao adicionar Bin à base de dados');
     }
 
+    // final jsonResponse = json.decode(binResponse.body);
+    // return Bin.fromJson(jsonResponse);
     final jsonResponse = json.decode(binResponse.body);
-    return Bin.fromJson(jsonResponse);
+
+    // Em vez de tentar criar um Bin a partir de {"message": "..."} (que dá erro),
+    // devolvemos simplesmente o bin original, já que sabemos que foi adicionado com sucesso:
+    return bin;
   }
 
   static Future<void> updateBin(int id, Bin bin) async {

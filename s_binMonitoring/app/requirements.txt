@@ -1,6 +1,13 @@
+# Frameworks
+fastapi==0.110.1        # Última versão estável em maio/junho 2025
+uvicorn[standard]==0.29.0  # Servidor ASGI para correr FastAPI apps
+
+# Opcional: manter Flask se ainda usares algo dele
 Flask==2.3.3
 flask-cors==4.0.2
 flasgger==0.9.7.1
+
+# Outros
 kafka-python==2.1.4
 redis==5.2.1
 python-dotenv==1.0.1

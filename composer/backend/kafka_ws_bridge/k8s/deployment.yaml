@@ -6,7 +6,7 @@ metadata:
   labels:
     app: kafka-ws-bridge
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: kafka-ws-bridge
@@ -17,9 +17,11 @@ spec:
     spec:
       containers:
         - name: kafka-ws-bridge
-          image: registry.deti/waste-app/kafka_ws_bridge:latest
+          image: registry.deti/waste-app/kafka-ws-bridge:v9
           ports:
             - containerPort: 5006
           envFrom:
             - secretRef:
                 name: waste-env
+      imagePullSecrets:
+        - name: deti-regcred

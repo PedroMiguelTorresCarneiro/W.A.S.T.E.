@@ -2,12 +2,12 @@
 
 1. BUILD
 ```bash
-docker build -t registry.deti/waste-app/routesapi:latest .
+docker build -t registry.deti/waste-app/routesapi:v4 .
 ```
 
 2. PUSH
 ```bash
-docker push registry.deti/waste-app/routesapi:latest
+docker push registry.deti/waste-app/routesapi:v4
 ```
 
 3. APPLY DEPLOYMENT

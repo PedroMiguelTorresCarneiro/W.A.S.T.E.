@@ -3,13 +3,15 @@ BIN MONITORING:
 
 1. BUILD
 ```bash
-docker build -t registry.deti/waste-app/bin_monitoring:latest .
+docker build -t registry.deti/waste-app/bin_monitoring:v5 .
 ```
 
 2. PUSH
 ```bash
-docker push registry.deti/waste-app/bin_monitoring:latest
+docker push registry.deti/waste-app/bin_monitoring:v5
 ```
+
+docker run --rm -it registry.deti/waste-app/bin_monitoring:v1
 
 3. APPLY DEPLOYMENT
 ```bash

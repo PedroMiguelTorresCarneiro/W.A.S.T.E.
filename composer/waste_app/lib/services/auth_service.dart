@@ -86,13 +86,13 @@ class AuthService {
 
     if (response.statusCode != 200) {
       _showError(context, "Erro ao verificar utilizador");
-      return;
+      //return;
     }
 
     final data = jsonDecode(response.body);
 
     String role;
-    if (data["exists"] == false) {
+    if (data["detail"] == "User not found") {
       // ⚠️ Novo utilizador → perguntar se é admin
       role = await _askForAdminCode(context);
 

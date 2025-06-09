@@ -79,7 +79,7 @@ FLASK_DEBUG = os.getenv("FLASK_DEBUG", "False").lower() in ("true", "1", "yes")
 
 # Ficheiro de associação sensor <-> tópico
 #LOOKUP_FILE = os.getenv("LOOKUP_FILE", "sensor_lookup.txt")
-LOOKUP_FILE = os.getenv("LOOKUP_FILE", "/data/sensor_lookup.txt")
+#LOOKUP_FILE = os.getenv("LOOKUP_FILE", "/data/sensor_lookup.txt")
 
 # Autenticação básica (apenas se usado)
 BASIC_AUTH_USER = os.getenv("BASIC_AUTH_USER", "admin")

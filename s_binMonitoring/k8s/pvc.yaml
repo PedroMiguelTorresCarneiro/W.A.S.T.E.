@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: sensor-lookup-pvc
+  name: redis-pvc
   namespace: waste-app
 spec:
   accessModes:
