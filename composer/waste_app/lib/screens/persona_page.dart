@@ -34,9 +34,10 @@ class _PersonaPageState extends State<PersonaPage> {
   }
 
   Future<void> _redeemDiscount(String uid, int usageCount) async {
-    final int desconto = (usageCount / 10).floor().clamp(0, 6);
+    final int desconto =
+        (usageCount / 10).floor(); // 10% de desconto por cada 10 utilizações
     final mensagem =
-        "O número de vezes que utilizou os caixotes foi: $usageCount\nO que corresponde a uma dedução de IVA de: ${desconto}%";
+        "O número de vezes que utilizou os caixotes foi: $usageCount\nO que corresponde a uma dedução de IVA de: $desconto%";
 
     final codificado = base64Encode(utf8.encode("DESCONTO:$desconto%"));
 

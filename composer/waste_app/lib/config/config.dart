@@ -44,6 +44,12 @@ class AppConfig {
 
   // Users
   static String userExistsUrl(String uid) => "$fastApiBase/v2/api/users/$uid";
+  static String incrementUserUse(String uid) =>
+      "$fastApiBase/v2/api/users/$uid/increment_usage";
+  static String getUserbyImei(String imei) =>
+      "$fastApiBase/v2/api/users/by_imei/$imei";
+  static String resetUsage(String uid) =>
+      "$fastApiBase/v2/api/users/$uid/reset_usage";
   static String get createUserUrl => "$fastApiBase/v2/api/users";
   static String get binsUrl => "$fastApiBase/v2/api/bins";
   static String fillLevelUrl(String serial) =>

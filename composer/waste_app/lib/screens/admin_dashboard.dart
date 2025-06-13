@@ -182,7 +182,7 @@ class _AdminDashboardState extends State<AdminDashboard>
       elevation: 3,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: SizedBox(
-        height: 300,
+        height: 400,
         child: MapWidget(
           routeCoordinates: [],
           binLocations: _bins.map((b) => LatLng(b.lat, b.lon)).toList(),
