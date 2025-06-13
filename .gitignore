@@ -5,6 +5,5 @@ venv_ws/
 *.gpx
 __pycache__/
 .env
-nfc_backend/
-project_flutterV3/
-flutter_web_app/
+PUBLISH
+*.rdb
